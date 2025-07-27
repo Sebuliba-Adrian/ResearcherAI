@@ -1,0 +1,107 @@
+# Production Configuration for Multi-Agent RAG System
+
+# Data Sources
+data_sources:
+  arxiv:
+    enabled: true
+    max_results: 50
+    categories:
+      - cs.AI
+      - cs.LG
+      - cs.CL
+
+  semantic_scholar:
+    enabled: true
+    max_results: 50
+
+  zenodo:
+    enabled: true
+    max_results: 30
+
+  pubmed:
+    enabled: true
+    max_results: 30
+
+  huggingface:
+    enabled: true
+    max_results: 20
+
+  kaggle:
+    enabled: false  # Requires API key
+
+  websearch:
+    enabled: true
+    max_results: 10
+
+# Graph Database (Production: Neo4j)
+graph_db:
+  type: "neo4j"  # Options: neo4j, networkx (dev only)
+  uri: "bolt://neo4j:7687"
+  user: "neo4j"
+  password: "${NEO4J_PASSWORD}"
+  database: "research"
+
+# Vector Database (Production: Qdrant)
+vector_db:
+  type: "qdrant"  # Options: qdrant, faiss (dev only)
+  host: "qdrant"
+  port: 6333
+  collection_name: "research_papers"
+  embedding_model: "all-MiniLM-L6-v2"
+  dimension: 384
+
+# ETL Pipeline
+etl:
+  batch_size: 100
+  validation_rules:
+    min_title_length: 10
+    max_title_length: 500
+    min_abstract_length: 50
+    max_abstract_length: 10000
+  cache_dir: "/app/cache"
+
+# Agents
+agents:
+  data_collector:
+    schedule: "0 */6 * * *"  # Every 6 hours
+    sources: ["arxiv", "semantic_scholar", "zenodo", "pubmed", "huggingface"]
+
+  graph_agent:
+    triple_extraction: "gemini"
+    max_triples_per_paper: 50
+
+  vector_agent:
+    chunk_size: 400
+    chunk_overlap: 50
+
+  reasoning_agent:
+    conversation_memory: 5  # Last N turns
+    max_context_length: 4000
+
+  orchestrator:
+    session_timeout: 3600  # 1 hour
+    auto_save_interval: 300  # 5 minutes
+
+# LLM Configuration
+llm:
+  provider: "gemini"
+  model: "gemini-2.5-flash"
+  api_key: "${GOOGLE_API_KEY}"
+  temperature: 0.7
+  max_tokens: 2048
+
+# Logging
+logging:
+  level: "INFO"
+  format: "json"
+  file: "/app/logs/rag_system.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# Performance
+performance:
+  max_workers: 4
+  request_timeout: 30
+  rate_limit:
+    requests_per_minute: 60
+    requests_per_hour: 1000

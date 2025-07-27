@@ -1,0 +1,17 @@
+Knowledge Graph and RAG Systems
+
+The Eiffel Tower was designed by Gustave Eiffel and is located in Paris. Paris is the capital of France. France is located in Europe.
+
+Berlin is the capital of Germany. Germany is also located in Europe. The Brandenburg Gate is a famous landmark in Berlin.
+
+The CRISPR-Cas9 system was developed by Jennifer Doudna and Emmanuelle Charpentier. This revolutionary gene-editing tool allows scientists to modify DNA sequences with high precision. Jennifer Doudna works at the University of California, Berkeley.
+
+Albert Einstein developed the theory of relativity in 1905. The theory of relativity revolutionized our understanding of space and time. Einstein was born in Germany but later moved to the United States.
+
+Python is a programming language created by Guido van Rossum. Python is widely used for artificial intelligence and machine learning applications. TensorFlow is a popular machine learning framework that supports Python.
+
+Paris has a population of approximately 2.2 million people. The Louvre Museum is located in Paris and houses the Mona Lisa. Leonardo da Vinci painted the Mona Lisa during the Renaissance period.
+
+Neo4j is a graph database that stores data as nodes and relationships. Graph databases are particularly useful for representing knowledge graphs. Knowledge graphs represent information as subject-predicate-object triples.
+
+Claude is an AI assistant created by Anthropic. Anthropic was founded by former members of OpenAI. OpenAI developed GPT-3 and ChatGPT.

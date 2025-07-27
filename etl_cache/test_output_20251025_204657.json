@@ -1,0 +1,27 @@
+{
+  "loaded_at": "2025-10-25T20:46:57.894377",
+  "count": 1,
+  "data": [
+    {
+      "id": "test_1",
+      "title": "Machine Learning for Beginners: A Comprehensive Guide",
+      "abstract": "This paper provides a comprehensive introduction to machine learning concepts, algorithms, and applications. We cover supervised learning, unsupervised learning, and reinforcement learning with practical examples.",
+      "authors": [
+        "John Doe",
+        "Jane Smith"
+      ],
+      "topics": [
+        "ML",
+        "AI"
+      ],
+      "source": "Test",
+      "url": "http://test.com/paper1",
+      "published": "2025-10-25",
+      "etl_processed": "2025-10-25T20:46:57.891261",
+      "etl_source": "test_source",
+      "etl_pipeline_version": "1.0",
+      "text": "Title: Machine Learning for Beginners: A Comprehensive Guide\n\nAbstract: This paper provides a comprehensive introduction to machine learning concepts, algorithms, and applications. We cover supervised learning, unsupervised learning, and reinforcement learning with practical examples.",
+      "validated": true
+    }
+  ]
+}
