@@ -1,0 +1,23 @@
+{
+  "papers_collected": 25,
+  "graph_stats": {
+    "nodes_added": 100,
+    "edges_added": 81,
+    "papers_processed": 19
+  },
+  "vector_stats": {
+    "chunks_added": 25
+  },
+  "sources": {
+    "total_collected": 25,
+    "by_source": {
+      "arxiv": 5,
+      "semantic_scholar": 4,
+      "zenodo": 5,
+      "pubmed": 5,
+      "websearch": 5,
+      "huggingface": 1
+    },
+    "last_collection": "2025-10-26T11:18:26.702601"
+  }
+}

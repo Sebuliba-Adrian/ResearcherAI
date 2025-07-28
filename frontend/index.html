@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResearcherAI - Multi-Agent RAG System</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-container">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="stars"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
+                    <path d="M20 5L35 15V25L20 35L5 25V15L20 5Z" stroke="url(#logo-gradient)" stroke-width="2" fill="none"/>
+                    <circle cx="20" cy="20" r="5" fill="url(#logo-gradient)"/>
+                    <defs>
+                        <linearGradient id="logo-gradient" x1="5" y1="5" x2="35" y2="35">
+                            <stop offset="0%" stop-color="#00f5ff"/>
+                            <stop offset="100%" stop-color="#7b2ff7"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">ResearcherAI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#collect" class="nav-link">Collect</a>
+                <a href="#ask" class="nav-link">Ask</a>
+                <a href="#upload" class="nav-link">Upload</a>
+                <a href="#sessions" class="nav-link">Sessions</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="btn-primary btn-glow" id="api-key-btn">
+                    <span>API Key</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge glass-card">
+                    <span class="badge-pulse"></span>
+                    <span>Production Multi-Agent RAG System</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Intelligent Research</span>
+                    <br>
+                    Powered by Multi-Agent AI
+                </h1>
+                <p class="hero-description">
+                    Autonomous data collection from 7 sources, knowledge graph construction,
+                    semantic search, and advanced reasoning with conversation memory.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn-primary btn-large btn-glow" onclick="scrollToSection('collect')">
+                        <span>Start Collecting</span>
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="scrollToSection('ask')">
+                        <span>Ask a Question</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item glass-card">
+                        <div class="stat-value" id="stat-papers">0</div>
+                        <div class="stat-label">Papers Collected</div>
+                    </div>
+                    <div class="stat-item glass-card">
+                        <div class="stat-value" id="stat-queries">0</div>
+                        <div class="stat-label">Questions Answered</div>
+                    </div>
+                    <div class="stat-item glass-card">
+                        <div class="stat-value" id="stat-agents">7</div>
+                        <div class="stat-label">Active Agents</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Collection Section -->
+    <section id="collect" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="gradient-text">Collect Research Papers</span>
+                </h2>
+                <p class="section-description">
+                    Autonomous collection from arXiv, Semantic Scholar, PubMed, Zenodo, HuggingFace, Kaggle, and Web Search
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="glass-card card-large">
+                    <div class="card-header">
+                        <h3 class="card-title">Data Collection</h3>
+                        <div class="status-indicator" id="collect-status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Ready</span>
+                        </div>
+                    </div>
+
+                    <form id="collect-form" class="form">
+                        <div class="form-group">
+                            <label class="form-label">Research Query</label>
+                            <input
+                                type="text"
+                                id="collect-query"
+                                class="form-input glass-input"
+                                placeholder="e.g., transformer neural networks, quantum computing, CRISPR gene editing"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Papers per Source</label>
+                                <input
+                                    type="number"
+                                    id="collect-max"
+                                    class="form-input glass-input"
+                                    value="10"
+                                    min="1"
+                                    max="50"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Session Name (Optional)</label>
+                                <input
+                                    type="text"
+                                    id="collect-session"
+                                    class="form-input glass-input"
+                                    placeholder="my_research_session"
+                                >
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full btn-glow" id="collect-btn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                            </svg>
+                            <span>Start Collection</span>
+                        </button>
+                    </form>
+
+                    <!-- Collection Progress -->
+                    <div id="collect-progress" class="progress-container hidden">
+                        <div class="progress-header">
+                            <span class="progress-label">Collecting Papers...</span>
+                            <span class="progress-percentage">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="progress-step active">
+                                <div class="step-icon">1</div>
+                                <span class="step-label">Searching Sources</span>
+                            </div>
+                            <div class="progress-step">
+                                <div class="step-icon">2</div>
+                                <span class="step-label">Building Graph</span>
+                            </div>
+                            <div class="progress-step">
+                                <div class="step-icon">3</div>
+                                <span class="step-label">Creating Embeddings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Preview -->
+                <div class="glass-card card-large" id="collect-results" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Collection Results</h3>
+                        <button class="btn-icon" onclick="document.getElementById('collect-results').style.display='none'">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M18 6L6 18M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="results-content" id="collect-results-content">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A Section with Reasoning Chain -->
+    <section id="ask" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="gradient-text">Ask Questions</span>
+                </h2>
+                <p class="section-description">
+                    Advanced reasoning with knowledge graph, semantic search, and multi-agent collaboration
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="glass-card card-large">
+                    <div class="card-header">
+                        <h3 class="card-title">Question & Answer</h3>
+                        <div class="form-toggle">
+                            <label class="toggle-label">
+                                <input type="checkbox" id="use-critic" checked>
+                                <span class="toggle-slider"></span>
+                                <span class="toggle-text">Enable Critic</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <form id="ask-form" class="form">
+                        <div class="form-group">
+                            <label class="form-label">Your Question</label>
+                            <textarea
+                                id="ask-question"
+                                class="form-textarea glass-input"
+                                placeholder="What are the key innovations in transformer architectures?"
+                                rows="4"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Session Name</label>
+                            <input
+                                type="text"
+                                id="ask-session"
+                                class="form-input glass-input"
+                                placeholder="default"
+                                value="default"
+                            >
+                        </div>
+
+                        <button type="submit" class="btn-primary btn-full btn-glow" id="ask-btn">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                            <span>Ask Question</span>
+                        </button>
+                    </form>
+
+                    <!-- Reasoning Chain Animation -->
+                    <div id="reasoning-chain" class="reasoning-chain hidden">
+                        <div class="chain-header">
+                            <h4 class="chain-title">Reasoning Process</h4>
+                        </div>
+                        <div class="chain-steps">
+                            <div class="chain-step" data-step="vector">
+                                <div class="step-icon-container">
+                                    <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                </div>
+                                <div class="step-content">
+                                    <div class="step-name">Vector Search</div>
+                                    <div class="step-description">Finding semantically similar papers...</div>
+                                </div>
+                                <div class="step-status">
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+
+                            <div class="chain-step" data-step="graph">
+                                <div class="step-icon-container">
+                                    <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <circle cx="12" cy="5" r="3"/>
+                                        <circle cx="6" cy="17" r="3"/>
+                                        <circle cx="18" cy="17" r="3"/>
+                                        <path d="M12 8v4M10.5 14.5l-3 3M13.5 14.5l3 3"/>
+                                    </svg>
+                                </div>
+                                <div class="step-content">
+                                    <div class="step-name">Graph Analysis</div>
+                                    <div class="step-description">Exploring knowledge connections...</div>
+                                </div>
+                                <div class="step-status">
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+
+                            <div class="chain-step" data-step="reasoning">
+                                <div class="step-icon-container">
+                                    <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zM9 17a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM9 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM15 17a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM15 11a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                    </svg>
+                                </div>
+                                <div class="step-content">
+                                    <div class="step-name">LLM Reasoning</div>
+                                    <div class="step-description">Synthesizing answer...</div>
+                                </div>
+                                <div class="step-status">
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+
+                            <div class="chain-step" data-step="critic">
+                                <div class="step-icon-container">
+                                    <svg class="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                                    </svg>
+                                </div>
+                                <div class="step-content">
+                                    <div class="step-name">Quality Check</div>
+                                    <div class="step-description">Evaluating answer quality...</div>
+                                </div>
+                                <div class="step-status">
+                                    <div class="spinner"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Answer Display -->
+                <div class="glass-card card-large" id="ask-results" style="display: none;">
+                    <div class="card-header">
+                        <h3 class="card-title">Answer</h3>
+                        <div class="card-actions">
+                            <button class="btn-icon" onclick="copyAnswer()">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                                </svg>
+                            </button>
+                            <button class="btn-icon" onclick="document.getElementById('ask-results').style.display='none'">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M18 6L6 18M6 6l12 12"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="answer-content" id="ask-answer-content">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Upload Section -->
+    <section id="upload" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="gradient-text">Upload PDF Papers</span>
+                </h2>
+                <p class="section-description">
+                    Upload local research papers for automatic parsing and knowledge graph integration
+                </p>
+            </div>
+
+            <div class="glass-card card-large">
+                <div class="card-header">
+                    <h3 class="card-title">PDF Upload</h3>
+                </div>
+
+                <div class="upload-zone" id="upload-zone">
+                    <input type="file" id="pdf-file" accept=".pdf" hidden>
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                        </svg>
+                    </div>
+                    <h4 class="upload-title">Drop PDF here or click to browse</h4>
+                    <p class="upload-description">Maximum file size: 50MB</p>
+                    <button class="btn-secondary" onclick="document.getElementById('pdf-file').click()">
+                        Select PDF File
+                    </button>
+                </div>
+
+                <div id="upload-progress" class="upload-progress hidden">
+                    <div class="progress-header">
+                        <span class="progress-label">Uploading and processing...</span>
+                        <span class="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div id="upload-results" class="upload-results hidden">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sessions Section -->
+    <section id="sessions" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="gradient-text">Session Management</span>
+                </h2>
+                <p class="section-description">
+                    View and manage your research sessions
+                </p>
+            </div>
+
+            <div class="glass-card card-large">
+                <div class="card-header">
+                    <h3 class="card-title">Active Sessions</h3>
+                    <button class="btn-secondary" onclick="loadSessions()">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M23 4v6h-6M1 20v-6h6"/>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                        </svg>
+                        <span>Refresh</span>
+                    </button>
+                </div>
+
+                <div id="sessions-list" class="sessions-list">
+                    <div class="empty-state">
+                        <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/>
+                        </svg>
+                        <p>No sessions found. Start by collecting papers or asking questions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Key Modal -->
+    <div id="api-key-modal" class="modal hidden">
+        <div class="modal-overlay" onclick="closeModal('api-key-modal')"></div>
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3 class="modal-title">API Key Configuration</h3>
+                <button class="btn-icon" onclick="closeModal('api-key-modal')">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">API Key</label>
+                    <input
+                        type="password"
+                        id="api-key-input"
+                        class="form-input glass-input"
+                        placeholder="Enter your API key"
+                    >
+                </div>
+                <p class="help-text">
+                    Your API key is stored locally and never sent to external servers.
+                    Default key: demo-key-123
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('api-key-modal')">Cancel</button>
+                <button class="btn-primary btn-glow" onclick="saveApiKey()">Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="static/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "source_to_neo4j": {
+    "source_count": 22,
+    "neo4j_count": 5,
+    "match_rate": 0.22727272727272727,
+    "status": "\u274c FAIL"
+  },
+  "neo4j_to_qdrant": {
+    "neo4j_papers": 5,
+    "vectors_added": 22,
+    "status": "\u2705 PASS"
+  },
+  "data_integrity": {
+    "abstract_preservation": "5/5",
+    "status": "\u2705 PASS"
+  }
+}

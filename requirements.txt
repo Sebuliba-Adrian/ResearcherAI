@@ -18,8 +18,8 @@ neo4j==5.16.0
 qdrant-client==1.7.3
 
 # ML & Embeddings
-sentence-transformers==3.3.1
-torch==2.1.1
+sentence-transformers>=3.0.0
+torch>=2.0.0
 
 # Development Fallbacks
 networkx==3.2.1

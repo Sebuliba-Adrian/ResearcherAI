@@ -40,6 +40,7 @@ class DataCollectorAgent:
             "by_source": {},
             "last_collection": None
         }
+        self.last_collected_papers = []  # Store last collection
         logger.info("DataCollectorAgent initialized with 7 sources")
 
     def collect_all(self, query: str, max_per_source: int = 10) -> List[Dict]:
@@ -63,6 +64,7 @@ class DataCollectorAgent:
 
         self.collection_stats["total_collected"] = len(all_papers)
         self.collection_stats["last_collection"] = datetime.now().isoformat()
+        self.last_collected_papers = all_papers  # Store papers for later retrieval
 
         logger.info(f"Collection complete: {len(all_papers)} total papers from {len([s for s in self.sources.values() if s])} sources")
         return all_papers
@@ -212,15 +214,40 @@ class DataCollectorAgent:
         for pmid in id_list:
             article = fetch_data.get("result", {}).get(pmid, {})
 
+            # Clean authors - filter out null/empty names
+            raw_authors = article.get("authors", [])
+            clean_authors = []
+            for author in raw_authors:
+                if isinstance(author, dict):
+                    name = author.get("name", "")
+                    if name and name.strip():  # Only add non-empty names
+                        clean_authors.append(name)
+                elif author and str(author).strip():
+                    clean_authors.append(str(author))
+
+            # Clean topics - flatten nested dictionaries
+            raw_topics = article.get("articleids", [])
+            clean_topics = []
+            if isinstance(raw_topics, list):
+                for topic in raw_topics:
+                    if isinstance(topic, dict):
+                        # Convert {"idtype": "pubmed", "value": "123"} to "pubmed:123"
+                        idtype = topic.get("idtype", "")
+                        value = topic.get("value", "")
+                        if idtype and value:
+                            clean_topics.append(f"{idtype}:{value}")
+                    elif topic:
+                        clean_topics.append(str(topic))
+
             paper = {
                 "id": f"pubmed_{pmid}",
                 "title": article.get("title", "Unknown"),
                 "abstract": article.get("source", ""),  # PubMed summary API doesn't include abstract
-                "authors": [author.get("name", "") for author in article.get("authors", [])],
+                "authors": clean_authors,
                 "published": article.get("pubdate", ""),
                 "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
                 "source": "PubMed",
-                "topics": article.get("articleids", [])
+                "topics": clean_topics
             }
             papers.append(paper)
 
@@ -333,3 +360,7 @@ class DataCollectorAgent:
     def get_stats(self) -> Dict:
         """Get collection statistics"""
         return self.collection_stats
+
+    def get_last_collection(self) -> List[Dict]:
+        """Get papers from last collection"""
+        return self.last_collected_papers

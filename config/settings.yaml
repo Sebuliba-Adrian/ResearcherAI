@@ -85,7 +85,9 @@ agents:
 # LLM Configuration
 llm:
   provider: "gemini"
-  model: "gemini-2.5-flash"
+  model: "gemini-1.5-pro"  # Pro plan: 360 req/min, 10K req/day
+  # Alternative: "gemini-1.5-flash" # Pro plan: 1000 req/min, 10K req/day
+  # AVOID: "gemini-2.0-flash-exp" # Experimental: only 10 req/min even on Pro!
   api_key: "${GOOGLE_API_KEY}"
   temperature: 0.7
   max_tokens: 2048

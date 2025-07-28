@@ -41,6 +41,7 @@ class OrchestratorAgent:
         from .graph_agent import KnowledgeGraphAgent
         from .vector_agent import VectorAgent
         from .reasoner_agent import ReasoningAgent
+        from .summarization_agent import SummarizationAgent
 
         # Initialize agents
         self.data_collector = DataCollectorAgent()
@@ -56,6 +57,11 @@ class OrchestratorAgent:
             self.graph_agent,
             self.vector_agent,
             config=agent_config.get("reasoning_agent", {})
+        )
+
+        # Initialize summarization agent
+        self.summarization_agent = SummarizationAgent(
+            config=agent_config.get("summarization_agent", {})
         )
 
         # Session metadata
@@ -103,7 +109,7 @@ class OrchestratorAgent:
         }
 
     def ask(self, query: str) -> str:
-        """Ask a research question"""
+        """Ask a research question (returns simple string answer)"""
         logger.info(f"Processing query: '{query}'")
 
         # Synthesize answer using reasoning agent
@@ -117,6 +123,52 @@ class OrchestratorAgent:
         self.save_session()
 
         return answer
+
+    def ask_detailed(self, query: str) -> Dict:
+        """Ask a research question (returns detailed result with sources and graph insights)"""
+        logger.info(f"Processing detailed query: '{query}'")
+
+        # Get graph results before generating answer
+        graph_results = self.graph_agent.query_graph(query, max_hops=2)
+
+        # Get vector search results
+        vector_results = self.vector_agent.search(query, top_k=5)
+
+        # Synthesize answer using reasoning agent
+        answer = self.reasoning_agent.synthesize_answer(query)
+
+        # Extract papers/sources from vector results
+        papers_used = []
+        for result in vector_results:
+            paper_info = {
+                "title": result.get("title", "Unknown"),
+                "year": result.get("year", "N/A"),
+                "source": result.get("source", "Unknown")
+            }
+            if paper_info not in papers_used:
+                papers_used.append(paper_info)
+
+        # Build graph insights
+        graph_insights = {
+            "related_concepts": [r.get("concept", "") for r in graph_results[:5] if r.get("concept")],
+            "related_papers": len(graph_results),
+            "nodes_found": len(graph_results)
+        }
+
+        # Update metadata
+        self.metadata["conversations"] += 1
+        self.metadata["last_modified"] = datetime.now().isoformat()
+
+        # Auto-save session
+        self.save_session()
+
+        return {
+            "answer": answer,
+            "papers_used": papers_used,
+            "graph_insights": graph_insights,
+            "graph_results_count": len(graph_results),
+            "vector_results_count": len(vector_results)
+        }
 
     def save_session(self) -> bool:
         """Save current session state"""
@@ -279,6 +331,90 @@ class OrchestratorAgent:
     def visualize_graph(self, filename: str = "knowledge_graph.html"):
         """Generate graph visualization"""
         self.graph_agent.visualize(filename)
+
+    # ========================================================================
+    # SUMMARIZATION METHODS
+    # ========================================================================
+
+    def summarize_paper(self, paper: Dict, style: str = "executive", length: str = "medium") -> Dict:
+        """
+        Summarize a single research paper
+
+        Args:
+            paper: Paper metadata (title, abstract, authors, etc.)
+            style: Summary style (executive, technical, abstract, bullet_points, narrative)
+            length: Summary length (brief, short, medium, detailed, comprehensive)
+
+        Returns:
+            Summary dictionary with summary text, key points, style, length, word count
+        """
+        from .summarization_agent import SummaryStyle, SummaryLength
+
+        # Convert string to enum
+        style_enum = SummaryStyle(style) if isinstance(style, str) else style
+        length_enum = SummaryLength(length) if isinstance(length, str) else length
+
+        return self.summarization_agent.summarize_paper(paper, style_enum, length_enum)
+
+    def summarize_collection(self, papers: Optional[List[Dict]] = None, style: str = "executive", focus: str = "research trends") -> Dict:
+        """
+        Summarize collection of papers
+
+        Args:
+            papers: List of papers (defaults to last collected papers)
+            style: Summary style
+            focus: What to focus on (trends, methods, findings, gaps)
+
+        Returns:
+            Collection summary with overall summary, key themes, trends, gaps, top papers
+        """
+        from .summarization_agent import SummaryStyle
+
+        # Use last collected papers if not specified
+        if papers is None:
+            papers = self.data_collector.get_last_collection()
+
+        if not papers:
+            return {"error": "No papers to summarize. Collect papers first."}
+
+        style_enum = SummaryStyle(style) if isinstance(style, str) else style
+        return self.summarization_agent.summarize_collection(papers, style_enum, focus)
+
+    def summarize_conversation(self, style: str = "bullet_points") -> Dict:
+        """
+        Summarize current research conversation/session
+
+        Args:
+            style: Summary style
+
+        Returns:
+            Conversation summary with session summary, questions, insights, topics
+        """
+        from .summarization_agent import SummaryStyle
+
+        conversation_history = self.reasoning_agent.get_history()
+
+        if not conversation_history:
+            return {"error": "No conversation to summarize. Ask some questions first."}
+
+        style_enum = SummaryStyle(style) if isinstance(style, str) else style
+        return self.summarization_agent.summarize_conversation(conversation_history, style_enum)
+
+    def compare_papers(self, papers: List[Dict], comparison_aspects: Optional[List[str]] = None) -> Dict:
+        """
+        Compare multiple papers side-by-side
+
+        Args:
+            papers: List of papers to compare (2-5 papers)
+            comparison_aspects: What to compare (methodology, results, datasets, etc.)
+
+        Returns:
+            Comparison summary with similarities, differences, strengths/weaknesses, recommendation
+        """
+        if len(papers) < 2:
+            return {"error": "Need at least 2 papers to compare"}
+
+        return self.summarization_agent.compare_papers(papers, comparison_aspects)
 
     def close(self):
         """Clean up and close all connections"""

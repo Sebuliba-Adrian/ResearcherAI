@@ -1,0 +1,38 @@
+{
+  "vectors_before": 39,
+  "vectors_after": 61,
+  "new_vectors": 22,
+  "search_results": [
+    {
+      "score": 0.5221135,
+      "title": "Model: Srivardhan369/attention_mechanism_369",
+      "source": "HuggingFace",
+      "year": null
+    },
+    {
+      "score": 0.5221135,
+      "title": "Model: Srivardhan369/attention_mechanism_369",
+      "source": "HuggingFace",
+      "year": null
+    },
+    {
+      "score": 0.5221135,
+      "title": "Model: Srivardhan369/attention_mechanism_369",
+      "source": "HuggingFace",
+      "year": null
+    },
+    {
+      "score": 0.51802,
+      "title": "Model: Srivardhan369/attention_mechanisms",
+      "source": "HuggingFace",
+      "year": null
+    },
+    {
+      "score": 0.51802,
+      "title": "Model: Srivardhan369/attention_mechanisms",
+      "source": "HuggingFace",
+      "year": null
+    }
+  ],
+  "insertion_time": 0.9580178260803223
+}

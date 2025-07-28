@@ -1,0 +1,32 @@
+{
+  "node_count": 149,
+  "relationship_count": 124,
+  "sample_papers": [
+    {
+      "title": "Video Prediction of Dynamic Physical Simulations With Pixel-Space   Spatiotemporal Transformers",
+      "year": null,
+      "source": "arXiv"
+    },
+    {
+      "title": "Bilevel Analysis of Cost and Emissions Externalities from Data Center   Load Shifting",
+      "year": null,
+      "source": "arXiv"
+    },
+    {
+      "title": "Analog Quantum Feature Selection with Neutral-Atom Quantum Processors",
+      "year": null,
+      "source": "arXiv"
+    },
+    {
+      "title": "Simple Context Compression: Mean-Pooling and Multi-Ratio Training",
+      "year": null,
+      "source": "arXiv"
+    },
+    {
+      "title": "AI-Enabled Digital Twins for Next-Generation Networks: Forecasting   Traffic and Resource Management in 5G/6G",
+      "year": null,
+      "source": "arXiv"
+    }
+  ],
+  "sample_relationships": []
+}

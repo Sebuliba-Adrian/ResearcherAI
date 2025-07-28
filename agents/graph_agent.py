@@ -40,7 +40,7 @@ class KnowledgeGraphAgent:
         api_key = os.getenv("GOOGLE_API_KEY")
         if api_key:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel("gemini-2.0-flash-exp")
+            self.model = genai.GenerativeModel("gemini-2.5-flash")
             logger.info("Gemini configured for triple extraction")
         else:
             self.model = None
@@ -163,32 +163,64 @@ Format: subject | predicate | object"""
                 source=paper.get("source"), url=paper.get("url", ""), published=paper.get("published", ""))
             nodes_added += 1
 
-            # Add authors
+            # Add authors (filter nulls and empty strings)
             for author in paper.get("authors", []):
+                # Skip null, empty, or non-string authors
+                if not author or (isinstance(author, str) and not author.strip()):
+                    continue
+
+                # Convert to string if needed
+                author_name = str(author).strip() if not isinstance(author, str) else author.strip()
+
                 session.run("""
                     MERGE (a:Author {name: $name})
                     MERGE (p:Paper {id: $paper_id})
                     MERGE (a)-[:AUTHORED]->(p)
-                """, name=author, paper_id=paper.get("id"))
+                """, name=author_name, paper_id=paper.get("id"))
                 nodes_added += 1
                 edges_added += 1
 
-            # Add topics
+            # Add topics (filter nulls and non-primitives)
             for topic in paper.get("topics", []):
+                # Skip null, empty, or complex objects
+                if not topic:
+                    continue
+
+                # Skip dictionaries and other non-primitive types
+                if isinstance(topic, dict) or isinstance(topic, list):
+                    logger.warning(f"Skipping non-primitive topic: {topic}")
+                    continue
+
+                # Convert to string
+                topic_name = str(topic).strip() if not isinstance(topic, str) else topic.strip()
+
+                if not topic_name:
+                    continue
+
                 session.run("""
                     MERGE (t:Topic {name: $name})
                     MERGE (p:Paper {id: $paper_id})
                     MERGE (p)-[:ABOUT]->(t)
-                """, name=topic, paper_id=paper.get("id"))
+                """, name=topic_name, paper_id=paper.get("id"))
                 nodes_added += 1
                 edges_added += 1
 
             # Add extracted triples
             for subj, pred, obj in triples:
+                # Clean relationship name: ASCII only, no special chars except underscore
+                clean_pred = pred.upper().replace(' ', '_').replace('-', '_')
+                # Remove non-ASCII characters and other special characters
+                clean_pred = ''.join(c if c.isalnum() or c == '_' else '_' for c in clean_pred)
+                # Remove leading/trailing underscores and collapse multiple underscores
+                clean_pred = '_'.join(filter(None, clean_pred.split('_')))
+                # Default to RELATED_TO if empty after cleaning
+                if not clean_pred or not clean_pred[0].isalpha():
+                    clean_pred = "RELATED_TO"
+
                 session.run(f"""
                     MERGE (s:Entity {{name: $subj}})
                     MERGE (o:Entity {{name: $obj}})
-                    MERGE (s)-[r:{pred.upper().replace(' ', '_').replace('-', '_')}]->(o)
+                    MERGE (s)-[r:{clean_pred}]->(o)
                 """, subj=subj, obj=obj)
                 edges_added += 1
 

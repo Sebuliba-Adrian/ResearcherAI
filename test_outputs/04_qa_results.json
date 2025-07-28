@@ -1,0 +1,113 @@
+[
+  {
+    "question": "What are transformer neural networks?",
+    "answer": "I encountered an error while generating the answer: 400 API key not valid. Please pass a valid API key. [reason: \"API_KEY_INVALID\"\ndomain: \"googleapis.com\"\nmetadata {\n  key: \"service\"\n  value: \"generativelanguage.googleapis.com\"\n}\n, locale: \"en-US\"\nmessage: \"API key not valid. Please pass a valid API key.\"\n]",
+    "answer_time": 1.005089521408081,
+    "papers_used": [
+      {
+        "title": "Scaling transformer neural networks for skillful and reliable medium-range weather forecasting",
+        "year": "N/A",
+        "source": "Semantic Scholar"
+      },
+      {
+        "title": "Model: Abdulmoiz123/Transformer-Neural-Network",
+        "year": "N/A",
+        "source": "HuggingFace"
+      },
+      {
+        "title": "Transformer\u6a21\u578b\u600e\u4e48\u7528\u4e8eregression\u7684\u95ee\u9898\uff1f - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      },
+      {
+        "title": "\u5982\u4f55\u6700\u7b80\u5355\u3001\u901a\u4fd7\u5730\u7406\u89e3Transformer\uff1f - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      },
+      {
+        "title": "Transformer\u6a21\u578b\u8be6\u89e3\uff08\u56fe\u89e3\u6700\u5b8c\u6574\u7248\uff09 - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      }
+    ],
+    "graph_insights": {
+      "related_concepts": [],
+      "related_papers": 0,
+      "nodes_found": 0
+    }
+  },
+  {
+    "question": "How do attention mechanisms work?",
+    "answer": "I encountered an error while generating the answer: 400 API key not valid. Please pass a valid API key. [reason: \"API_KEY_INVALID\"\ndomain: \"googleapis.com\"\nmetadata {\n  key: \"service\"\n  value: \"generativelanguage.googleapis.com\"\n}\n, locale: \"en-US\"\nmessage: \"API key not valid. Please pass a valid API key.\"\n]",
+    "answer_time": 0.553931474685669,
+    "papers_used": [
+      {
+        "title": "CANNs: Continuous Attractor Neural Networks Toolkit",
+        "year": "N/A",
+        "source": "Zenodo"
+      },
+      {
+        "title": "Accurate detection of rice blast using UAV hyperspectral red-edge bands and deep learning method based on cross-attention.",
+        "year": "N/A",
+        "source": "PubMed"
+      },
+      {
+        "title": "Video Prediction of Dynamic Physical Simulations With Pixel-Space   Spatiotemporal Transformers",
+        "year": "N/A",
+        "source": "arXiv"
+      },
+      {
+        "title": "Model: Abdulmoiz123/Transformer-Neural-Network",
+        "year": "N/A",
+        "source": "HuggingFace"
+      },
+      {
+        "title": "Simple Context Compression: Mean-Pooling and Multi-Ratio Training",
+        "year": "N/A",
+        "source": "arXiv"
+      }
+    ],
+    "graph_insights": {
+      "related_concepts": [],
+      "related_papers": 0,
+      "nodes_found": 0
+    }
+  },
+  {
+    "question": "What are the key innovations in transformer architectures?",
+    "answer": "I encountered an error while generating the answer: 400 API key not valid. Please pass a valid API key. [reason: \"API_KEY_INVALID\"\ndomain: \"googleapis.com\"\nmetadata {\n  key: \"service\"\n  value: \"generativelanguage.googleapis.com\"\n}\n, locale: \"en-US\"\nmessage: \"API key not valid. Please pass a valid API key.\"\n]",
+    "answer_time": 0.6335089206695557,
+    "papers_used": [
+      {
+        "title": "Transformer\u6a21\u578b\u600e\u4e48\u7528\u4e8eregression\u7684\u95ee\u9898\uff1f - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      },
+      {
+        "title": "\u5982\u4f55\u6700\u7b80\u5355\u3001\u901a\u4fd7\u5730\u7406\u89e3Transformer\uff1f - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      },
+      {
+        "title": "Transformer\u6a21\u578b\u8be6\u89e3\uff08\u56fe\u89e3\u6700\u5b8c\u6574\u7248\uff09 - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      },
+      {
+        "title": "\u5982\u4f55\u4ece\u6d45\u5165\u6df1\u7406\u89e3 Transformer\uff1f - \u77e5\u4e4e",
+        "year": "N/A",
+        "source": "Web Search"
+      },
+      {
+        "title": "\u4e00\u6587\u4e86\u89e3Transformer\u5168\u8c8c\uff08\u56fe\u89e3Transformer\uff09",
+        "year": "N/A",
+        "source": "Web Search"
+      }
+    ],
+    "graph_insights": {
+      "related_concepts": [],
+      "related_papers": 0,
+      "nodes_found": 0
+    }
+  }
+]

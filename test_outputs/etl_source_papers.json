@@ -1,0 +1,405 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2510.20822v1",
+    "title": "HoloCine: Holistic Generation of Cinematic Multi-Shot Long Video   Narratives",
+    "abstract": "State-of-the-art text-to-video models excel at generating isolated clips but fall short of creating the coherent, multi-shot narratives, which are the essence of storytelling. We bridge this \"narrative gap\" with HoloCine, a model that generates entire scenes holistically to ensure global consistency from the first shot to the last. Our architecture achieves precise directorial control through a Window Cross-Attention mechanism that localizes text prompts to specific shots, while a Sparse Inter-Shot Self-Attention pattern (dense within shots but sparse between them) ensures the efficiency required for minute-scale generation. Beyond setting a new state-of-the-art in narrative coherence, HoloCine develops remarkable emergent abilities: a persistent memory for characters and scenes, and an intuitive grasp of cinematic techniques. Our work marks a pivotal shift from clip synthesis towards automated filmmaking, making end-to-end cinematic creation a tangible future. Our code is available at: https://holo-cine.github.io/.",
+    "authors": [
+      "Yihao Meng",
+      "Hao Ouyang",
+      "Yue Yu",
+      "Qiuyu Wang",
+      "Wen Wang",
+      "Ka Leong Cheng",
+      "Hanlin Wang",
+      "Yixuan Li",
+      "Cheng Chen",
+      "Yanhong Zeng",
+      "Yujun Shen",
+      "Huamin Qu"
+    ],
+    "published": "2025-10-23T17:59:59Z",
+    "url": "http://arxiv.org/abs/2510.20822v1",
+    "source": "arXiv",
+    "topics": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.20820v1",
+    "title": "LayerComposer: Interactive Personalized T2I via Spatially-Aware Layered   Canvas",
+    "abstract": "Despite their impressive visual fidelity, existing personalized generative models lack interactive control over spatial composition and scale poorly to multiple subjects. To address these limitations, we present LayerComposer, an interactive framework for personalized, multi-subject text-to-image generation. Our approach introduces two main contributions: (1) a layered canvas, a novel representation in which each subject is placed on a distinct layer, enabling occlusion-free composition; and (2) a locking mechanism that preserves selected layers with high fidelity while allowing the remaining layers to adapt flexibly to the surrounding context. Similar to professional image-editing software, the proposed layered canvas allows users to place, resize, or lock input subjects through intuitive layer manipulation. Our versatile locking mechanism requires no architectural changes, relying instead on inherent positional embeddings combined with a new complementary data sampling strategy. Extensive experiments demonstrate that LayerComposer achieves superior spatial control and identity preservation compared to the state-of-the-art methods in multi-subject personalized image generation.",
+    "authors": [
+      "Guocheng Gordon Qian",
+      "Ruihang Zhang",
+      "Tsai-Shien Chen",
+      "Yusuf Dalva",
+      "Anujraaj Argo Goyal",
+      "Willi Menapace",
+      "Ivan Skorokhodov",
+      "Meng Dong",
+      "Arpit Sahni",
+      "Daniil Ostashev",
+      "Ju Hu",
+      "Sergey Tulyakov",
+      "Kuan-Chieh Jackson Wang"
+    ],
+    "published": "2025-10-23T17:59:55Z",
+    "url": "http://arxiv.org/abs/2510.20820v1",
+    "source": "arXiv",
+    "topics": [
+      "cs.CV"
+    ]
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.20812v1",
+    "title": "Small Drafts, Big Verdict: Information-Intensive Visual Reasoning via   Speculation",
+    "abstract": "Large Vision-Language Models (VLMs) have achieved remarkable progress in multimodal understanding, yet they struggle when reasoning over information-intensive images that densely interleave textual annotations with fine-grained graphical elements. The main challenges lie in precisely localizing critical cues in dense layouts and multi-hop reasoning to integrate dispersed evidence. We propose Speculative Verdict (SV), a training-free framework inspired by speculative decoding that combines multiple lightweight draft experts with a large verdict model. In the draft stage, small VLMs act as draft experts to generate reasoning paths that provide diverse localization candidates; in the verdict stage, a strong VLM synthesizes these paths to produce the final answer, minimizing computational cost while recovering correct answers. To further improve efficiency and accuracy, SV introduces a consensus expert selection mechanism that forwards only high-agreement reasoning paths to the verdict. Empirically, SV achieves consistent gains on challenging information-intensive and high-resolution visual question answering benchmarks, including InfographicVQA, ChartMuseum, ChartQAPro, and HR-Bench 4K. By synthesizing correct insights from multiple partially accurate reasoning paths, SV achieves both error correction and cost-efficiency compared to large proprietary models or training pipelines. Code is available at https://github.com/Tinaliu0123/speculative-verdict",
+    "authors": [
+      "Yuhan Liu",
+      "Lianhui Qin",
+      "Shengjie Wang"
+    ],
+    "published": "2025-10-23T17:59:21Z",
+    "url": "http://arxiv.org/abs/2510.20812v1",
+    "source": "arXiv",
+    "topics": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ]
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.20810v1",
+    "title": "On the Detectability of LLM-Generated Text: What Exactly Is   LLM-Generated Text?",
+    "abstract": "With the widespread use of large language models (LLMs), many researchers have turned their attention to detecting text generated by them. However, there is no consistent or precise definition of their target, namely \"LLM-generated text\". Differences in usage scenarios and the diversity of LLMs further increase the difficulty of detection. What is commonly regarded as the detecting target usually represents only a subset of the text that LLMs can potentially produce. Human edits to LLM outputs, together with the subtle influences that LLMs exert on their users, are blurring the line between LLM-generated and human-written text. Existing benchmarks and evaluation approaches do not adequately address the various conditions in real-world detector applications. Hence, the numerical results of detectors are often misunderstood, and their significance is diminishing. Therefore, detectors remain useful under specific conditions, but their results should be interpreted only as references rather than decisive indicators.",
+    "authors": [
+      "Mingmeng Geng",
+      "Thierry Poibeau"
+    ],
+    "published": "2025-10-23T17:59:06Z",
+    "url": "http://arxiv.org/abs/2510.20810v1",
+    "source": "arXiv",
+    "topics": [
+      "cs.CL",
+      "cs.AI",
+      "cs.CY",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.20807v1",
+    "title": "Video Prediction of Dynamic Physical Simulations With Pixel-Space   Spatiotemporal Transformers",
+    "abstract": "Inspired by the performance and scalability of autoregressive large language models (LLMs), transformer-based models have seen recent success in the visual domain. This study investigates a transformer adaptation for video prediction with a simple end-to-end approach, comparing various spatiotemporal self-attention layouts. Focusing on causal modeling of physical simulations over time; a common shortcoming of existing video-generative approaches, we attempt to isolate spatiotemporal reasoning via physical object tracking metrics and unsupervised training on physical simulation datasets. We introduce a simple yet effective pure transformer model for autoregressive video prediction, utilizing continuous pixel-space representations for video prediction. Without the need for complex training strategies or latent feature-learning components, our approach significantly extends the time horizon for physically accurate predictions by up to 50% when compared with existing latent-space approaches, while maintaining comparable performance on common video quality metrics. In addition, we conduct interpretability experiments to identify network regions that encode information useful to perform accurate estimations of PDE simulation parameters via probing models, and find that this generalizes to the estimation of out-of-distribution simulation parameters. This work serves as a platform for further attention-based spatiotemporal modeling of videos via a simple, parameter efficient, and interpretable approach.",
+    "authors": [
+      "Dean L Slack",
+      "G Thomas Hudson",
+      "Thomas Winterbottom",
+      "Noura Al Moubayed"
+    ],
+    "published": "2025-10-23T17:58:45Z",
+    "url": "http://arxiv.org/abs/2510.20807v1",
+    "source": "arXiv",
+    "topics": [
+      "cs.CV",
+      "cs.LG"
+    ]
+  },
+  {
+    "id": "zenodo_17421204",
+    "title": "Antimicrobial Resistance and   Health in Europe: A Systematic   Review and Meta-Analysis",
+    "abstract": "<p><strong><span>Background:</span></strong><span> Antimicrobial resistance (AMR) poses a critical threat to public health, undermining the effectiveness of existing treatments and contributing to increased morbidity, mortality, and healthcare costs. Europe has reported rising resistance rates across major bacterial pathogens, highlighting the urgent need for evidence synthesis to guide policy and interventions.</span></p>\n<p><strong><span>Objectives:</span></strong><span> This systematic review and meta-analysis aimed to synthesize evidence from high-quality clinical trials and observational studies to estimate the prevalence, health outcomes, and determinants of AMR in Europe.</span></p>\n<p><strong><span>Methodology: </span></strong><span>Following preferred reporting items for systematic reviews and meta-analyses (PRISMA) 2020 guidelines, we systematically searched PubMed, Embase, Web of Science, and Cochrane Central from 2000 to 2025. Eligible studies included randomized controlled trials, cohort, and case-control studies reporting AMR prevalence or associated outcomes in European populations. Risk of bias was assessed using RoB 2 and ROBINS-I tools. A random-effects meta-analysis with Hartung&ndash;Knapp adjustment was performed, stratifying by pathogen, resistance mechanism, clinical setting, and sub-region.</span></p>\n<p><strong><span>Results:</span></strong><span> Preliminary synthesis suggests increasing resistance in <em>Escherichia coli</em> and <em>Klebsiella pneumoniae</em> across Southern and Eastern Europe, with multidrug-resistant infections associated with prolonged hospital stays, higher treatment costs, and increased mortality. Subgroup analyses indicated significant heterogeneity driven by regional differences and study design.</span></p>\n<p><strong><span>Conclusion: </span></strong><span>AMR remains a growing health crisis in Europe with substantial clinical and economic consequences. Coordinated surveillance, antimicrobial stewardship, and strengthened infection control are essential to mitigate its burden and achieve sustainable public health outcomes.</span></p>",
+    "authors": [
+      "Chinua, Onyebuchi",
+      "Uwem, Aniefiok Essien",
+      "Chukwuma, Ernest Nnanyereugo",
+      "Emmanuel, Vincent",
+      "Abolo, Onyebuchi Mitchel",
+      "Chidimma, Cynthia Eze",
+      "Ubong, Inyang Ekpo",
+      "Agboola, Kehinde Olusesan",
+      "Chidinma, Emmanuella Okobah"
+    ],
+    "published": "2025-10-20",
+    "url": "",
+    "source": "Zenodo",
+    "topics": [
+      "Europe, Antimicrobial Resistance, Infectious Diseases, Antimicrobial Stewardship."
+    ],
+    "resource_type": "publication"
+  },
+  {
+    "id": "zenodo_17446639",
+    "title": "TYPES OF ACCOMMODATION FACILITIES IN UZBEKISTAN AND THEIR CHARACTERISTICS",
+    "abstract": "<p>This article provides a comprehensive analysis of accommodation facilities, focusing on their various types,<br>defining characteristics, and fundamental essence within the tourism and hospitality sector. Special attention is given to<br>identifying the structural and functional features that distinguish different categories of accommodation, including hotels,<br>motels, hostels, guesthouses, and alternative lodging options. The study also explores the economic, social, and servicerelated<br>roles these facilities play in enhancing tourism infrastructure and guest satisfaction. In addition, scientifically<br>grounded proposals and recommendations have been developed to improve the classification system of accommodation<br>facilities. These are aimed at increasing operational efficiency, standardizing service quality, and ensuring alignment with<br>international benchmarks and sustainable tourism practices.</p>",
+    "authors": [
+      "Ikramov Akbar"
+    ],
+    "published": "2025-06-25",
+    "url": "",
+    "source": "Zenodo",
+    "topics": [],
+    "resource_type": "publication"
+  },
+  {
+    "id": "zenodo_17446451",
+    "title": "10 Twitter Networks on 5 Topics in Finnish Twittersphere (2019 & 2023)",
+    "abstract": "<h2>Description</h2>\n<p>This dataset contains 10 undirected networks derived from Twitter data (API v1 &amp; v2), covering five distinct political topics for two different parliamentary election years:</p>\n<ul>\n<li>\n<p><strong>Topics:</strong> Climate, Immigration, Social Security, Economy, Education</p>\n</li>\n<li>\n<p><strong>Years:</strong> 2019 and 2023</p>\n</li>\n</ul>\n<p>This deposit includes the final, processed network files in <code>.graphml</code> format. All nodes (users) across all 10 networks have been relabeled with a single, consistent, global integer ID (from 0 to N-1, where N is the total number of unique users). This anonymizes the data and allows for direct comparison and tracking of users across different networks and time periods.</p>\n<h2>Data Collection</h2>\n<p>See section 4.1 in <em>Salloum, Chen &amp; Kivel&auml; (2025) Anatomy of elite and mass polarization in social networks.</em></p>\n<h2>Files</h2>\n<p>This deposit contains the following files:</p>\n<ul>\n<li>\n<p><code>climate_19.graphml</code></p>\n</li>\n<li>\n<p><code>climate_23.graphml</code></p>\n</li>\n<li>\n<p><code>immigration_19.graphml</code></p>\n</li>\n<li>\n<p><code>immigration_23.graphml</code></p>\n</li>\n<li>\n<p><code>social_19.graphml</code></p>\n</li>\n<li>\n<p><code>social_23.graphml</code></p>\n</li>\n<li>\n<p><code>economy_19.graphml</code></p>\n</li>\n<li>\n<p><code>economy_23.graphml</code></p>\n</li>\n<li>\n<p><code>education_19.graphml</code></p>\n</li>\n<li>\n<p><code>education_23.graphml</code></p>\n</li>\n</ul>\n<h2>Data Dictionary</h2>\n<h3>Relabeled GraphML Files (<code>*.graphml</code>)</h3>\n<p>These files can be opened by any network analysis software that supports the GraphML format (e.g., Gephi, Python <code>networkx</code>, R <code>igraph</code>).</p>\n<ul>\n<li>\n<p><strong>Graph Type:</strong> Undirected (Graph)</p>\n</li>\n<li>\n<p><strong>Nodes:</strong> Represent individual users.</p>\n<ul>\n<li>\n<p><code>id</code> (Integer): The new, global, persistent integer ID for the user (from 0 to N-1).</p>\n</li>\n<li>\n<p><code>group</code> (String): The community or group label (A or B) assigned to the node.</p>\n</li>\n<li>\n<p><code>hierarchy</code> (String): The hierarchical status (CORE or PERIPHERY) assigned to the node.</p>\n</li>\n</ul>\n</li>\n<li>\n<p><strong>Edges:</strong> Represent a retweet with no added comment (quotations) between users.&nbsp;</p>\n</li>\n</ul>\n<h2>How to Use</h2>\n<p>The <code>.graphml</code> files can be loaded directly for analysis.</p>\n<p><strong>Python (<code>networkx</code>) Example:</strong></p>\n<pre><code>import networkx as nx\n\n# Load a network\nG = nx.read_graphml(\"./climate_23.graphml\")</code></pre>\n<h2>Cite As</h2>\n<p>Kindly ensure to reference the original article when utilizing this dataset: <em>Salloum, Chen &amp; Kivel&auml; (2025) Anatomy of elite and mass polarization in social networks.</em></p>",
+    "authors": [
+      "Salloum, Ali",
+      "Chen, Ted Hsuan Yun",
+      "Kivel\u00e4, Mikko"
+    ],
+    "published": "2025-10-26",
+    "url": "",
+    "source": "Zenodo",
+    "topics": [
+      "political polarization",
+      "twitter",
+      "politics",
+      "networks",
+      "polarization",
+      "social media",
+      "elite polarization",
+      "mass polarization"
+    ],
+    "resource_type": "dataset"
+  },
+  {
+    "id": "zenodo_17446533",
+    "title": "Fault geometry governs earthquake nucleation, propagation, and arrest: Insights from the 2021 Yangbi earthquake sequence",
+    "abstract": "<p>This dataset contains a high-precision earthquake catalog and focal mechanism solutions of the Yangbi aftershock sequence.</p>",
+    "authors": [
+      "Zeng, Xianwei",
+      "Yu, Houyun",
+      "Yu, Chunquan",
+      "Xu, Shiqing",
+      "Meng, Haoran",
+      "Zhang, Gongheng",
+      "Ni, Zhe",
+      "Meng, Fanchang",
+      "Zhao, Yufei",
+      "Siyuan, Zhou"
+    ],
+    "published": "2025-10-26",
+    "url": "",
+    "source": "Zenodo",
+    "topics": [],
+    "resource_type": "dataset"
+  },
+  {
+    "id": "zenodo_17446128",
+    "title": "Otransfer_PtCeO2",
+    "abstract": "<p>This repository contains scripts for the preparation, simulation, and analysis of O<sub>2</sub> uptake on Pt/CeO<sub>2</sub>-Al<sub>2</sub>O<sub>3</sub> systems.<br>The work employs neural network potential (NNP) models to study oxygen activation and lattice oxygen transfer dynamics across varying ceria domain sizes.</p>\n<ul>\n<li>MD trajectories from annealing simulations (Geometry_relax_MD_CeO2_Al2O3.zip)</li>\n<li>O<sub>2</sub> uptake simulation trajectories of CeO2_Al2O3 (O2_MD_CeO2_Al2O3.zip)</li>\n<li>O<sub>2</sub> uptake simulation trajectories of Pt_CeO2_Al2O3 (O2_MD_Pt_CeO2_Al2O3.zip)</li>\n<li>all python scripts for simulation of geometry optimization and MD simulations (codes.zip)</li>\n</ul>",
+    "authors": [
+      "Choung, Seokhyun"
+    ],
+    "published": "2025-10-26",
+    "url": "",
+    "source": "Zenodo",
+    "topics": [],
+    "resource_type": "dataset"
+  },
+  {
+    "id": "pubmed_41005240",
+    "title": "Accurate detection of rice blast using UAV hyperspectral red-edge bands and deep learning method based on cross-attention.",
+    "abstract": "Spectrochim Acta A Mol Biomol Spectrosc",
+    "authors": [
+      "Qi Y",
+      "Liu T",
+      "Guo S",
+      "Wu P",
+      "Ma J",
+      "Yuan Q",
+      "Yao W",
+      "Xu T"
+    ],
+    "published": "2026 Feb 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/41005240/",
+    "source": "PubMed",
+    "topics": [
+      "pubmed:41005240",
+      "doi:10.1016/j.saa.2025.126939",
+      "pii:S1386-1425(25)01246-6"
+    ]
+  },
+  {
+    "id": "pubmed_40876349",
+    "title": "A dual-branch CNN-encoder model for rapid geographic traceability of Astragalus using near-infrared spectroscopy.",
+    "abstract": "Spectrochim Acta A Mol Biomol Spectrosc",
+    "authors": [
+      "Gao S",
+      "Zhang H",
+      "Yang Z",
+      "Wu R",
+      "Chen M",
+      "Zhai D",
+      "Yang Y",
+      "Qin Y",
+      "Tao H",
+      "Li P"
+    ],
+    "published": "2026 Feb 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40876349/",
+    "source": "PubMed",
+    "topics": [
+      "pubmed:40876349",
+      "doi:10.1016/j.saa.2025.126851",
+      "pii:S1386-1425(25)01158-8"
+    ]
+  },
+  {
+    "id": "pubmed_40694955",
+    "title": "Efficient wheat variety identification using Raman hyperspectral imaging in combination with deep learning.",
+    "abstract": "Spectrochim Acta A Mol Biomol Spectrosc",
+    "authors": [
+      "Fan Y",
+      "Wang Z",
+      "Yao X",
+      "Huang W",
+      "Wang Q",
+      "Tian X",
+      "Chen L",
+      "Long Y"
+    ],
+    "published": "2026 Jan 5",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40694955/",
+    "source": "PubMed",
+    "topics": [
+      "pubmed:40694955",
+      "doi:10.1016/j.saa.2025.126722",
+      "pii:S1386-1425(25)01029-7"
+    ]
+  },
+  {
+    "id": "pubmed_40997672",
+    "title": "An attention aided wavelet convolutional neural network for lung nodule characterization.",
+    "abstract": "Int J Med Inform",
+    "authors": [
+      "Halder A"
+    ],
+    "published": "2026 Jan",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40997672/",
+    "source": "PubMed",
+    "topics": [
+      "pubmed:40997672",
+      "doi:10.1016/j.ijmedinf.2025.106118",
+      "pii:S1386-5056(25)00335-1"
+    ]
+  },
+  {
+    "id": "pubmed_40912322",
+    "title": "Associations between resting state functional connectivity of large-scale brain networks and parent-reported symptoms of social anxiety in early adolescence.",
+    "abstract": "J Affect Disord",
+    "authors": [
+      "Hickson R",
+      "Hernandez A",
+      "Barbera ER",
+      "Pozo-Neira JL",
+      "Totah N",
+      "Edwards NL",
+      "M\u00fcller-Oehring EM",
+      "Schulte T"
+    ],
+    "published": "2026 Jan 1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/40912322/",
+    "source": "PubMed",
+    "topics": [
+      "pubmed:40912322",
+      "doi:10.1016/j.jad.2025.120238",
+      "pii:S0165-0327(25)01680-5"
+    ]
+  },
+  {
+    "id": "web_0",
+    "title": "\u5982\u4f55\u7406\u89e3\u4ece\u6d45\u5165\u6df1\u7406\u89e3attention\uff1f - \u77e5\u4e4e",
+    "abstract": "\u5f53\u7136\u9488\u5bf9Attention\u4f18\u5316\uff0c\u4e5f\u6709\u5f88\u591a\u5176\u4ed6\u4f18\u79c0\u7684\u65b9\u6848\u548c\u601d\u8def\uff0c\u5982\u7ebf\u6027\u6ce8\u610f\u529b\u3001FlashAttention\u548cSliding Window Attention\u7b49\uff0c\u8fd9\u4e9b\u5728\u540e\u7eed\u518d\u5f00\u7bc7\u68b3\u7406\u3002 \uff08\u5e94\u4e00\u4e9b\u670b\u53cb\u7684\u8981\u6c42\uff0c\u4f1a\u589e\u52a0\u4e00\u4e9b\u76f4\u89c2\u57fa\u7840\u7684 \u2026",
+    "authors": [],
+    "published": "2025-10-26T12:09:40.310700",
+    "url": "https://www.zhihu.com/question/473208103",
+    "source": "Web Search",
+    "topics": []
+  },
+  {
+    "id": "web_1",
+    "title": "\u76ee\u524d\u4e3b\u6d41\u7684attention\u65b9\u6cd5\u90fd\u6709\u54ea\u4e9b\uff1f - \u77e5\u4e4e",
+    "abstract": "\u5c71\u4e2d\u6709\u5c71\u2014\u2014\u903b\u8f91\u53ef\u89e3\u91ca\u6027\u4e0eAttention\u7684\u5173\u7cfb \u5c71\u6c34\u5408\u4e00\u2014\u2014Attention\u7684\u591a\u79cd\u53d8\u79cd\u53ca\u4ed6\u4eec\u7684\u5185\u5728\u5173\u8054 1. Attention\u662f\u4e00\u79cd\u6ce8\u610f\u529b\u673a\u5236 \u987e\u540d\u601d\u4e49\uff0cattention\u7684\u672c\u610f\u662f\u751f\u7269\u7684\u6ce8\u610f\u529b\u673a\u5236\u5728\u4eba\u5de5\u667a\u80fd\u4e2d\u7684 \u2026",
+    "authors": [],
+    "published": "2025-10-26T12:09:40.310793",
+    "url": "https://www.zhihu.com/question/68482809",
+    "source": "Web Search",
+    "topics": []
+  },
+  {
+    "id": "web_2",
+    "title": "\u5982\u4f55\u7406\u89e3attention\u4e2d\u7684Q,K,V\uff1f - \u77e5\u4e4e",
+    "abstract": "\u4e0a\u9762\u662fself-attention\u7684\u516c\u5f0f\uff0cQ\u548cK\u7684\u70b9\u4e58\u8868\u793aQ\u548cK\u7684\u76f8\u4f3c\u7a0b\u5ea6\uff0c\u4f46\u662f\u8fd9\u4e2a\u76f8\u4f3c\u5ea6\u4e0d\u662f\u5f52\u4e00\u5316\u7684\uff0c\u6240\u4ee5\u9700\u8981\u4e00\u4e2asoftmax\u5c06Q\u548cK\u7684\u7ed3\u679c\u8fdb\u884c\u5f52\u4e00\u5316\uff0c\u90a3\u4e48softmax\u540e\u7684\u7ed3\u679c\u5c31\u662f\u4e00\u4e2a\u6240\u6709\u6570\u503c \u2026",
+    "authors": [],
+    "published": "2025-10-26T12:09:40.310825",
+    "url": "https://www.zhihu.com/question/298810062",
+    "source": "Web Search",
+    "topics": []
+  },
+  {
+    "id": "web_3",
+    "title": "\u6df1\u5ea6\u5b66\u4e60attention\u673a\u5236\u4e2d\u7684Q,K,V\u5206\u522b\u662f\u4ece\u54ea\u6765\u7684\uff1f - \u77e5\u4e4e",
+    "abstract": "\u6df1\u5ea6\u5b66\u4e60attention\u673a\u5236\u4e2d\u7684Q,K,V\u5206\u522b\u662f\u4ece\u54ea\u6765\u7684\uff1f \u627e\u4e86\u5404\u79cd\u8d44\u6599\uff0c\u4e5f\u8bfb\u4e86\u8bba\u6587\u539f\u6587\uff0c\u90fd\u662f\u8be6\u7ec6\u4ecb\u7ecd\u4e86\u600e\u4e48\u628aQ,K,V\u901a\u8fc7\u4ec0\u4e48\u6837\u7684\u8fd0\u7b97\u5f97\u5230\u8f93\u51fa\u7ed3\u679c\uff0c\u59cb\u7ec8\u6ca1\u6709\u4e00\u4e2a\u5730\u65b9\u6709\u89e3\u91caQ,K,V\u662f\u4ece\u54ea\u6765 \u2026",
+    "authors": [],
+    "published": "2025-10-26T12:09:40.310851",
+    "url": "https://www.zhihu.com/question/325839123",
+    "source": "Web Search",
+    "topics": []
+  },
+  {
+    "id": "web_4",
+    "title": "Lightning Attention \u662f\u5982\u4f55\u514b\u670d\u4f20\u7edf\u7ebf\u6027\u6ce8\u610f\u529b\u673a\u5236\u9700\u8981\u7d2f\u52a0\u6c42\u548c \u2026",
+    "abstract": "Jan 16, 2025 \u00b7 Lightning Attention \u662f\u5982\u4f55\u514b\u670d\u4f20\u7edf\u7ebf\u6027\u6ce8\u610f\u529b\u673a\u5236\u9700\u8981\u7d2f\u52a0\u6c42\u548c\u7684\u7f3a\u9677\u7684\uff1f \u4f20\u7edfLinear Attention\u867d\u7136\u8ba1\u7b97\u590d\u6742\u5ea6\u964d\u5230\u4e86O (n)\uff0c\u4f46\u662f\u5728\u56e0\u679c (causal)\u63a8\u7406\u65f6\uff0c\u5f80\u5f80\u9700\u8981cumsum \u2026",
+    "authors": [],
+    "published": "2025-10-26T12:09:40.310878",
+    "url": "https://www.zhihu.com/question/9740764576",
+    "source": "Web Search",
+    "topics": []
+  },
+  {
+    "id": "hf_model_Srivardhan369/attention_mechanisms",
+    "title": "Model: Srivardhan369/attention_mechanisms",
+    "abstract": "HuggingFace model with 0 downloads. Tags: license:apache-2.0, region:us",
+    "authors": [
+      null
+    ],
+    "published": "2025-01-26 14:41:56+00:00",
+    "url": "https://huggingface.co/Srivardhan369/attention_mechanisms",
+    "source": "HuggingFace",
+    "topics": [
+      "license:apache-2.0",
+      "region:us"
+    ],
+    "downloads": 0
+  },
+  {
+    "id": "hf_model_Srivardhan369/attention_mechanism_369",
+    "title": "Model: Srivardhan369/attention_mechanism_369",
+    "abstract": "HuggingFace model with 0 downloads. Tags: transformers, image-captioning, attention-mechanism, deep-learning, pytorch",
+    "authors": [
+      null
+    ],
+    "published": "2025-01-30 06:44:23+00:00",
+    "url": "https://huggingface.co/Srivardhan369/attention_mechanism_369",
+    "source": "HuggingFace",
+    "topics": [
+      "transformers",
+      "image-captioning",
+      "attention-mechanism",
+      "deep-learning",
+      "pytorch",
+      "image-text-to-text",
+      "en",
+      "dataset:tsystems/flickr8k",
+      "base_model:facebook/detr-resnet-50",
+      "base_model:finetune:facebook/detr-resnet-50",
+      "license:apache-2.0",
+      "endpoints_compatible",
+      "region:us"
+    ],
+    "downloads": 0
+  }
+]

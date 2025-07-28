@@ -1,0 +1,41 @@
+{
+  "collection": {
+    "papers_collected": 22,
+    "time": "8.53s",
+    "status": "\u2705 PASS"
+  },
+  "neo4j": {
+    "papers_inserted": 5,
+    "relationships_created": 0,
+    "time": "276.94s",
+    "match_rate": "22.7%",
+    "status": "\u274c FAIL"
+  },
+  "qdrant": {
+    "vectors_added": 22,
+    "time": "0.96s",
+    "search_working": true,
+    "status": "\u2705 PASS"
+  },
+  "consistency": {
+    "source_to_neo4j": {
+      "source_count": 22,
+      "neo4j_count": 5,
+      "match_rate": 0.22727272727272727,
+      "status": "\u274c FAIL"
+    },
+    "neo4j_to_qdrant": {
+      "neo4j_papers": 5,
+      "vectors_added": 22,
+      "status": "\u2705 PASS"
+    },
+    "data_integrity": {
+      "abstract_preservation": "5/5",
+      "status": "\u2705 PASS"
+    }
+  },
+  "end_to_end": {
+    "qdrant_neo4j_integration": true,
+    "status": "\u2705 PASS"
+  }
+}

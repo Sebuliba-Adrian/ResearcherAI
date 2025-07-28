@@ -48,7 +48,7 @@ class VectorAgent:
         api_key = os.getenv("GOOGLE_API_KEY")
         if api_key:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel("gemini-2.0-flash-exp")
+            self.model = genai.GenerativeModel("gemini-2.5-flash")
             logger.info("Gemini configured for semantic search")
         else:
             self.model = None
@@ -172,12 +172,17 @@ class VectorAgent:
     def _add_to_qdrant(self, chunks: List[Dict]) -> Dict:
         """Add chunks to Qdrant"""
         from qdrant_client.models import PointStruct
+        import uuid
+
+        # Get current count for ID offset
+        collection_info = self.client.get_collection(self.collection_name)
+        current_count = collection_info.points_count
 
         points = []
         for i, chunk in enumerate(chunks):
             embedding = self._get_embedding(chunk["text"])
             point = PointStruct(
-                id=len(self.chunks) + i,
+                id=current_count + i,  # Use current count instead of self.chunks
                 vector=embedding,
                 payload=chunk
             )

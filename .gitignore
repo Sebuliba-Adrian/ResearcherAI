@@ -63,3 +63,4 @@ dist/
 *.tmp
 *.temp
 temp/
+.mcp.json
