@@ -14,7 +14,8 @@ from functools import wraps
 from fastapi import FastAPI, HTTPException, Depends, Header, status, UploadFile, File
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 import yaml
 
@@ -195,6 +196,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static files
+if os.path.exists("frontend/static"):
+    app.mount("/static", StaticFiles(directory="frontend/static"), name="static")
+
 # Global agents (initialized on startup)
 orchestrator: Optional[OrchestratorAgent] = None
 critic: Optional[CriticAgent] = None
@@ -230,6 +235,21 @@ async def shutdown_event():
     """Cleanup on shutdown"""
     logger.info("👋 Shutting down ResearcherAI API Gateway...")
     # Add cleanup logic here if needed
+
+# ============================================================================
+# Frontend Route
+# ============================================================================
+
+@app.get("/", tags=["Frontend"])
+async def serve_frontend():
+    """Serve the frontend application"""
+    if os.path.exists("frontend/index.html"):
+        return FileResponse("frontend/index.html")
+    else:
+        return JSONResponse(
+            content={"message": "Frontend not found. API is running at /v1/docs"},
+            status_code=404
+        )
 
 # ============================================================================
 # API Endpoints
@@ -450,6 +470,59 @@ async def get_system_stats(api_key: str = Depends(verify_api_key)):
         "quality_assurance": critic_report,
         "timestamp": datetime.now().isoformat()
     }
+
+@app.get(f"/{API_VERSION}/graph/export", tags=["Knowledge Graph"])
+async def export_graph(
+    session_name: Optional[str] = "default",
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Export knowledge graph data for visualization
+
+    Returns nodes and edges in format suitable for web visualization libraries
+    (vis.js, cytoscape.js, etc.)
+
+    **Response Format:**
+    ```json
+    {
+        "nodes": [
+            {"id": "1", "label": "BERT", "type": "Entity", "properties": {...}},
+            ...
+        ],
+        "edges": [
+            {"source": "1", "target": "2", "label": "uses", "properties": {...}},
+            ...
+        ],
+        "stats": {"nodes": 100, "edges": 250}
+    }
+    ```
+    """
+    rate_limit(api_key)
+
+    if not orchestrator:
+        raise HTTPException(status_code=503, detail="Orchestrator not initialized")
+
+    try:
+        # Set session if provided
+        if session_name:
+            orchestrator.session_name = session_name
+
+        # Export graph data
+        graph_data = orchestrator.graph_agent.export_graph_data()
+
+        # Get stats
+        stats = orchestrator.graph_agent.get_stats()
+
+        return {
+            "nodes": graph_data.get("nodes", []),
+            "edges": graph_data.get("edges", []),
+            "stats": stats,
+            "session_name": orchestrator.session_name
+        }
+
+    except Exception as e:
+        logger.error(f"Graph export failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 # ============================================================================
 # Summarization Endpoints
@@ -712,8 +785,8 @@ async def upload_pdf(
         logger.info(f"Added to Neo4j: {graph_stats}")
 
         # Create vector embeddings
-        vector_stats = orchestrator.vector_agent.add_documents([paper])
-        logger.info(f"Added to Qdrant: {vector_stats}")
+        vector_stats = orchestrator.vector_agent.process_papers([paper])
+        logger.info(f"Added to vector DB: {vector_stats}")
 
         # Update session metadata
         orchestrator.metadata["papers_collected"] = orchestrator.metadata.get("papers_collected", 0) + 1

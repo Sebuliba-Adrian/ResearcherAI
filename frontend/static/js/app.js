@@ -856,6 +856,292 @@ async function performHealthCheck() {
 }
 
 // ============================================================================
+// Graph Visualization
+// ============================================================================
+
+let graphNetwork = null;
+let graphData = { nodes: [], edges: [] };
+let currentLayout = 'barnesHut';
+
+async function loadGraphVisualization() {
+    const graphLoading = document.getElementById('graph-loading');
+    const graphEmpty = document.getElementById('graph-empty');
+    const graphNetworkDiv = document.getElementById('graph-network');
+
+    try {
+        graphLoading.classList.remove('hidden');
+        graphEmpty.classList.add('hidden');
+
+        const response = await apiClient.request('/graph/export', { method: 'GET' });
+
+        if (!response.nodes || response.nodes.length === 0) {
+            graphLoading.classList.add('hidden');
+            graphEmpty.classList.remove('hidden');
+            showToast('No Graph Data', 'Collect some papers first to build the knowledge graph.', 'info');
+            return;
+        }
+
+        graphData = {
+            nodes: response.nodes,
+            edges: response.edges
+        };
+
+        // Update stats
+        document.getElementById('graph-nodes-count').textContent = response.stats.nodes || 0;
+        document.getElementById('graph-edges-count').textContent = response.stats.edges || 0;
+        document.getElementById('graph-session').textContent = response.session_name || 'default';
+
+        // Initialize visualization
+        renderGraph();
+
+        graphLoading.classList.add('hidden');
+        graphNetworkDiv.classList.add('active');
+
+        showToast('Graph Loaded', `${response.nodes.length} nodes and ${response.edges.length} edges loaded.`, 'success');
+
+    } catch (error) {
+        console.error('Graph loading failed:', error);
+        graphLoading.classList.add('hidden');
+        graphEmpty.classList.remove('hidden');
+        showToast('Graph Load Failed', error.message, 'error');
+    }
+}
+
+function renderGraph() {
+    const container = document.getElementById('graph-network');
+
+    // Transform data for vis.js
+    const visNodes = graphData.nodes.map(node => {
+        // Determine color based on type
+        let color = getNodeColor(node.type);
+
+        return {
+            id: node.id,
+            label: node.label,
+            title: createNodeTooltip(node),
+            shape: node.type === 'paper' ? 'box' : 'dot',
+            size: node.type === 'paper' ? 30 : 20,
+            color: {
+                background: color,
+                border: color,
+                highlight: {
+                    background: color,
+                    border: '#ffffff'
+                }
+            },
+            font: {
+                color: '#ffffff',
+                size: 14,
+                face: 'Inter'
+            }
+        };
+    });
+
+    const visEdges = graphData.edges.map(edge => ({
+        from: edge.source,
+        to: edge.target,
+        label: edge.label || '',
+        title: edge.label || '',
+        arrows: {
+            to: { enabled: true, scaleFactor: 0.5 }
+        },
+        color: {
+            color: 'rgba(255, 255, 255, 0.2)',
+            highlight: 'rgba(0, 245, 255, 0.6)'
+        },
+        font: {
+            color: '#ffffff',
+            size: 10,
+            strokeWidth: 0
+        },
+        smooth: {
+            type: 'continuous',
+            roundness: 0.5
+        }
+    }));
+
+    const data = {
+        nodes: new vis.DataSet(visNodes),
+        edges: new vis.DataSet(visEdges)
+    };
+
+    const options = getGraphOptions(currentLayout);
+
+    // Destroy existing network
+    if (graphNetwork !== null) {
+        graphNetwork.destroy();
+    }
+
+    // Create new network
+    graphNetwork = new vis.Network(container, data, options);
+
+    // Add event listeners
+    graphNetwork.on('click', function(params) {
+        if (params.nodes.length > 0) {
+            const nodeId = params.nodes[0];
+            const node = graphData.nodes.find(n => n.id === nodeId);
+            if (node) {
+                showNodeDetails(node);
+            }
+        }
+    });
+
+    graphNetwork.on('stabilizationIterationsDone', function() {
+        graphNetwork.setOptions({ physics: false });
+    });
+}
+
+function getNodeColor(type) {
+    switch(type?.toLowerCase()) {
+        case 'paper':
+            return '#00f5ff'; // Primary color
+        case 'author':
+            return '#ff006e'; // Secondary color
+        case 'entity':
+            return '#7b2ff7'; // Accent color
+        default:
+            return '#00f5ff';
+    }
+}
+
+function createNodeTooltip(node) {
+    let html = `<strong>${node.label}</strong><br>`;
+    html += `Type: ${node.type}<br>`;
+
+    if (node.properties) {
+        if (node.properties.title) {
+            html += `Title: ${node.properties.title}<br>`;
+        }
+        if (node.properties.source) {
+            html += `Source: ${node.properties.source}<br>`;
+        }
+    }
+
+    return html;
+}
+
+function showNodeDetails(node) {
+    const details = JSON.stringify(node.properties || {}, null, 2);
+    showToast(
+        node.label,
+        `Type: ${node.type}\n${details.slice(0, 200)}...`,
+        'info',
+        5000
+    );
+}
+
+function getGraphOptions(layout) {
+    const baseOptions = {
+        nodes: {
+            borderWidth: 2,
+            borderWidthSelected: 4,
+            shadow: {
+                enabled: true,
+                color: 'rgba(0, 0, 0, 0.5)',
+                size: 10,
+                x: 0,
+                y: 0
+            }
+        },
+        edges: {
+            width: 1,
+            selectionWidth: 3,
+            shadow: false
+        },
+        interaction: {
+            hover: true,
+            tooltipDelay: 100,
+            navigationButtons: true,
+            keyboard: true,
+            zoomView: true,
+            dragView: true
+        },
+        physics: {
+            enabled: true,
+            stabilization: {
+                enabled: true,
+                iterations: 100,
+                updateInterval: 10
+            }
+        }
+    };
+
+    // Layout-specific options
+    switch(layout) {
+        case 'barnesHut':
+            baseOptions.physics.barnesHut = {
+                gravitationalConstant: -8000,
+                centralGravity: 0.3,
+                springLength: 200,
+                springConstant: 0.04,
+                damping: 0.09,
+                avoidOverlap: 0.1
+            };
+            break;
+
+        case 'forceAtlas2Based':
+            baseOptions.physics.forceAtlas2Based = {
+                gravitationalConstant: -50,
+                centralGravity: 0.01,
+                springLength: 150,
+                springConstant: 0.08,
+                damping: 0.4,
+                avoidOverlap: 0
+            };
+            baseOptions.physics.solver = 'forceAtlas2Based';
+            break;
+
+        case 'repulsion':
+            baseOptions.physics.repulsion = {
+                centralGravity: 0.2,
+                springLength: 200,
+                springConstant: 0.05,
+                nodeDistance: 200,
+                damping: 0.09
+            };
+            baseOptions.physics.solver = 'repulsion';
+            break;
+
+        case 'hierarchical':
+            baseOptions.layout = {
+                hierarchical: {
+                    enabled: true,
+                    direction: 'UD',
+                    sortMethod: 'directed',
+                    levelSeparation: 150,
+                    nodeSpacing: 200
+                }
+            };
+            baseOptions.physics.enabled = false;
+            break;
+    }
+
+    return baseOptions;
+}
+
+function changeGraphLayout() {
+    const layoutSelect = document.getElementById('graph-layout');
+    currentLayout = layoutSelect.value;
+
+    if (graphNetwork && graphData.nodes.length > 0) {
+        renderGraph();
+        showToast('Layout Changed', `Switched to ${currentLayout} layout`, 'success');
+    }
+}
+
+function resetGraphZoom() {
+    if (graphNetwork) {
+        graphNetwork.fit({
+            animation: {
+                duration: 1000,
+                easingFunction: 'easeInOutQuad'
+            }
+        });
+        showToast('Zoom Reset', 'Graph view reset to fit all nodes', 'success');
+    }
+}
+
+// ============================================================================
 // Initialization
 // ============================================================================
 
@@ -879,6 +1165,9 @@ function init() {
     window.saveApiKey = saveApiKey;
     window.loadSessions = loadSessions;
     window.copyAnswer = copyAnswer;
+    window.loadGraphVisualization = loadGraphVisualization;
+    window.changeGraphLayout = changeGraphLayout;
+    window.resetGraphZoom = resetGraphZoom;
 
     // Initial health check
     performHealthCheck();

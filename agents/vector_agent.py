@@ -138,7 +138,11 @@ class VectorAgent:
             result = self._add_to_faiss(all_chunks)
 
         logger.info(f"✅ Added {result['chunks_added']} chunks to vector database")
-        return result
+        # Return with both keys for compatibility
+        return {
+            "chunks_added": result['chunks_added'],
+            "documents_added": len(papers)  # Number of papers processed
+        }
 
     def _chunk_text(self, text: str, chunk_size: int, overlap: int) -> List[str]:
         """Split text into overlapping chunks"""

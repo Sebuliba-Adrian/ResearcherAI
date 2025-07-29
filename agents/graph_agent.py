@@ -348,6 +348,72 @@ Format: subject | predicate | object"""
                 "backend": "NetworkX"
             }
 
+    def export_graph_data(self) -> Dict:
+        """Export graph data in format suitable for web visualization"""
+        if self.db_type == "neo4j":
+            return self._export_neo4j_data()
+        else:
+            return self._export_networkx_data()
+
+    def _export_neo4j_data(self) -> Dict:
+        """Export Neo4j graph data"""
+        with self.driver.session(database=self.config.get("database", "neo4j")) as session:
+            # Get all nodes
+            nodes_result = session.run("MATCH (n) RETURN id(n) as id, labels(n) as labels, properties(n) as props LIMIT 500")
+            nodes = []
+            for record in nodes_result:
+                node = {
+                    "id": str(record["id"]),
+                    "label": record["props"].get("name") or record["props"].get("title") or f"Node {record['id']}",
+                    "type": record["labels"][0] if record["labels"] else "Entity",
+                    "properties": record["props"]
+                }
+                nodes.append(node)
+
+            # Get all edges
+            edges_result = session.run("""
+                MATCH (a)-[r]->(b)
+                RETURN id(a) as source, id(b) as target, type(r) as type, properties(r) as props
+                LIMIT 1000
+            """)
+            edges = []
+            for record in edges_result:
+                edge = {
+                    "source": str(record["source"]),
+                    "target": str(record["target"]),
+                    "label": record["type"],
+                    "properties": record["props"]
+                }
+                edges.append(edge)
+
+            return {"nodes": nodes, "edges": edges}
+
+    def _export_networkx_data(self) -> Dict:
+        """Export NetworkX graph data"""
+        nodes = []
+        edges = []
+
+        # Export nodes
+        for node_id in self.G.nodes():
+            node_data = self.G.nodes[node_id]
+            nodes.append({
+                "id": str(node_id),
+                "label": str(node_id)[:50],  # Truncate long labels
+                "type": node_data.get("type", "Entity"),
+                "properties": node_data
+            })
+
+        # Export edges
+        for source, target, data in self.G.edges(data=True):
+            edges.append({
+                "source": str(source),
+                "target": str(target),
+                "label": data.get("label", ""),
+                "properties": data
+            })
+
+        return {"nodes": nodes, "edges": edges}
+
     def visualize(self, filename: str = "knowledge_graph.html"):
         """Generate interactive visualization (NetworkX only)"""
         if self.db_type == "neo4j":

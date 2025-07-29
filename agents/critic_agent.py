@@ -150,10 +150,15 @@ Provide your evaluation in this exact JSON format:
 
         except Exception as e:
             logger.error(f"Evaluation failed: {e}")
+            # Return None for scores to indicate evaluation failure
             return {
-                "overall_score": 0.5,
+                "overall_score": diversity_score,  # Use diversity as fallback
+                "relevance_score": None,
+                "quality_score": None,
+                "completeness_score": None,
                 "diversity_score": diversity_score,
-                "issues": [f"Evaluation error: {str(e)}"],
+                "issues": [f"LLM evaluation unavailable: {str(e)[:100]}"],
+                "recommendations": ["Check API key configuration"],
                 "passed": False
             }
 
@@ -256,7 +261,12 @@ Provide evaluation in this exact JSON format:
             logger.error(f"Answer evaluation failed: {e}")
             return {
                 "overall_score": 0.5,
-                "issues": [f"Evaluation error: {str(e)}"],
+                "accuracy_score": None,
+                "completeness_score": None,
+                "clarity_score": None,
+                "citation_score": None,
+                "issues": [f"LLM evaluation unavailable: {str(e)[:100]}"],
+                "suggestions": ["Check API key configuration"],
                 "passed": False
             }
 
