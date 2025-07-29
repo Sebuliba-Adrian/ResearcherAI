@@ -524,6 +524,212 @@ async def export_graph(
         logger.error(f"Graph export failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get(f"/{API_VERSION}/graph/export/rdf", tags=["Knowledge Graph"])
+async def export_rdf(
+    format: str = "turtle",
+    session_name: Optional[str] = "default",
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Export knowledge graph as RDF for interoperability and data exchange
+
+    Supports multiple RDF formats:
+    - **turtle**: Turtle format (.ttl) - Human-readable, recommended
+    - **xml**: RDF/XML format (.rdf) - Standard XML serialization
+    - **json-ld**: JSON-LD format (.jsonld) - JSON-based linked data
+    - **n3**: Notation3 format (.n3) - Superset of Turtle
+    - **nt**: N-Triples format (.nt) - Line-based, simple format
+
+    **Use cases:**
+    - Share knowledge graphs with collaborators
+    - Import into semantic web tools (Protégé, Apache Jena, GraphDB)
+    - Integrate with external knowledge bases (DBpedia, Wikidata)
+    - Enable SPARQL queries and reasoning
+
+    **Returns:** RDF serialization as text
+
+    **Example:** GET /v1/graph/export/rdf?format=turtle
+    """
+    rate_limit(api_key)
+
+    if not orchestrator:
+        raise HTTPException(status_code=503, detail="Orchestrator not initialized")
+
+    try:
+        # Import RDF agent
+        from agents.rdf_agent import RDFAgent
+
+        # Set session if provided
+        if session_name:
+            orchestrator.session_name = session_name
+
+        # Export graph data
+        graph_data = orchestrator.graph_agent.export_graph_data()
+
+        # Convert to RDF
+        rdf_agent = RDFAgent()
+        rdf_graph = rdf_agent.export_to_rdf(graph_data)
+        rdf_serialized = rdf_agent.serialize(format=format)
+
+        # Get media type for format
+        media_type = rdf_agent.FORMATS.get(format, {}).get('media_type', 'text/plain')
+
+        # Return as downloadable file
+        from fastapi.responses import Response
+        return Response(
+            content=rdf_serialized,
+            media_type=media_type,
+            headers={
+                "Content-Disposition": f"attachment; filename=knowledge_graph{rdf_agent.FORMATS[format]['ext']}"
+            }
+        )
+
+    except Exception as e:
+        logger.error(f"RDF export failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post(f"/{API_VERSION}/graph/import/rdf", tags=["Knowledge Graph"])
+async def import_rdf(
+    file: UploadFile = File(...),
+    format: str = "turtle",
+    merge: bool = True,
+    session_name: Optional[str] = "default",
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Import RDF file into knowledge graph for ETL and data integration
+
+    Upload RDF files in any supported format to import papers, authors,
+    and relationships into your knowledge graph.
+
+    **Parameters:**
+    - **file**: RDF file to upload (.ttl, .rdf, .jsonld, .n3, .nt)
+    - **format**: RDF format (auto-detected from file extension if not specified)
+    - **merge**: If true, merge with existing graph; if false, replace
+    - **session_name**: Session to import into
+
+    **Supported formats:**
+    - turtle, xml, json-ld, n3, nt
+
+    **Use cases:**
+    - Import data from collaborators
+    - ETL from external sources (DBpedia, Wikidata, OpenCitations)
+    - Bulk data ingestion
+    - Migrate between systems
+
+    **Returns:** Import statistics and summary
+    """
+    rate_limit(api_key)
+
+    if not orchestrator:
+        raise HTTPException(status_code=503, detail="Orchestrator not initialized")
+
+    try:
+        # Import RDF agent
+        from agents.rdf_agent import RDFAgent
+
+        # Set session
+        if session_name:
+            orchestrator.session_name = session_name
+
+        # Read file content
+        content = await file.read()
+
+        # Auto-detect format from filename if not specified
+        if format == "turtle":
+            filename = file.filename.lower()
+            if filename.endswith('.rdf') or filename.endswith('.xml'):
+                format = 'xml'
+            elif filename.endswith('.jsonld') or filename.endswith('.json'):
+                format = 'json-ld'
+            elif filename.endswith('.n3'):
+                format = 'n3'
+            elif filename.endswith('.nt'):
+                format = 'nt'
+
+        # Parse RDF
+        rdf_agent = RDFAgent()
+        graph_data = rdf_agent.import_from_rdf(content, format=format)
+
+        logger.info(f"Imported {len(graph_data['nodes'])} nodes and {len(graph_data['edges'])} edges from RDF")
+
+        # Add to knowledge graph
+        stats = {"nodes_added": 0, "edges_added": 0, "papers_processed": 0}
+
+        # Filter papers from nodes
+        papers = [n for n in graph_data['nodes'] if n.get('type') == 'paper']
+
+        if papers:
+            # Process through graph agent
+            if merge:
+                result = orchestrator.graph_agent.process_papers(papers)
+                stats.update(result)
+            else:
+                # Clear existing graph first
+                if orchestrator.graph_agent.db_type == "networkx":
+                    orchestrator.graph_agent.G.clear()
+                result = orchestrator.graph_agent.process_papers(papers)
+                stats.update(result)
+
+        return {
+            "success": True,
+            "message": f"Successfully imported RDF file",
+            "format": format,
+            "merged": merge,
+            "import_stats": {
+                "nodes_imported": len(graph_data['nodes']),
+                "edges_imported": len(graph_data['edges']),
+                "papers_imported": len(papers)
+            },
+            "graph_stats": stats,
+            "session_name": orchestrator.session_name
+        }
+
+    except Exception as e:
+        logger.error(f"RDF import failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get(f"/{API_VERSION}/graph/rdf/stats", tags=["Knowledge Graph"])
+async def rdf_stats(
+    session_name: Optional[str] = "default",
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Get RDF graph statistics and ontology information
+
+    Returns detailed statistics about the RDF representation of your
+    knowledge graph including triple count, namespaces, and entity types.
+
+    **Returns:** RDF statistics dict
+    """
+    rate_limit(api_key)
+
+    if not orchestrator:
+        raise HTTPException(status_code=503, detail="Orchestrator not initialized")
+
+    try:
+        from agents.rdf_agent import RDFAgent
+
+        # Set session
+        if session_name:
+            orchestrator.session_name = session_name
+
+        # Export to RDF to get stats
+        graph_data = orchestrator.graph_agent.export_graph_data()
+        rdf_agent = RDFAgent()
+        rdf_agent.export_to_rdf(graph_data)
+
+        return {
+            "rdf_stats": rdf_agent.get_stats(),
+            "graph_stats": orchestrator.graph_agent.get_stats(),
+            "session_name": orchestrator.session_name,
+            "supported_formats": list(rdf_agent.FORMATS.keys())
+        }
+
+    except Exception as e:
+        logger.error(f"RDF stats failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # ============================================================================
 # Summarization Endpoints
 # ============================================================================

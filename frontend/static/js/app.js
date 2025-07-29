@@ -1142,6 +1142,140 @@ function resetGraphZoom() {
 }
 
 // ============================================================================
+// RDF Export/Import
+// ============================================================================
+
+let selectedRDFFile = null;
+
+async function exportRDF() {
+    const format = document.getElementById('rdf-export-format').value;
+
+    try {
+        showToast('Exporting RDF', `Generating ${format.toUpperCase()} format...`, 'info');
+
+        // Call API endpoint
+        const url = `${CONFIG.API_BASE_URL}/graph/export/rdf?format=${format}`;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'X-API-Key': state.apiKey
+            }
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'RDF export failed');
+        }
+
+        // Get the blob
+        const blob = await response.blob();
+
+        // Get filename from headers or create default
+        const contentDisposition = response.headers.get('Content-Disposition');
+        let filename = 'knowledge_graph.ttl';
+
+        if (contentDisposition) {
+            const filenameMatch = contentDisposition.match(/filename="?(.+?)"?$/);
+            if (filenameMatch) {
+                filename = filenameMatch[1];
+            }
+        }
+
+        // Create download link
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(downloadUrl);
+
+        showToast('RDF Exported', `Downloaded as ${filename}`, 'success');
+
+    } catch (error) {
+        console.error('RDF export failed:', error);
+        showToast('Export Failed', error.message, 'error');
+    }
+}
+
+function setupRDFUpload() {
+    const fileInput = document.getElementById('rdf-file');
+    const uploadBtn = document.getElementById('rdf-upload-btn');
+    const uploadZone = document.getElementById('rdf-upload-zone');
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            selectedRDFFile = file;
+            uploadBtn.disabled = false;
+            uploadZone.querySelector('p').textContent = `Selected: ${file.name}`;
+            uploadZone.style.borderColor = 'var(--primary-color)';
+        }
+    });
+}
+
+async function uploadRDF() {
+    if (!selectedRDFFile) {
+        showToast('No File Selected', 'Please select an RDF file first', 'error');
+        return;
+    }
+
+    const merge = document.getElementById('rdf-merge').checked;
+
+    try {
+        showToast('Importing RDF', `Uploading ${selectedRDFFile.name}...`, 'info');
+
+        // Create form data
+        const formData = new FormData();
+        formData.append('file', selectedRDFFile);
+
+        // Call API endpoint
+        const url = `${CONFIG.API_BASE_URL}/graph/import/rdf?merge=${merge}`;
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'X-API-Key': state.apiKey
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.detail || 'RDF import failed');
+        }
+
+        const result = await response.json();
+
+        showToast(
+            'RDF Imported',
+            `Successfully imported ${result.import_stats.nodes_imported} nodes and ${result.import_stats.edges_imported} edges`,
+            'success',
+            5000
+        );
+
+        // Reset file input
+        document.getElementById('rdf-file').value = '';
+        selectedRDFFile = null;
+        document.getElementById('rdf-upload-btn').disabled = true;
+        document.getElementById('rdf-upload-zone').querySelector('p').textContent = 'Click to select RDF file';
+        document.getElementById('rdf-upload-zone').style.borderColor = 'var(--glass-border)';
+
+        // Reload graph visualization
+        if (graphNetwork) {
+            loadGraphVisualization();
+        }
+
+        // Update stats
+        updateStats();
+
+    } catch (error) {
+        console.error('RDF import failed:', error);
+        showToast('Import Failed', error.message, 'error');
+    }
+}
+
+// ============================================================================
 // Initialization
 // ============================================================================
 
@@ -1156,6 +1290,7 @@ function init() {
     setupThemeToggle();
     setupAPIKey();
     setupPDFUpload();
+    setupRDFUpload();
     setupNavigation();
 
     // Make functions globally available
@@ -1168,6 +1303,8 @@ function init() {
     window.loadGraphVisualization = loadGraphVisualization;
     window.changeGraphLayout = changeGraphLayout;
     window.resetGraphZoom = resetGraphZoom;
+    window.exportRDF = exportRDF;
+    window.uploadRDF = uploadRDF;
 
     // Initial health check
     performHealthCheck();

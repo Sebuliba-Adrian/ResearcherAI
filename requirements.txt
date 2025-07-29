@@ -28,6 +28,11 @@ faiss-cpu==1.7.4
 # Visualization
 pyvis==0.3.2
 
+# Semantic Web & RDF
+rdflib==7.3.0
+owlrl==6.0.2
+SPARQLWrapper==2.0.0
+
 # Data Processing
 PyPDF2==3.0.1
 pandas==2.1.3

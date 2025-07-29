@@ -536,6 +536,75 @@
                         <option value="hierarchical">Hierarchical</option>
                     </select>
                 </div>
+
+                <!-- RDF Export/Import Section -->
+                <div class="rdf-section">
+                    <h4 class="rdf-section-title">RDF Export/Import</h4>
+                    <p class="rdf-description">
+                        Export your knowledge graph as RDF for sharing and interoperability,
+                        or import RDF data from external sources.
+                    </p>
+
+                    <div class="rdf-actions">
+                        <div class="rdf-export">
+                            <h5 class="rdf-action-title">Export as RDF</h5>
+                            <div class="rdf-format-selector">
+                                <label class="form-label">Format:</label>
+                                <select id="rdf-export-format" class="form-select">
+                                    <option value="turtle">Turtle (.ttl) - Recommended</option>
+                                    <option value="xml">RDF/XML (.rdf)</option>
+                                    <option value="json-ld">JSON-LD (.jsonld)</option>
+                                    <option value="n3">Notation3 (.n3)</option>
+                                    <option value="nt">N-Triples (.nt)</option>
+                                </select>
+                            </div>
+                            <button class="btn-primary btn-glow" onclick="exportRDF()">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                                </svg>
+                                <span>Download RDF</span>
+                            </button>
+                        </div>
+
+                        <div class="rdf-import">
+                            <h5 class="rdf-action-title">Import from RDF</h5>
+                            <input type="file" id="rdf-file" accept=".ttl,.rdf,.jsonld,.n3,.nt" hidden>
+                            <div class="rdf-upload-zone" id="rdf-upload-zone" onclick="document.getElementById('rdf-file').click()">
+                                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                                </svg>
+                                <p>Click to select RDF file</p>
+                                <span class="file-types">.ttl, .rdf, .jsonld, .n3, .nt</span>
+                            </div>
+                            <div class="rdf-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="rdf-merge" checked>
+                                    <span>Merge with existing graph (don't replace)</span>
+                                </label>
+                            </div>
+                            <button class="btn-secondary" onclick="uploadRDF()" id="rdf-upload-btn" disabled>
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                                </svg>
+                                <span>Upload RDF</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="rdf-info">
+                        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="16" x2="12" y2="12"/>
+                            <line x1="12" y1="8" x2="12.01" y2="8"/>
+                        </svg>
+                        <div class="info-text">
+                            <strong>What is RDF?</strong> Resource Description Framework is a W3C standard
+                            for knowledge representation. Use it to share your knowledge graph with
+                            semantic web tools like Protégé, Apache Jena, or GraphDB, or import data
+                            from DBpedia, Wikidata, and other sources.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
