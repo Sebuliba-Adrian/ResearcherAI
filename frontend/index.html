@@ -39,6 +39,7 @@
                 <a href="#collect" class="nav-link">Collect</a>
                 <a href="#ask" class="nav-link">Ask</a>
                 <a href="#graph" class="nav-link">Graph</a>
+                <a href="#vector" class="nav-link">Vector</a>
                 <a href="#upload" class="nav-link">Upload</a>
                 <a href="#sessions" class="nav-link">Sessions</a>
             </div>
@@ -609,6 +610,112 @@
         </div>
     </section>
 
+    <!-- Vector Space Visualization Section -->
+    <section id="vector" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="gradient-text">Vector Space</span>
+                </h2>
+                <p class="section-description">
+                    Visualize semantic relationships and clusters in high-dimensional embedding space
+                </p>
+            </div>
+
+            <div class="glass-card card-large">
+                <div class="card-header">
+                    <h3 class="card-title">Embedding Visualization</h3>
+                    <button class="btn-secondary" onclick="loadVectorVisualization()">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                        <span>Generate Visualization</span>
+                    </button>
+                </div>
+
+                <!-- Vector Stats -->
+                <div class="graph-stats">
+                    <div class="stat-item">
+                        <div class="stat-label">Embeddings:</div>
+                        <div class="stat-value" id="vector-embeddings">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Dimension:</div>
+                        <div class="stat-value" id="vector-dimension">384</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Method:</div>
+                        <div class="stat-value" id="vector-method">PCA</div>
+                    </div>
+                </div>
+
+                <!-- Visualization Controls -->
+                <div class="vector-controls">
+                    <div class="control-group">
+                        <label class="form-label">Reduction Method:</label>
+                        <select id="vector-method-select" class="form-select">
+                            <option value="pca">PCA (Fast)</option>
+                            <option value="tsne">t-SNE (Better Clusters)</option>
+                            <option value="umap">UMAP (Preserves Structure)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="form-label">Dimensions:</label>
+                        <select id="vector-dimensions-select" class="form-select">
+                            <option value="2">2D</option>
+                            <option value="3" selected>3D</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="form-label">Clustering:</label>
+                        <select id="vector-cluster-select" class="form-select">
+                            <option value="">None</option>
+                            <option value="kmeans">K-Means</option>
+                            <option value="dbscan">DBSCAN</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="form-label">Clusters (K-Means):</label>
+                        <input type="number" id="vector-n-clusters" class="form-input" value="5" min="2" max="20">
+                    </div>
+                </div>
+
+                <!-- Visualization Container -->
+                <div id="vector-visualization" class="vector-viz-container">
+                    <div class="empty-state">
+                        <svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <p>Click "Generate Visualization" to see your vector space</p>
+                        <p class="text-sm text-muted">
+                            Use dimensionality reduction (PCA, t-SNE, UMAP) to visualize high-dimensional embeddings
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Vector Info Panel -->
+                <div class="vector-info">
+                    <div class="info-icon">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4M12 8h.01"/>
+                        </svg>
+                    </div>
+                    <div class="info-text">
+                        <strong>What is Vector Space Visualization?</strong> Your research papers are embedded
+                        into high-dimensional vectors (384D). This tool reduces them to 2D/3D so you can see
+                        semantic clusters, topic relationships, and paper similarities visually. Papers that
+                        are close together share similar content or concepts.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- API Key Modal -->
     <div id="api-key-modal" class="modal hidden">
         <div class="modal-overlay" onclick="closeModal('api-key-modal')"></div>
@@ -649,6 +756,8 @@
     <!-- Scripts -->
     <!-- Vis.js Network Library for Graph Visualization -->
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <!-- Plotly.js for Vector Space Visualization -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
     <script src="static/js/app.js"></script>
 </body>
 </html>

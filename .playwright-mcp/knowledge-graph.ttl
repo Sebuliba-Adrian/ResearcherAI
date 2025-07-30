@@ -1,0 +1,3359 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rai: <http://researcherai.org/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://researcherai.org/author/89a2ec851b9fb9bcee8e2fefa85f02fa> a rai:Author,
+        foaf:Person ;
+    rdfs:label "rosimeirecosta" ;
+    foaf:name "rosimeirecosta" .
+
+<http://researcherai.org/ontology> a owl:Ontology ;
+    dcterms:created "2025-10-27T12:15:55.256151"^^xsd:dateTime ;
+    dcterms:description "Ontology for representing research papers, authors, and relationships" ;
+    dcterms:title "ResearcherAI Ontology" .
+
+<http://researcherai.org/paper/020adc5ce3647561a28b142f226969b1> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "MOM6 and MITgcm versions used in \"Stratified suppression of turbulence in an ice shelf basal melt parameterisation\"" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "MOM6 and MITgcm versions used in \"Stratified suppression of turbulence in an ice shelf basal melt parameterisation\"" .
+
+<http://researcherai.org/paper/0a2a5ecf6f0145077e4f577de4ca5612> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "CAN-BERT do it? Controller Area Network Intrusion Detection System based on BERT Language Model" ;
+    dcterms:source "Semantic Scholar" ;
+    dcterms:title "CAN-BERT do it? Controller Area Network Intrusion Detection System based on BERT Language Model" .
+
+<http://researcherai.org/paper/0c3fd616799a1dca32488f07a19a8701> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Common polymorphisms of ALOX5 and ALOX5AP and risk of coronary artery disease" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "Common polymorphisms of ALOX5 and ALOX5AP and risk of coronary artery disease" .
+
+<http://researcherai.org/paper/605100c15a28a16a6b74917390aad47e> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "La didáctica y la atención a las barreras cognitivas" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "La didáctica y la atención a las barreras cognitivas" .
+
+<http://researcherai.org/paper/61b205c55f7f6b6af883705b01bc9528> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Germline-aware deep learning models and benchmarks for predicting antibody VH-VL pairing." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Germline-aware deep learning models and benchmarks for predicting antibody VH-VL pairing." .
+
+<http://researcherai.org/paper/662fca24f17bc3adc38b5f6a0038a2ad> a bibo:AcademicArticle,
+        rai:Paper ;
+    dcterms:source "" .
+
+<http://researcherai.org/paper/6ca77a075f285b83edff91da087e4516> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Model: DunnBC22/bert-base-uncased-Masked_Language_Model-US_Economic_News_Articles" ;
+    dcterms:source "HuggingFace" ;
+    dcterms:title "Model: DunnBC22/bert-base-uncased-Masked_Language_Model-US_Economic_News_Articles" .
+
+<http://researcherai.org/paper/779d6c3fdfd349e88e7d2d62d5b8dc1a> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Self-reported and measured sleep duration: How similar are they?" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "Self-reported and measured sleep duration: How similar are they?" .
+
+<http://researcherai.org/paper/8626f07e3cbe126b8e6915ba4fb91cb2> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Dataset: rosimeirecosta/c_corpus_br_finetuning_language_model_bert" ;
+    dcterms:source "HuggingFace" ;
+    dcterms:title "Dataset: rosimeirecosta/c_corpus_br_finetuning_language_model_bert" .
+
+<http://researcherai.org/paper/8b53e0e2c1d0b98569b36ad11b59caa6> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "CyBERT: Cybersecurity Claim Classification by Fine-Tuning the BERT Language Model" ;
+    dcterms:source "Semantic Scholar" ;
+    dcterms:title "CyBERT: Cybersecurity Claim Classification by Fine-Tuning the BERT Language Model" .
+
+<http://researcherai.org/paper/92bc3530fc50fa367cf3c7985006ea0e> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Attention is all you need (in the brain): semantic contextualization in human hippocampus." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Attention is all you need (in the brain): semantic contextualization in human hippocampus." .
+
+<http://researcherai.org/paper/9590414e3ab23de23ddd1958c0f90dbe> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Model: Blankyy/attention-is-all-you-need" ;
+    dcterms:source "HuggingFace" ;
+    dcterms:title "Model: Blankyy/attention-is-all-you-need" .
+
+<http://researcherai.org/paper/96e31b9de7ad8e6c5607fe1a4eda6970> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Model: DunnBC22/bert-base-uncased-Masked_Language_Modeling-AG_News" ;
+    dcterms:source "HuggingFace" ;
+    dcterms:title "Model: DunnBC22/bert-base-uncased-Masked_Language_Modeling-AG_News" .
+
+<http://researcherai.org/paper/9f93db1b3002f20540b00df178bf601a> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "The dataset for the full Active Dwarf Galaxy Database." ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "The dataset for the full Active Dwarf Galaxy Database." .
+
+<http://researcherai.org/paper/b2c22cb4d886f9e914cf1763139f33db> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "EXPLAINABLE GRAPH NEURAL NETWORKS IN EPIDEMIOLOGICAL SYSTEMS: CURRENT ADVANCES AND RESEARCH FRONTIERS IN SENSOR-DRIVEN ZOONOTIC DISEASE MODELLING" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "EXPLAINABLE GRAPH NEURAL NETWORKS IN EPIDEMIOLOGICAL SYSTEMS: CURRENT ADVANCES AND RESEARCH FRONTIERS IN SENSOR-DRIVEN ZOONOTIC DISEASE MODELLING" .
+
+<http://researcherai.org/paper/bb543d60c395fce52cf80e2710931694> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Neutral sentiment on patient's speech can predict the depressive symptom severity transdiagnostically." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Neutral sentiment on patient's speech can predict the depressive symptom severity transdiagnostically." .
+
+<http://researcherai.org/paper/c21f20a4b0de0f47c9f39ba65fc17352> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "MADTRAS: Dataset for aspect-based sentiment analysis of movie reviews in Tamil." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "MADTRAS: Dataset for aspect-based sentiment analysis of movie reviews in Tamil." .
+
+<http://researcherai.org/paper/c374d876996131efe914372e09efc543> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Adapt or Get Left Behind: Domain Adaptation through BERT Language Model Finetuning for Aspect-Target Sentiment Classification" ;
+    dcterms:source "Semantic Scholar" ;
+    dcterms:title "Adapt or Get Left Behind: Domain Adaptation through BERT Language Model Finetuning for Aspect-Target Sentiment Classification" .
+
+<http://researcherai.org/paper/cd08ded8ecd7af1ca1fda8be9899294d> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Multi-objective deep learning for lung cancer detection in CT images: enhancements in tumor classification, localization, and diagnostic efficiency." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Multi-objective deep learning for lung cancer detection in CT images: enhancements in tumor classification, localization, and diagnostic efficiency." .
+
+<http://researcherai.org/paper/d03f469c1a1ca222270757fa554e53cc> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Integrating ECG and PCG Signals through a Dual-Modal ViT for Coronary Artery Disease Detection." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Integrating ECG and PCG Signals through a Dual-Modal ViT for Coronary Artery Disease Detection." .
+
+<http://researcherai.org/paper/e1b439756f0f11e017a48eec69837dca> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Resilient Technologies. Why Decades-Old Tools Define the ROOT of Modern Research Data Management" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "Resilient Technologies. Why Decades-Old Tools Define the ROOT of Modern Research Data Management" .
+
+<http://researcherai.org/paper/fc10d2cf25a520be958af01d9c87e135> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Timelygpt: extrapolatable transformer pre-training for long-term time-series forecasting in healthcare." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Timelygpt: extrapolatable transformer pre-training for long-term time-series forecasting in healthcare." .
+
+<http://researcherai.org/paper/fcb0c3456aeb9d29760f917147e65c16> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Extracting language information from clinical notes using large language models." ;
+    dcterms:source "PubMed" ;
+    dcterms:title "Extracting language information from clinical notes using large language models." .
+
+<http://researcherai.org/paper/ff932483fa10247bef3e240395aa2539> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Association between circulating oxidized low-density lipoprotein and incidence of the metabolic syndrome" ;
+    dcterms:source "Zenodo" ;
+    dcterms:title "Association between circulating oxidized low-density lipoprotein and incidence of the metabolic syndrome" .
+
+<http://researcherai.org/author/02de892d38929b960a0f2d46e48cbf76> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Joubbi S" ;
+    dcterms:creator <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    foaf:name "Joubbi S" .
+
+<http://researcherai.org/author/03a76ec0975e0d0c334f74fa8bcb40e4> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Marshall GA" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Marshall GA" .
+
+<http://researcherai.org/author/05cb51c7e6d502bb0aa158efd13141e4> a rai:Author,
+        foaf:Person ;
+    rdfs:label "J. Skowron" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "J. Skowron" .
+
+<http://researcherai.org/author/06e723095e11bfb2758cc0105ef67664> a rai:Author,
+        foaf:Person ;
+    rdfs:label "A. Udalski" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "A. Udalski" .
+
+<http://researcherai.org/author/079d6391ac6429a4329bad48e825bc8f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Ismail T" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Ismail T" .
+
+<http://researcherai.org/author/07fcb5683de5ed5e5662973c3842db49> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sidney S." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Sidney S." .
+
+<http://researcherai.org/author/083cc01bf85d00adeab3ca6fb35cd73a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Korda A" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Korda A" .
+
+<http://researcherai.org/author/08d118fb10403fff2a2e703669db1b54> a rai:Author,
+        foaf:Person ;
+    rdfs:label "J. Borowicz" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "J. Borowicz" .
+
+<http://researcherai.org/author/09a0cbeae2f945d12f96a19e7bc610d8> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Basu A." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Basu A." .
+
+<http://researcherai.org/author/09feacdba4d5522ff2c22be8c6859a49> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Go A." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Go A." .
+
+<http://researcherai.org/author/0ad759715b71fa7709df1297dc104e4b> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sunitha R" ;
+    dcterms:creator <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    foaf:name "Sunitha R" .
+
+<http://researcherai.org/author/0b3307fc441e5972a7786763a3f1e179> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sidharth Talia" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Sidharth Talia" .
+
+<http://researcherai.org/author/0d755f5910daeeabd219d1024eccd6d7> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Belanger JL" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Belanger JL" .
+
+<http://researcherai.org/author/0ddecd2da0a46c17ed674aac896cee62> a rai:Author,
+        foaf:Person ;
+    rdfs:label "P. Mróz" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "P. Mróz" .
+
+<http://researcherai.org/author/0ee9ef864f40a2f718dcf601ab07dbb6> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Oluwabusayo, Omotosho Israel" ;
+    dcterms:creator <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    foaf:name "Oluwabusayo, Omotosho Israel" .
+
+<http://researcherai.org/author/0fbd6eedb9d1d2d9aca30f23920941b6> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Avram M" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Avram M" .
+
+<http://researcherai.org/author/10efc62205d55c022e284c5ed05f0d82> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Tabor H.K." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Tabor H.K." .
+
+<http://researcherai.org/author/1189af55992c894d748210461a514090> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Buschmann F" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Buschmann F" .
+
+<http://researcherai.org/author/12a3a088a84a701b8ed777df27afa698> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Relatic Panamá" ;
+    dcterms:creator <http://researcherai.org/entity/605100c15a28a16a6b74917390aad47e> ;
+    foaf:name "Relatic Panamá" .
+
+<http://researcherai.org/author/136bc461f02a25eca4ee244ae14e4d24> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hlatky M." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Hlatky M." .
+
+<http://researcherai.org/author/18443b052ae822e1d866d381a30bee13> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Watrous AJ" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Watrous AJ" .
+
+<http://researcherai.org/author/1949d26588a0074d845a0bd42222816a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Franzen L" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Franzen L" .
+
+<http://researcherai.org/author/1b8a6b3c86f07e89f7dbfeae48bef3c8> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Rosario Scalise" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Rosario Scalise" .
+
+<http://researcherai.org/author/1be545cb2c5734e7921b9ce699d9554f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Omkar Joglekar" ;
+    dcterms:creator <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    foaf:name "Omkar Joglekar" .
+
+<http://researcherai.org/author/1f654bfbf9f6dc1c13c95e082b52a263> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Kuan-Chieh Jackson Wang" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Kuan-Chieh Jackson Wang" .
+
+<http://researcherai.org/author/254b5071a73ca510dae56fdae1a84dbf> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Anujraaj Argo Goyal" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Anujraaj Argo Goyal" .
+
+<http://researcherai.org/author/269038d3b0741dde6869a82b751a40e7> a rai:Author,
+        foaf:Person ;
+    rdfs:label "You L" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "You L" .
+
+<http://researcherai.org/author/2802a6a9260f2ef1d9b96085e8da1746> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Mickiewicz EA" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Mickiewicz EA" .
+
+<http://researcherai.org/author/2823a3da4f05c1e4383eca96882edd83> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Myers R." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Myers R." .
+
+<http://researcherai.org/author/29749caaa99997b81cfcb43b26e444e1> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Horstmann S" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Horstmann S" .
+
+<http://researcherai.org/author/29779f57af2ae3858e9e8abc259533d3> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Borgwardt S" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Borgwardt S" .
+
+<http://researcherai.org/author/2b1b572d68fe0f60e4d0228e7c82dcff> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Heide M" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Heide M" .
+
+<http://researcherai.org/author/2cd4b5e9a41dee3a8677b358843ceaf2> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Matt Schmittle" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Matt Schmittle" .
+
+<http://researcherai.org/author/2d0ea242f1550743ed5f9f16ffc01a05> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Kavitha V" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Kavitha V" .
+
+<http://researcherai.org/author/2da2b2ac876f18f4ac053295494b8822> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Kundlas M" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Kundlas M" .
+
+<http://researcherai.org/author/2ed724cbf0bb36253c42195bbd375fdf> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Zhou L" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Zhou L" .
+
+<http://researcherai.org/author/3014282985a1727d2b34ac9e8f104955> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Lee D.H." ;
+    dcterms:creator <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    foaf:name "Lee D.H." .
+
+<http://researcherai.org/author/3045849cab5d0ab574f200edfeb76ead> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Zhou Y" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Zhou Y" .
+
+<http://researcherai.org/author/30c709ca022f7b7e6cb5ff8fbd4dddcb> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Olayinka, Owolabi Olugbenga" ;
+    dcterms:creator <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    foaf:name "Olayinka, Owolabi Olugbenga" .
+
+<http://researcherai.org/author/3188f638530751ab6e618b393c0c3ee0> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Jacobs D.R." ;
+    dcterms:creator <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    foaf:name "Jacobs D.R." .
+
+<http://researcherai.org/author/3246311e6b895c6c28e825aff9af2408> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Dotan Di Castro" ;
+    dcterms:creator <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    foaf:name "Dotan Di Castro" .
+
+<http://researcherai.org/author/33602479788a9dd4f32d2a91ad7ebcbb> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Zhu H" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    foaf:name "Zhu H" .
+
+<http://researcherai.org/author/338f3cddfaaaafc03b071fc8203eb396> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Iribarren C." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Iribarren C." .
+
+<http://researcherai.org/author/3719b1a03ec93ac9090090bd4dd487d5> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Holvoet P." ;
+    dcterms:creator <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    foaf:name "Holvoet P." .
+
+<http://researcherai.org/author/3790d9aa5a4a30d06c7742778fd69841> a rai:Author,
+        foaf:Person ;
+    rdfs:label "A. Rietzler" ;
+    dcterms:creator <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    foaf:name "A. Rietzler" .
+
+<http://researcherai.org/author/387c251199d708c363456c82fab6a191> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Paulo DL" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Paulo DL" .
+
+<http://researcherai.org/author/3b1d18e0a80a85f67daf1ae6e0eba0bc> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Adams N" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Adams N" .
+
+<http://researcherai.org/author/3c70499dc125d8c3cd62f367da7be258> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Southwick A." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Southwick A." .
+
+<http://researcherai.org/author/3c9b7af0bc4ea59c33bb44e201e72a54> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Lian J" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Lian J" .
+
+<http://researcherai.org/author/3d371277c4752e5281e1e9016183d534> a rai:Author,
+        foaf:Person ;
+    rdfs:label "M. K. Szymański" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "M. K. Szymański" .
+
+<http://researcherai.org/author/3ddac4eccab5bbc8873d9a054823e705> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Wei L" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "Wei L" .
+
+<http://researcherai.org/author/3e4edb1cd4744687ff3834a422ce7d06> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Bishoyi AK" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Bishoyi AK" .
+
+<http://researcherai.org/author/40a5c476926cc0cc950c7eca42b8fd8f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "D. M. Skowron" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "D. M. Skowron" .
+
+<http://researcherai.org/author/40ede0a381779f3d2736a689e2aad3f3> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Atoyebi, Jelili Olaniyi" ;
+    dcterms:creator <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    foaf:name "Atoyebi, Jelili Olaniyi" .
+
+<http://researcherai.org/author/422194c259a0caf853c0003af61139ef> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Emma Romig" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Emma Romig" .
+
+<http://researcherai.org/author/423684b6b8098b028b0cd8b6f7307c7a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "K. Perumalla" ;
+    dcterms:creator <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    foaf:name "K. Perumalla" .
+
+<http://researcherai.org/author/4342e6c040262ab42d01f3a9ca424d8b> a rai:Author,
+        foaf:Person ;
+    rdfs:label "M. Gromadzki" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "M. Gromadzki" .
+
+<http://researcherai.org/author/43cb85461f479772b132f3bfd3f6fe8d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Celso de Melo" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Celso de Melo" .
+
+<http://researcherai.org/author/4430b411a6329db6524a95c4a9156076> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Milazzo P" ;
+    dcterms:creator <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    foaf:name "Milazzo P" .
+
+<http://researcherai.org/author/4471ea9e93baba12f4e78241d94f50a2> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Aminov Z" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Aminov Z" .
+
+<http://researcherai.org/author/46a634104ffb33b888fe3b4a43f8e7d9> a rai:Author,
+        foaf:Person ;
+    rdfs:label "M. Hempel" ;
+    dcterms:creator <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    foaf:name "M. Hempel" .
+
+<http://researcherai.org/author/47afabc5605b622a3f58df310811df94> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Abdulqader AF" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Abdulqader AF" .
+
+<http://researcherai.org/author/4843364569b63d73ebcd629cb3f06de0> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Provenza NR" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Provenza NR" .
+
+<http://researcherai.org/author/48b8e4eeaa29ff6773861685f2084b70> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Fortmann S.P." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Fortmann S.P." .
+
+<http://researcherai.org/author/49a8c6d9f3ccd1511dd41d35b85a0f40> a rai:Author,
+        foaf:Person ;
+    rdfs:label "K. Ulaczyk" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "K. Ulaczyk" .
+
+<http://researcherai.org/author/4ad2bad47213d7c63ae4b5f024d8122a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Piantadosi ST" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Piantadosi ST" .
+
+<http://researcherai.org/author/4b019949ff50d6b074375b2f5cf69cd5> a rai:Author,
+        foaf:Person ;
+    rdfs:label "H. Sharif" ;
+    dcterms:creator <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    foaf:name "H. Sharif" .
+
+<http://researcherai.org/author/4b181e4101e71cf0b1af18fdc8657a2d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Rathouz P.J." ;
+    dcterms:creator <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    foaf:name "Rathouz P.J." .
+
+<http://researcherai.org/author/4da8935c66d6282bada73549d5396533> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Qian L" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Qian L" .
+
+<http://researcherai.org/author/4f49aa1f15be0052e168456d3e5b1205> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sheth SA" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Sheth SA" .
+
+<http://researcherai.org/author/4faf5932f0eb9caee1dd0a6c6606a387> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Grove M.L." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Grove M.L." .
+
+<http://researcherai.org/author/512a99918cbbe894f94202be06c386f9> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Song Z" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    foaf:name "Song Z" .
+
+<http://researcherai.org/author/51fdb0fe9a3bcc66b09e8c89436ed905> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yan L.L." ;
+    dcterms:creator <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    foaf:name "Yan L.L." .
+
+<http://researcherai.org/author/529f834713b000829f17093b754a781e> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Katlowitz KA" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Katlowitz KA" .
+
+<http://researcherai.org/author/53cb973ee8f5222c1d70e3786f69e70d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Franch M" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Franch M" .
+
+<http://researcherai.org/author/54e874809f54ef9d41b963508930fc49> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Chen M" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "Chen M" .
+
+<http://researcherai.org/author/5579a36f1398c69126bbf22171b20774> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Risch N." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Risch N." .
+
+<http://researcherai.org/author/5656ef2d91fd0f1509bc9687ab2c3132> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hartiala J." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Hartiala J." .
+
+<http://researcherai.org/author/57e58b3c3dd036d14dfdcec772c97dfe> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Priest J.R." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Priest J.R." .
+
+<http://researcherai.org/author/5d46eb835d927a36adfb167675f32248> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Tabibiazar R." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Tabibiazar R." .
+
+<http://researcherai.org/author/5fb19ce1619d14c52693d5b532a1e653> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sidharth Rajagopal" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Sidharth Rajagopal" .
+
+<http://researcherai.org/author/5fc48932a73d8e298f475c9664b6e325> a rai:Author,
+        foaf:Person ;
+    rdfs:label "J. Danger" ;
+    dcterms:creator <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    foaf:name "J. Danger" .
+
+<http://researcherai.org/author/60c8c6a775554e9aa67a50cdeb27e94a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Nimrod Berman" ;
+    dcterms:creator <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    foaf:name "Nimrod Berman" .
+
+<http://researcherai.org/author/61f73e5c562fc3a8f83e8f9badc30316> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Alwan M" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Alwan M" .
+
+<http://researcherai.org/author/622a416a8ed561dbe6a4b208462acab3> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Carroll, Christopher" ;
+    dcterms:creator <http://researcherai.org/entity/9f93db1b3002f20540b00df178bf601a> ;
+    foaf:name "Carroll, Christopher" .
+
+<http://researcherai.org/author/6249d4880d0d453d8b5ed199921d64b4> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hedelt KS" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Hedelt KS" .
+
+<http://researcherai.org/author/62bd3c98af5795cb18241551acd2939d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Willi Menapace" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Willi Menapace" .
+
+<http://researcherai.org/author/63240394ed11b1868f7da10ba794dc64> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Andreou C" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Andreou C" .
+
+<http://researcherai.org/author/68bccbf61e1c79abaa5163fe48c8c3d0> a rai:Author,
+        foaf:Person ;
+    rdfs:label "R. Poleski" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "R. Poleski" .
+
+<http://researcherai.org/author/6a0d4100c94731be8c4936fa83380a45> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Paul Opitz" ;
+    dcterms:creator <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    foaf:name "Paul Opitz" .
+
+<http://researcherai.org/author/6a16c93d9c401e30c9f2b4e9f5aa0294> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Kimia Ameri" ;
+    dcterms:creator <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    foaf:name "Kimia Ameri" .
+
+<http://researcherai.org/author/6a4db118bca9ce3cbd777d9517e8b904> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Arslan B" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Arslan B" .
+
+<http://researcherai.org/author/6adad6c2856da4a54d01b9abe550e1f3> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Farhood B" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Farhood B" .
+
+<http://researcherai.org/author/6c1694f7b68deffce931a6be040ad020> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Rogg HV" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Rogg HV" .
+
+<http://researcherai.org/author/6ec0604ab66cf4a3ac7a11c0a143342d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Micheli A" ;
+    dcterms:creator <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    foaf:name "Micheli A" .
+
+<http://researcherai.org/author/71a48ed35cf2dcd7edae3be40ce7e497> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Liu X" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "Liu X" .
+
+<http://researcherai.org/author/71a7aa9cb7fea742dedd88a7794f17aa> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Knutson K.L." ;
+    dcterms:creator <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    foaf:name "Knutson K.L." .
+
+<http://researcherai.org/author/71e277e1346508d2895e90805fc10930> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Tsai-Shien Chen" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Tsai-Shien Chen" .
+
+<http://researcherai.org/author/72a8426614b199c3a0bf6fa7ed98ae90> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Buckeridge D" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    foaf:name "Buckeridge D" .
+
+<http://researcherai.org/author/72d424f8c725fefee99df9fff67c9848> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Knowles J.W." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Knowles J.W." .
+
+<http://researcherai.org/author/73e3f004c00601b03d1cbca6b5f11870> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Chericoni A" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Chericoni A" .
+
+<http://researcherai.org/author/7437fe2ff8c4d6eec0659fa418432d51> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Omololu, Akinrotimi Akinyemi" ;
+    dcterms:creator <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    foaf:name "Omololu, Akinrotimi Akinyemi" .
+
+<http://researcherai.org/author/76b101da32b706c823b393646f3f67c4> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Octi Zhang" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Octi Zhang" .
+
+<http://researcherai.org/author/78e073b66da11f1b276293bd9ee8f386> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Rohan Baijal" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Rohan Baijal" .
+
+<http://researcherai.org/author/7a819bc5531c26da00ed4d6dddde1326> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Chavez AG" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Chavez AG" .
+
+<http://researcherai.org/author/7bf1051c1c18f965586df7f694e444a2> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Guocheng Gordon Qian" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Guocheng Gordon Qian" .
+
+<http://researcherai.org/author/7e67ec18c3f290de089e79f9d33cb508> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Handels H" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Handels H" .
+
+<http://researcherai.org/author/8145672fafe9df51fd608e1c11889c82> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Mathura RK" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Mathura RK" .
+
+<http://researcherai.org/author/826e916199e4182b72b46b8a4ec4e25f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Ju Hu" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Ju Hu" .
+
+<http://researcherai.org/author/846cf1b2900f2da5c6fbfbf8165052ab> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Stefan Engl" ;
+    dcterms:creator <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    foaf:name "Stefan Engl" .
+
+<http://researcherai.org/author/848d731d047425bfca1e8793777b28ea> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Jawad M" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Jawad M" .
+
+<http://researcherai.org/author/8773884bbce119f460b05a2dec89f357> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Bartoli E" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Bartoli E" .
+
+<http://researcherai.org/author/8a1e3c745be5aaa2278ad629840dc729> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Adewale, Olubunmi Oluwaseun" ;
+    dcterms:creator <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    foaf:name "Adewale, Olubunmi Oluwaseun" .
+
+<http://researcherai.org/author/8c04483955d919b23a1067f52a10a822> a rai:Author,
+        foaf:Person ;
+    rdfs:label "P. Iwanek" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "P. Iwanek" .
+
+<http://researcherai.org/author/8d8c8900bfb359d34db262af14a62ba6> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Schröpfer F" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Schröpfer F" .
+
+<http://researcherai.org/author/8f7f4fae962987f9982afd09d2282c13> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Eitan Kosman" ;
+    dcterms:creator <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    foaf:name "Eitan Kosman" .
+
+<http://researcherai.org/author/90b03b79e9376eea5adf927b084b408e> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sebastian Stabinger" ;
+    dcterms:creator <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    foaf:name "Sebastian Stabinger" .
+
+<http://researcherai.org/author/9331e07b3c46d1b5e504d14453c516f7> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Daniel Gorbatov" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Daniel Gorbatov" .
+
+<http://researcherai.org/author/9775223ba96387a8a041d1065796bd0f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Abhishek Gupta" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Abhishek Gupta" .
+
+<http://researcherai.org/author/97f6da6571063bc1cef75dab90cb1ddc> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Xie Q" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Xie Q" .
+
+<http://researcherai.org/author/9c5103214d2b334b182a7e30b26b6c98> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Gu X" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "Gu X" .
+
+<http://researcherai.org/author/9c6254d83479a2a3e1e6ecb59ab8f5a8> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Bossert, Lukas C." ;
+    dcterms:creator <http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> ;
+    foaf:name "Bossert, Lukas C." .
+
+<http://researcherai.org/author/a0f92878c0558da04dbc4bbdd41e3ac4> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Ruihang Zhang" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Ruihang Zhang" .
+
+<http://researcherai.org/author/a40aabb9724c0d5ffbfc6bea3502d6ec> a rai:Author,
+        foaf:Person ;
+    rdfs:label "P. Pietrukowicz" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "P. Pietrukowicz" .
+
+<http://researcherai.org/author/a76f0924ad851bf4d39872ab2b239ec6> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Rekha MM" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Rekha MM" .
+
+<http://researcherai.org/author/a7b08326c8fa451100e41647539114ea> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Quiroz YT" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Quiroz YT" .
+
+<http://researcherai.org/author/a7e9cb7c74c237399c3cb7070e0ebd2d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Daniil Ostashev" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Daniil Ostashev" .
+
+<http://researcherai.org/author/a95aabd298983113309909719ab9ebdb> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Omri Azencot" ;
+    dcterms:creator <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    foaf:name "Omri Azencot" .
+
+<http://researcherai.org/author/ac051dca309a4f530f1df3245d1202c2> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Natasha Alkhatib" ;
+    dcterms:creator <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    foaf:name "Natasha Alkhatib" .
+
+<http://researcherai.org/author/adcdf0c5c9f0b5fb600bc8bb7d2f70f9> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yung, Claire" ;
+    dcterms:creator <http://researcherai.org/entity/020adc5ce3647561a28b142f226969b1> ;
+    foaf:name "Yung, Claire" .
+
+<http://researcherai.org/author/add4e0ae549a1bf52161a79b77e6a04c> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Chairuengjitjaras P" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Chairuengjitjaras P" .
+
+<http://researcherai.org/author/afff03cc4498f1333b72e7c3d1f15475> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Du X" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Du X" .
+
+<http://researcherai.org/author/b1477df71b7a552f8f54d1b5de89b668> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Steffes M." ;
+    dcterms:creator <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    foaf:name "Steffes M." .
+
+<http://researcherai.org/author/b16f1bad0db329a8fcc8cb2976c27d21> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Wasleske, Erik" ;
+    dcterms:creator <http://researcherai.org/entity/9f93db1b3002f20540b00df178bf601a> ;
+    foaf:name "Wasleske, Erik" .
+
+<http://researcherai.org/author/b4af09d91fbaf80ab6adab3f314abf3d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "S. Kozłowski" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "S. Kozłowski" .
+
+<http://researcherai.org/author/b669af0bcd96b3e0874097a593b9f529> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Meng Dong" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Meng Dong" .
+
+<http://researcherai.org/author/b67db381481db76fc3899bb7f49917b5> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hayden BY" ;
+    dcterms:creator <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    foaf:name "Hayden BY" .
+
+<http://researcherai.org/author/b70a394d6cb50e0da45a67dad7c36dbd> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Lauderdale D.S." ;
+    dcterms:creator <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    foaf:name "Lauderdale D.S." .
+
+<http://researcherai.org/author/b78ec9f22cfb0aeef0894f27d3b6ea0f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Mateo Guaman Castro" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Mateo Guaman Castro" .
+
+<http://researcherai.org/author/bc8f7fb7c202f49c25bc0b98200dfb5a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Dossett ML" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Dossett ML" .
+
+<http://researcherai.org/author/bdf8c95dd74c1c8eeceec5e9328e5305> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Mohan E S" ;
+    dcterms:creator <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    foaf:name "Mohan E S" .
+
+<http://researcherai.org/author/be4577d31a97dcf6fee4973e2ef9b451> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Blackley SV" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Blackley SV" .
+
+<http://researcherai.org/author/be77fc8a3ebd91cab221887437544506> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Zheng Y" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "Zheng Y" .
+
+<http://researcherai.org/author/c239e00d89e25bdaf2854305aa6d53b7> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Eickhoff S" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Eickhoff S" .
+
+<http://researcherai.org/author/c347c8274e7c8c5251727cd3765c87c4> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Volcik K.A." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Volcik K.A." .
+
+<http://researcherai.org/author/c442307090c807719d24441db601e63e> a rai:Author,
+        foaf:Person ;
+    rdfs:label "MOM6 developers" ;
+    dcterms:creator <http://researcherai.org/entity/020adc5ce3647561a28b142f226969b1> ;
+    foaf:name "MOM6 developers" .
+
+<http://researcherai.org/author/c53077bb5fe296b12bec19c133b9a143> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Liu K." ;
+    dcterms:creator <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    foaf:name "Liu K." .
+
+<http://researcherai.org/author/cbc98976f89497eb359d63ee6eb67400> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Arunmozhi M" ;
+    dcterms:creator <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    foaf:name "Arunmozhi M" .
+
+<http://researcherai.org/author/cda1d8566474ddd29442260b4ff06b6b> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Mineur L" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Mineur L" .
+
+<http://researcherai.org/author/d1a553720572c73519e1069a1292ef6a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yadav A" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Yadav A" .
+
+<http://researcherai.org/author/d48fe86ca901ce047fa2ec2667859126> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Abdulali ZS" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Abdulali ZS" .
+
+<http://researcherai.org/author/d4d8f66a33a45b1d402632d8e1339859> a rai:Author,
+        foaf:Person ;
+    rdfs:label "H. Ghauch" ;
+    dcterms:creator <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    foaf:name "H. Ghauch" .
+
+<http://researcherai.org/author/d579ba7ad69ce970245d5af77d7c360a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Ivan Skorokhodov" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Ivan Skorokhodov" .
+
+<http://researcherai.org/author/d5eb42b860efdc10553c62d11c2a09be> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Juan Lopez" ;
+    dcterms:creator <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    foaf:name "Juan Lopez" .
+
+<http://researcherai.org/author/d67c48e0b5651d62cfe93b76fd8b0b2f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Kim TY" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Kim TY" .
+
+<http://researcherai.org/author/d7da4dcea31d85a830ffbc817f18b66c> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Sergey Tulyakov" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Sergey Tulyakov" .
+
+<http://researcherai.org/author/d811db4995042ee020c51c45e8227728> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Lu Q" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    foaf:name "Lu Q" .
+
+<http://researcherai.org/author/da841dedcaacac960f6cba4d28465f2f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Rajalakshmi D" ;
+    dcterms:creator <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    foaf:name "Rajalakshmi D" .
+
+<http://researcherai.org/author/daa7d084fc5c6a870ce31fd04b8bac0b> a rai:Author,
+        foaf:Person ;
+    rdfs:label "M. Mushtaq" ;
+    dcterms:creator <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    foaf:name "M. Mushtaq" .
+
+<http://researcherai.org/author/dc948f68de54bb20a41b81d01aae0f01> a rai:Author,
+        foaf:Person ;
+    rdfs:label "K. Rybicki" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "K. Rybicki" .
+
+<http://researcherai.org/author/dffcbfe0bbfefdbb0c100b927820978d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Lv C" ;
+    dcterms:creator <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    foaf:name "Lv C" .
+
+<http://researcherai.org/author/e0349f6ff3e064cb7ebdf9a7e377e7d8> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Maccari G" ;
+    dcterms:creator <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    foaf:name "Maccari G" .
+
+<http://researcherai.org/author/e170882f4fedbaddf06fe54acb22155f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Li Y" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    foaf:name "Li Y" .
+
+<http://researcherai.org/author/e4d196de2741311b4c99552686ef797e> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Mushtaq H" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Mushtaq H" .
+
+<http://researcherai.org/author/e51f623c67a50f4d0abea44543c3ba19> a rai:Author,
+        foaf:Person ;
+    rdfs:label "MITgcm developers" ;
+    dcterms:creator <http://researcherai.org/entity/020adc5ce3647561a28b142f226969b1> ;
+    foaf:name "MITgcm developers" .
+
+<http://researcherai.org/author/e60c4146d0ccdd446b37ad76cad31343> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Quertermous T." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Quertermous T." .
+
+<http://researcherai.org/author/e66812bcd2455a57c7bce3ba3f0ab810> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Weng RL" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Weng RL" .
+
+<http://researcherai.org/author/e6a293977bf982584129c891f5b6d6aa> a rai:Author,
+        foaf:Person ;
+    rdfs:label "M. Wrona" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "M. Wrona" .
+
+<http://researcherai.org/author/e87a52ff26baab973926ad97ad7cf886> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yusuf Dalva" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Yusuf Dalva" .
+
+<http://researcherai.org/author/eaae92a0f8d701d61cb1371bdeaddb2f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "D'Arco E" ;
+    dcterms:creator <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    foaf:name "D'Arco E" .
+
+<http://researcherai.org/author/eb0011b7643285bf60249f6759d39357> a rai:Author,
+        foaf:Person ;
+    rdfs:label "M. J. Mróz" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "M. J. Mróz" .
+
+<http://researcherai.org/author/ec772e60f4ff45a9e24252bd272aa218> a rai:Author,
+        foaf:Person ;
+    rdfs:label "I. Soszyński" ;
+    dcterms:creator <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    foaf:name "I. Soszyński" .
+
+<http://researcherai.org/author/edceed7ec196abd2c52375c9a68bac9d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Berg K" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Berg K" .
+
+<http://researcherai.org/author/ee6ea610adfaa568369a4bc390287b57> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Allayee H." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Allayee H." .
+
+<http://researcherai.org/author/ef685d6dac9b10580c34d344886c2d36> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Novoa-Laurentiev J" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Novoa-Laurentiev J" .
+
+<http://researcherai.org/author/f04e91736c62d598c5ed4b3d0a8ed8f0> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Arpit Sahni" ;
+    dcterms:creator <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    foaf:name "Arpit Sahni" .
+
+<http://researcherai.org/author/f1cbc3c871e8fa18f191e8b5d6df5040> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Zurowski B" ;
+    dcterms:creator <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    foaf:name "Zurowski B" .
+
+<http://researcherai.org/author/f2824c737fa2ec81b4ed719f3d5fce6a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Gross M." ;
+    dcterms:creator <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    foaf:name "Gross M." .
+
+<http://researcherai.org/author/f67d12a5007083a5649c46d02f8eea68> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Onome, Omude Paul" ;
+    dcterms:creator <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    foaf:name "Onome, Omude Paul" .
+
+<http://researcherai.org/author/f6bb00b3d035d4ba6ef3bbac36635d2f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Byron Boots" ;
+    dcterms:creator <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    foaf:name "Byron Boots" .
+
+<http://researcherai.org/author/f7a5372077726564490447f2c1f8a550> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yang Z" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    foaf:name "Yang Z" .
+
+<http://researcherai.org/author/f8b574de764a88e1d97f0a76b860d79a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Abdulameer S" ;
+    dcterms:creator <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    foaf:name "Abdulameer S" .
+
+<http://researcherai.org/author/f9b12c740b2bc072e923643e91cc794b> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Boerwinkle E." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Boerwinkle E." .
+
+<http://researcherai.org/author/fb783c7817945176060dc8b501796e1a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Baldassare, Vivienne" ;
+    dcterms:creator <http://researcherai.org/entity/9f93db1b3002f20540b00df178bf601a> ;
+    foaf:name "Baldassare, Vivienne" .
+
+<http://researcherai.org/author/fba6790b81d927fe124a9bd1072b32ab> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Assimes T.L." ;
+    dcterms:creator <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    foaf:name "Assimes T.L." .
+
+<http://researcherai.org/author/ffac2f67890fb8e7893f2ed316ff768f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hong N" ;
+    dcterms:creator <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Hong N" .
+
+<http://researcherai.org/entity/89a2ec851b9fb9bcee8e2fefa85f02fa> dcterms:creator <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+<http://researcherai.org/author/00e1f613d9385faa3d1e8c1ef052a1d0> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Cheng Chen" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Cheng Chen" .
+
+<http://researcherai.org/author/0cb9174e4827239e782154d05795d5b0> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Wen Wang" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Wen Wang" .
+
+<http://researcherai.org/author/12ce802258d2c693b9070dab7adea020> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yixuan Li" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Yixuan Li" .
+
+<http://researcherai.org/author/17811ce492fc93db922c8921f7e28009> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yujun Shen" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Yujun Shen" .
+
+<http://researcherai.org/author/337a889bb31e5b5f998d6e6428762b67> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hanlin Wang" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Hanlin Wang" .
+
+<http://researcherai.org/author/373512fc9d54c98a126c89e261bdca35> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Qiuyu Wang" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Qiuyu Wang" .
+
+<http://researcherai.org/author/39508cc4ac9e7bc809f1356134693f2a> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Marc Kamionkowski" ;
+    dcterms:creator <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    foaf:name "Marc Kamionkowski" .
+
+<http://researcherai.org/author/452e1e168206c8f5100c1d51adbaf086> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Xu H" ;
+    dcterms:creator <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135>,
+        <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    foaf:name "Xu H" .
+
+<http://researcherai.org/author/54b3cb7ccde8cf60bd5c3fbf5db48d3f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yanhong Zeng" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Yanhong Zeng" .
+
+<http://researcherai.org/author/8741ffe671bd965608a08c0aa681c132> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Huamin Qu" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Huamin Qu" .
+
+<http://researcherai.org/author/9c62b87bb9dcfe8c186825d796666f3f> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Ka Leong Cheng" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Ka Leong Cheng" .
+
+<http://researcherai.org/author/ac6d2b4f41c41e26fceafdeb3d0e8918> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yihao Meng" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Yihao Meng" .
+
+<http://researcherai.org/author/b2ea37510991abdd1818e9086260f66d> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Hao Ouyang" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Hao Ouyang" .
+
+<http://researcherai.org/author/da46dc8ef5d858d83353bfcac0169902> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Nanoom Lee" ;
+    dcterms:creator <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    foaf:name "Nanoom Lee" .
+
+<http://researcherai.org/author/e17ecccabe33041b816fe4dbaff152cf> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yue Yu" ;
+    dcterms:creator <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    foaf:name "Yue Yu" .
+
+<http://researcherai.org/author/ff205118a90d92462108bfb58ee492db> a rai:Author,
+        foaf:Person ;
+    rdfs:label "Yacine Ali-Haïmoud" ;
+    dcterms:creator <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    foaf:name "Yacine Ali-Haïmoud" .
+
+<http://researcherai.org/entity/006795aeeab570e4ca336932c33932f2> a rai:Entity ;
+    rdfs:label "RDM" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/051add58e833c22d75035dd4993cbdbb> a rai:Entity ;
+    rdfs:label "size_categories:100K<n<1M" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/09e4d2434fbc33174ccc46d64ce97a3d> a rai:Entity ;
+    rdfs:label "pii:S1386-5056(25)00333-8" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/10c5444dd87040f242f244636791429a> a rai:Entity ;
+    rdfs:label "region:us" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/1ab7c3dde46f158f0d733e4c5f1bcc5a> a rai:Entity ;
+    rdfs:label "library:datasets" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/1fa6a4e7a1bcbc394e457820a676b819> a rai:Entity ;
+    rdfs:label "pubmed:40667335" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/1fadd05dc1b93b47a9d272858e651f33> a rai:Entity ;
+    rdfs:label "pubmed:40992205" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/1ff5128877a592447b1d1d963c37b5f2> a rai:Entity ;
+    rdfs:label "doi:10.1007/s13755-025-00384-0" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/240c69488d553accd9a770fb88f3ac81> a rai:Entity ;
+    rdfs:label "mid:NIHMS2112209" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/2605a0f207e94bb089dd6260ae008535> a rai:Entity ;
+    rdfs:label "doi:10.1016/j.jad.2025.119990" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/3c8bf91066d2f8569b2aaf60209514cd> a rai:Entity ;
+    rdfs:label "pmc:PMC12521703" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/44fa05e41e5834899954c005b7eb6e12> a rai:Entity ;
+    rdfs:label "pmcid:pmc-id: PMC12262436;" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/4a931512ce65bdc9ca6808adf92d8783> a rai:Entity ;
+    rdfs:label "tools" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/4f25336e3bb15c1958875f1c77e2d926> a rai:Entity ;
+    rdfs:label "modality:text" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/52d8258382ee8a4ecdd9135cb00aff51> a rai:Entity ;
+    rdfs:label "pii:10.1007/s12672-025-02314-8" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/56a588b68b7f7b61c09af3fa2fd3fc71> a rai:Entity ;
+    rdfs:label "pmcid:pmc-id: PMC12538682;" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/5a117a20cb2568bedbf07ac7e1877675> a rai:Entity ;
+    rdfs:label "pubmed:41104651" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/5a539528fcd72edf8ec8f664d2c359ca> a rai:Entity ;
+    rdfs:label "doi:10.1109/JBHI.2025.3589257" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/63793560dd19b56f688c70d6bc295f73> a rai:Entity ;
+    rdfs:label "doi:10.1080/19420862.2025.2570749" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/674cf86a8e9cc0d03856bb5f6f429795> a rai:Entity ;
+    rdfs:label "pubmed:41127660" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/6b8c80baf92e8971fa90cfd6ea1a1d5d> a rai:Entity ;
+    rdfs:label "doi:10.1016/j.dib.2025.112073" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/6bba91d944fdbfde534d746f060c33fd> a rai:Entity ;
+    rdfs:label "pubmed:41103452" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/6eb7b897e87b2776c5c8d16c02d469a3> a rai:Entity ;
+    rdfs:label "pubmed:40730289" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/762d19ab5586dc0c1c36f2588ffbc892> a rai:Entity ;
+    rdfs:label "emacs" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/7648cd528b5189da26d085702579fb1e> a rai:Entity ;
+    rdfs:label "astro-ph.SR" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/7e936b9a79797c8afd0985e4e34978d5> a rai:Entity ;
+    rdfs:label "pmc:PMC12536629" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/83ec45960b80c035a0068df1d9df5aa8> a rai:Entity ;
+    rdfs:label "technology" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/850f94101c5738dde51da5db3eacd023> a rai:Entity ;
+    rdfs:label "doi:10.1016/j.ijmedinf.2025.106116" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/88489438bfa3ceb23da291233cab5703> a rai:Entity ;
+    rdfs:label "pii:384" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/88ffde13df86e7e0fc3959144393d209> a rai:Entity ;
+    rdfs:label "pmc:PMC12262436" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/8bb23cbcd04bb595dd202dff571bf5b7> a rai:Entity ;
+    rdfs:label "format:parquet" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/8d97582e2ec7683b11e9a4244403f15d> a rai:Entity ;
+    rdfs:label "pubmed:40663666" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/9e81ba76ef5f611364fe15d690f8e8f1> a rai:Entity ;
+    rdfs:label "pmc:PMC12000487" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/a36c58d08a1e35bb71d9ef6a4d7de4c4> a rai:Entity ;
+    rdfs:label "pii:S0165-0327(25)01432-6" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/a3cde63c86bbcdc6cc0f2730376593b0> a rai:Entity ;
+    rdfs:label "doi:10.1101/2025.06.23.661103" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/b2ea57d5fcc36f5d95c6b1259842af44> a rai:Entity ;
+    rdfs:label "pmc:PMC12538682" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/b5b8cda7408142a54f38b0a28b639f79> a rai:Entity ;
+    rdfs:label "library:mlcroissant" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/c8cff0445d9c020f1e42c3079ef91457> a rai:Entity ;
+    rdfs:label "pmcid:pmc-id: PMC12536629;" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/c97def70133ac75b5f93a9e61ea97712> a rai:Entity ;
+    rdfs:label "doi:10.1007/s12672-025-02314-8" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/cb7f93b5274aecd6b0c13c642400b464> a rai:Entity ;
+    rdfs:label "pmcid:pmc-id: PMC12000487;" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/d8d0198193fdde47798411e6b16f9f7a> a rai:Entity ;
+    rdfs:label "pmcid:pmc-id: PMC12521703;" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/dbaa3493949168e26eb3628ff577d848> a rai:Entity ;
+    rdfs:label "pii:2025.06.23.661103" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/dbe87e86dbc6c46763f1f72246bd1d6b> a rai:Entity ;
+    rdfs:label "pubmed:40232589" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/e1dc5689d5f81157c37ed18d8bbe2586> a rai:Entity ;
+    rdfs:label "pmc:PMC12490899" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/e45b417ad0735e6f043f1ad9f5a17ce1> a rai:Entity ;
+    rdfs:label "library:pandas" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/e8f240694216433b4c643b67013d6e0b> a rai:Entity ;
+    rdfs:label "pii:S2352-3409(25)00795-4" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/f96d099987ee44f827ae1eca0d01fd08> a rai:Entity ;
+    rdfs:label "library:polars" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/fd316e48acea34c83ac6155ffb307c33> a rai:Entity ;
+    rdfs:label "cs.RO" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/ff52ab46fea347381c2832a661c4bcd6> a rai:Entity ;
+    rdfs:label "pmcid:pmc-id: PMC12490899;manuscript-id: NIHMS2112" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/2ba07b8e25aac4d5e3fbb2776711df0c> a rai:Entity ;
+    rdfs:label "astro-ph.CO" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/4079734f96b900db7fa26829836c0928> a rai:Entity ;
+    rdfs:label "cs.LG" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/c850ee1f1a495711875b901c22a4fb72> a rai:Entity ;
+    rdfs:label "cs.AI" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> rai:is_about <http://researcherai.org/entity/006795aeeab570e4ca336932c33932f2>,
+        <http://researcherai.org/entity/4a931512ce65bdc9ca6808adf92d8783>,
+        <http://researcherai.org/entity/762d19ab5586dc0c1c36f2588ffbc892>,
+        <http://researcherai.org/entity/83ec45960b80c035a0068df1d9df5aa8> .
+
+<http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> a rai:Entity ;
+    rdfs:label "cs.CV" ;
+    rai:entityType "topic" .
+
+<http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> rai:is_about <http://researcherai.org/entity/051add58e833c22d75035dd4993cbdbb>,
+        <http://researcherai.org/entity/10c5444dd87040f242f244636791429a>,
+        <http://researcherai.org/entity/1ab7c3dde46f158f0d733e4c5f1bcc5a>,
+        <http://researcherai.org/entity/4f25336e3bb15c1958875f1c77e2d926>,
+        <http://researcherai.org/entity/8bb23cbcd04bb595dd202dff571bf5b7>,
+        <http://researcherai.org/entity/b5b8cda7408142a54f38b0a28b639f79>,
+        <http://researcherai.org/entity/e45b417ad0735e6f043f1ad9f5a17ce1>,
+        <http://researcherai.org/entity/f96d099987ee44f827ae1eca0d01fd08> .
+
+<http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Efficient analytic approximation for small-scale non-cold relic   perturbations" ;
+    dcterms:source "arXiv" ;
+    dcterms:title "Efficient analytic approximation for small-scale non-cold relic   perturbations" ;
+    rai:is_about <http://researcherai.org/entity/2ba07b8e25aac4d5e3fbb2776711df0c> .
+
+<http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> rai:is_about <http://researcherai.org/entity/56a588b68b7f7b61c09af3fa2fd3fc71>,
+        <http://researcherai.org/entity/674cf86a8e9cc0d03856bb5f6f429795>,
+        <http://researcherai.org/entity/6b8c80baf92e8971fa90cfd6ea1a1d5d>,
+        <http://researcherai.org/entity/b2ea57d5fcc36f5d95c6b1259842af44>,
+        <http://researcherai.org/entity/e8f240694216433b4c643b67013d6e0b> .
+
+<http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Towards General Modality Translation with Contrastive and Predictive   Latent Diffusion Bridge" ;
+    dcterms:source "arXiv" ;
+    dcterms:title "Towards General Modality Translation with Contrastive and Predictive   Latent Diffusion Bridge" ;
+    rai:is_about <http://researcherai.org/entity/4079734f96b900db7fa26829836c0928>,
+        <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc>,
+        <http://researcherai.org/entity/c850ee1f1a495711875b901c22a4fb72> .
+
+<http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> rai:is_about <http://researcherai.org/entity/5a117a20cb2568bedbf07ac7e1877675>,
+        <http://researcherai.org/entity/63793560dd19b56f688c70d6bc295f73>,
+        <http://researcherai.org/entity/7e936b9a79797c8afd0985e4e34978d5>,
+        <http://researcherai.org/entity/c8cff0445d9c020f1e42c3079ef91457> .
+
+<http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> rai:is_about <http://researcherai.org/entity/5a539528fcd72edf8ec8f664d2c359ca>,
+        <http://researcherai.org/entity/8d97582e2ec7683b11e9a4244403f15d> .
+
+<http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> rai:is_about <http://researcherai.org/entity/1ff5128877a592447b1d1d963c37b5f2>,
+        <http://researcherai.org/entity/3c8bf91066d2f8569b2aaf60209514cd>,
+        <http://researcherai.org/entity/6bba91d944fdbfde534d746f060c33fd>,
+        <http://researcherai.org/entity/88489438bfa3ceb23da291233cab5703>,
+        <http://researcherai.org/entity/d8d0198193fdde47798411e6b16f9f7a> .
+
+<http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "VAMOS: A Hierarchical Vision-Language-Action Model for   Capability-Modulated and Steerable Navigation" ;
+    dcterms:source "arXiv" ;
+    dcterms:title "VAMOS: A Hierarchical Vision-Language-Action Model for   Capability-Modulated and Steerable Navigation" ;
+    rai:is_about <http://researcherai.org/entity/4079734f96b900db7fa26829836c0928>,
+        <http://researcherai.org/entity/c850ee1f1a495711875b901c22a4fb72>,
+        <http://researcherai.org/entity/fd316e48acea34c83ac6155ffb307c33> .
+
+<http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "LayerComposer: Interactive Personalized T2I via Spatially-Aware Layered   Canvas" ;
+    dcterms:source "arXiv" ;
+    dcterms:title "LayerComposer: Interactive Personalized T2I via Spatially-Aware Layered   Canvas" ;
+    rai:is_about <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> .
+
+<http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> rai:is_about <http://researcherai.org/entity/52d8258382ee8a4ecdd9135cb00aff51>,
+        <http://researcherai.org/entity/9e81ba76ef5f611364fe15d690f8e8f1>,
+        <http://researcherai.org/entity/c97def70133ac75b5f93a9e61ea97712>,
+        <http://researcherai.org/entity/cb7f93b5274aecd6b0c13c642400b464>,
+        <http://researcherai.org/entity/dbe87e86dbc6c46763f1f72246bd1d6b> .
+
+<http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "Doubling the Number of Blue Large-Amlitude Pulsators: Final Results of   Searches for BLAPs in the OGLE Inner Galactic Bulge Fields" ;
+    dcterms:source "arXiv" ;
+    dcterms:title "Doubling the Number of Blue Large-Amlitude Pulsators: Final Results of   Searches for BLAPs in the OGLE Inner Galactic Bulge Fields" ;
+    rai:is_about <http://researcherai.org/entity/7648cd528b5189da26d085702579fb1e> .
+
+<http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> rai:is_about <http://researcherai.org/entity/1fa6a4e7a1bcbc394e457820a676b819>,
+        <http://researcherai.org/entity/44fa05e41e5834899954c005b7eb6e12>,
+        <http://researcherai.org/entity/88ffde13df86e7e0fc3959144393d209>,
+        <http://researcherai.org/entity/a3cde63c86bbcdc6cc0f2730376593b0>,
+        <http://researcherai.org/entity/dbaa3493949168e26eb3628ff577d848> .
+
+<http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> rai:is_about <http://researcherai.org/entity/2605a0f207e94bb089dd6260ae008535>,
+        <http://researcherai.org/entity/6eb7b897e87b2776c5c8d16c02d469a3>,
+        <http://researcherai.org/entity/a36c58d08a1e35bb71d9ef6a4d7de4c4> .
+
+<http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> a bibo:AcademicArticle,
+        rai:Paper ;
+    rdfs:label "HoloCine: Holistic Generation of Cinematic Multi-Shot Long Video   Narratives" ;
+    dcterms:source "arXiv" ;
+    dcterms:title "HoloCine: Holistic Generation of Cinematic Multi-Shot Long Video   Narratives" ;
+    rai:is_about <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> .
+
+<http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> rai:is_about <http://researcherai.org/entity/09e4d2434fbc33174ccc46d64ce97a3d>,
+        <http://researcherai.org/entity/1fadd05dc1b93b47a9d272858e651f33>,
+        <http://researcherai.org/entity/240c69488d553accd9a770fb88f3ac81>,
+        <http://researcherai.org/entity/850f94101c5738dde51da5db3eacd023>,
+        <http://researcherai.org/entity/e1dc5689d5f81157c37ed18d8bbe2586>,
+        <http://researcherai.org/entity/ff52ab46fea347381c2832a661c4bcd6> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/c239e00d89e25bdaf2854305aa6d53b7> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/c8cff0445d9c020f1e42c3079ef91457> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/09feacdba4d5522ff2c22be8c6859a49> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/00e1f613d9385faa3d1e8c1ef052a1d0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/e1dc5689d5f81157c37ed18d8bbe2586> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/7bf1051c1c18f965586df7f694e444a2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6a16c93d9c401e30c9f2b4e9f5aa0294> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/a36c58d08a1e35bb71d9ef6a4d7de4c4> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/05cb51c7e6d502bb0aa158efd13141e4> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0cb9174e4827239e782154d05795d5b0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3045849cab5d0ab574f200edfeb76ead> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e0349f6ff3e064cb7ebdf9a7e377e7d8> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/5fc48932a73d8e298f475c9664b6e325> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/136bc461f02a25eca4ee244ae14e4d24> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f2824c737fa2ec81b4ed719f3d5fce6a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/9f93db1b3002f20540b00df178bf601a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/fb783c7817945176060dc8b501796e1a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8c04483955d919b23a1067f52a10a822> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4843364569b63d73ebcd629cb3f06de0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/8bb23cbcd04bb595dd202dff571bf5b7> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3188f638530751ab6e618b393c0c3ee0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/47afabc5605b622a3f58df310811df94> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/71a48ed35cf2dcd7edae3be40ce7e497> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/1949d26588a0074d845a0bd42222816a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e17ecccabe33041b816fe4dbaff152cf> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/5656ef2d91fd0f1509bc9687ab2c3132> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/57e58b3c3dd036d14dfdcec772c97dfe> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/9c62b87bb9dcfe8c186825d796666f3f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/1ff5128877a592447b1d1d963c37b5f2> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3246311e6b895c6c28e825aff9af2408> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/68bccbf61e1c79abaa5163fe48c8c3d0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/cbc98976f89497eb359d63ee6eb67400> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/12ce802258d2c693b9070dab7adea020> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/06e723095e11bfb2758cc0105ef67664> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3e4edb1cd4744687ff3834a422ce7d06> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/da46dc8ef5d858d83353bfcac0169902> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/337a889bb31e5b5f998d6e6428762b67> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8d8c8900bfb359d34db262af14a62ba6> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/be4577d31a97dcf6fee4973e2ef9b451> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/72a8426614b199c3a0bf6fa7ed98ae90> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/71e277e1346508d2895e90805fc10930> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/605100c15a28a16a6b74917390aad47e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/12a3a088a84a701b8ed777df27afa698> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/9c62b87bb9dcfe8c186825d796666f3f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/c347c8274e7c8c5251727cd3765c87c4> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/4079734f96b900db7fa26829836c0928> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/512a99918cbbe894f94202be06c386f9> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f9b12c740b2bc072e923643e91cc794b> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/76b101da32b706c823b393646f3f67c4> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/9331e07b3c46d1b5e504d14453c516f7> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/44fa05e41e5834899954c005b7eb6e12> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/ff52ab46fea347381c2832a661c4bcd6> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/d8d0198193fdde47798411e6b16f9f7a> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d579ba7ad69ce970245d5af77d7c360a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/b5b8cda7408142a54f38b0a28b639f79> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/422194c259a0caf853c0003af61139ef> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/dc948f68de54bb20a41b81d01aae0f01> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/07fcb5683de5ed5e5662973c3842db49> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/5fb19ce1619d14c52693d5b532a1e653> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/add4e0ae549a1bf52161a79b77e6a04c> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/2ba07b8e25aac4d5e3fbb2776711df0c> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/4f25336e3bb15c1958875f1c77e2d926> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/452e1e168206c8f5100c1d51adbaf086> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/edceed7ec196abd2c52375c9a68bac9d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/40ede0a381779f3d2736a689e2aad3f3> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3ddac4eccab5bbc8873d9a054823e705> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/49a8c6d9f3ccd1511dd41d35b85a0f40> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/afff03cc4498f1333b72e7c3d1f15475> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/62bd3c98af5795cb18241551acd2939d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/337a889bb31e5b5f998d6e6428762b67> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/63793560dd19b56f688c70d6bc295f73> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/423684b6b8098b028b0cd8b6f7307c7a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/452e1e168206c8f5100c1d51adbaf086> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/53cb973ee8f5222c1d70e3786f69e70d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e17ecccabe33041b816fe4dbaff152cf> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/00e1f613d9385faa3d1e8c1ef052a1d0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/29779f57af2ae3858e9e8abc259533d3> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0d755f5910daeeabd219d1024eccd6d7> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/c97def70133ac75b5f93a9e61ea97712> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/1189af55992c894d748210461a514090> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3d371277c4752e5281e1e9016183d534> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/083cc01bf85d00adeab3ca6fb35cd73a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ac6d2b4f41c41e26fceafdeb3d0e8918> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0ee9ef864f40a2f718dcf601ab07dbb6> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8773884bbce119f460b05a2dec89f357> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/5579a36f1398c69126bbf22171b20774> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/78e073b66da11f1b276293bd9ee8f386> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/1be545cb2c5734e7921b9ce699d9554f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d811db4995042ee020c51c45e8227728> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ec772e60f4ff45a9e24252bd272aa218> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/b2ea57d5fcc36f5d95c6b1259842af44> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/17811ce492fc93db922c8921f7e28009> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/848d731d047425bfca1e8793777b28ea> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/dffcbfe0bbfefdbb0c100b927820978d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/c53077bb5fe296b12bec19c133b9a143> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2802a6a9260f2ef1d9b96085e8da1746> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/1fadd05dc1b93b47a9d272858e651f33> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3c9b7af0bc4ea59c33bb44e201e72a54> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2b1b572d68fe0f60e4d0228e7c82dcff> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/46a634104ffb33b888fe3b4a43f8e7d9> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/a40aabb9724c0d5ffbfc6bea3502d6ec> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/f96d099987ee44f827ae1eca0d01fd08> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e60c4146d0ccdd446b37ad76cad31343> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/40a5c476926cc0cc950c7eca42b8fd8f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/dbaa3493949168e26eb3628ff577d848> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/9f93db1b3002f20540b00df178bf601a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b16f1bad0db329a8fcc8cb2976c27d21> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/020adc5ce3647561a28b142f226969b1> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/adcdf0c5c9f0b5fb600bc8bb7d2f70f9> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/020adc5ce3647561a28b142f226969b1> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e51f623c67a50f4d0abea44543c3ba19> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/61f73e5c562fc3a8f83e8f9badc30316> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f67d12a5007083a5649c46d02f8eea68> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/73e3f004c00601b03d1cbca6b5f11870> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ee6ea610adfaa568369a4bc390287b57> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/eaae92a0f8d701d61cb1371bdeaddb2f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/8d97582e2ec7683b11e9a4244403f15d> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/bdf8c95dd74c1c8eeceec5e9328e5305> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/18443b052ae822e1d866d381a30bee13> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f1cbc3c871e8fa18f191e8b5d6df5040> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/30c709ca022f7b7e6cb5ff8fbd4dddcb> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f04e91736c62d598c5ed4b3d0a8ed8f0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6ec0604ab66cf4a3ac7a11c0a143342d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/1fa6a4e7a1bcbc394e457820a676b819> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d5eb42b860efdc10553c62d11c2a09be> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0fbd6eedb9d1d2d9aca30f23920941b6> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/6eb7b897e87b2776c5c8d16c02d469a3> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/269038d3b0741dde6869a82b751a40e7> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e170882f4fedbaddf06fe54acb22155f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e87a52ff26baab973926ad97ad7cf886> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/09a0cbeae2f945d12f96a19e7bc610d8> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8741ffe671bd965608a08c0aa681c132> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/51fdb0fe9a3bcc66b09e8c89436ed905> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/254b5071a73ca510dae56fdae1a84dbf> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/88ffde13df86e7e0fc3959144393d209> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/529f834713b000829f17093b754a781e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/29749caaa99997b81cfcb43b26e444e1> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/56a588b68b7f7b61c09af3fa2fd3fc71> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/850f94101c5738dde51da5db3eacd023> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4430b411a6329db6524a95c4a9156076> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/cda1d8566474ddd29442260b4ff06b6b> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/e8f240694216433b4c643b67013d6e0b> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/1b8a6b3c86f07e89f7dbfeae48bef3c8> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/9775223ba96387a8a041d1065796bd0f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/fba6790b81d927fe124a9bd1072b32ab> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2ed724cbf0bb36253c42195bbd375fdf> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/5a117a20cb2568bedbf07ac7e1877675> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6c1694f7b68deffce931a6be040ad020> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/c850ee1f1a495711875b901c22a4fb72> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f7a5372077726564490447f2c1f8a550> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/240c69488d553accd9a770fb88f3ac81> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/9c5103214d2b334b182a7e30b26b6c98> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2cd4b5e9a41dee3a8677b358843ceaf2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/63240394ed11b1868f7da10ba794dc64> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d67c48e0b5651d62cfe93b76fd8b0b2f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/83ec45960b80c035a0068df1d9df5aa8> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8145672fafe9df51fd608e1c11889c82> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b4af09d91fbaf80ab6adab3f314abf3d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2823a3da4f05c1e4383eca96882edd83> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/90b03b79e9376eea5adf927b084b408e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/fd316e48acea34c83ac6155ffb307c33> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4b181e4101e71cf0b1af18fdc8657a2d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/079d6391ac6429a4329bad48e825bc8f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/52d8258382ee8a4ecdd9135cb00aff51> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2da2b2ac876f18f4ac053295494b8822> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/846cf1b2900f2da5c6fbfbf8165052ab> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/17811ce492fc93db922c8921f7e28009> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3719b1a03ec93ac9090090bd4dd487d5> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/54e874809f54ef9d41b963508930fc49> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b70a394d6cb50e0da45a67dad7c36dbd> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/7e936b9a79797c8afd0985e4e34978d5> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/39508cc4ac9e7bc809f1356134693f2a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/54b3cb7ccde8cf60bd5c3fbf5db48d3f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/a0f92878c0558da04dbc4bbdd41e3ac4> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0cb9174e4827239e782154d05795d5b0> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/a3cde63c86bbcdc6cc0f2730376593b0> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ff205118a90d92462108bfb58ee492db> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/7437fe2ff8c4d6eec0659fa418432d51> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/10efc62205d55c022e284c5ed05f0d82> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e4d196de2741311b4c99552686ef797e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/5a539528fcd72edf8ec8f664d2c359ca> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3790d9aa5a4a30d06c7742778fd69841> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b1477df71b7a552f8f54d1b5de89b668> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4471ea9e93baba12f4e78241d94f50a2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/48b8e4eeaa29ff6773861685f2084b70> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/a7b08326c8fa451100e41647539114ea> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/b2c22cb4d886f9e914cf1763139f33db> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8a1e3c745be5aaa2278ad629840dc729> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8f7f4fae962987f9982afd09d2282c13> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/9f93db1b3002f20540b00df178bf601a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/622a416a8ed561dbe6a4b208462acab3> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0ddecd2da0a46c17ed674aac896cee62> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/7a819bc5531c26da00ed4d6dddde1326> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3b1d18e0a80a85f67daf1ae6e0eba0bc> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d4d8f66a33a45b1d402632d8e1339859> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/d03f469c1a1ca222270757fa554e53cc> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/be77fc8a3ebd91cab221887437544506> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b2ea37510991abdd1818e9086260f66d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/60c8c6a775554e9aa67a50cdeb27e94a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/12ce802258d2c693b9070dab7adea020> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/54b3cb7ccde8cf60bd5c3fbf5db48d3f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/4079734f96b900db7fa26829836c0928> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b67db381481db76fc3899bb7f49917b5> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/10c5444dd87040f242f244636791429a> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/9642cc0fe8203b4dd7c0aaa802a25bdc> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b669af0bcd96b3e0874097a593b9f529> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0ad759715b71fa7709df1297dc104e4b> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/373512fc9d54c98a126c89e261bdca35> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/dbe87e86dbc6c46763f1f72246bd1d6b> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f8b574de764a88e1d97f0a76b860d79a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/762d19ab5586dc0c1c36f2588ffbc892> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/a76f0924ad851bf4d39872ab2b239ec6> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/2d0ea242f1550743ed5f9f16ffc01a05> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/43cb85461f479772b132f3bfd3f6fe8d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/3c8bf91066d2f8569b2aaf60209514cd> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/020adc5ce3647561a28b142f226969b1> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/c442307090c807719d24441db601e63e> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/2605a0f207e94bb089dd6260ae008535> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/72d424f8c725fefee99df9fff67c9848> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e66812bcd2455a57c7bce3ba3f0ab810> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ac051dca309a4f530f1df3245d1202c2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/6b8c80baf92e8971fa90cfd6ea1a1d5d> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/e45b417ad0735e6f043f1ad9f5a17ce1> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/entity/89a2ec851b9fb9bcee8e2fefa85f02fa> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4ad2bad47213d7c63ae4b5f024d8122a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/1ab7c3dde46f158f0d733e4c5f1bcc5a> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/0b3307fc441e5972a7786763a3f1e179> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/779d6c3fdfd349e88e7d2d62d5b8dc1a> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/71a7aa9cb7fea742dedd88a7794f17aa> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d48fe86ca901ce047fa2ec2667859126> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/da46dc8ef5d858d83353bfcac0169902> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/9e81ba76ef5f611364fe15d690f8e8f1> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/da841dedcaacac960f6cba4d28465f2f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/cb7f93b5274aecd6b0c13c642400b464> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4f49aa1f15be0052e168456d3e5b1205> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/f6bb00b3d035d4ba6ef3bbac36635d2f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/826e916199e4182b72b46b8a4ec4e25f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/a7e9cb7c74c237399c3cb7070e0ebd2d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/7e67ec18c3f290de089e79f9d33cb508> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/e6a293977bf982584129c891f5b6d6aa> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/03a76ec0975e0d0c334f74fa8bcb40e4> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d1a553720572c73519e1069a1292ef6a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/8b53e0e2c1d0b98569b36ad11b59caa6> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4b019949ff50d6b074375b2f5cf69cd5> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ffac2f67890fb8e7893f2ed316ff768f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b2ea37510991abdd1818e9086260f66d> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ac6d2b4f41c41e26fceafdeb3d0e8918> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6249d4880d0d453d8b5ed199921d64b4> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/674cf86a8e9cc0d03856bb5f6f429795> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/c21f20a4b0de0f47c9f39ba65fc17352> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/373512fc9d54c98a126c89e261bdca35> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4342e6c040262ab42d01f3a9ca424d8b> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/1f654bfbf9f6dc1c13c95e082b52a263> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/92bc3530fc50fa367cf3c7985006ea0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/387c251199d708c363456c82fab6a191> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/9c6254d83479a2a3e1e6ecb59ab8f5a8> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/4a931512ce65bdc9ca6808adf92d8783> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/544b02e21e7b218b99d8db170abcfe0e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/8741ffe671bd965608a08c0aa681c132> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/33602479788a9dd4f32d2a91ad7ebcbb> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ef685d6dac9b10580c34d344886c2d36> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/09e4d2434fbc33174ccc46d64ce97a3d> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/61b205c55f7f6b6af883705b01bc9528> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/02de892d38929b960a0f2d46e48cbf76> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/051add58e833c22d75035dd4993cbdbb> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/8626f07e3cbe126b8e6915ba4fb91cb2> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4faf5932f0eb9caee1dd0a6c6606a387> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/006795aeeab570e4ca336932c33932f2> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/e1b439756f0f11e017a48eec69837dca> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/bc8f7fb7c202f49c25bc0b98200dfb5a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/338f3cddfaaaafc03b071fc8203eb396> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/cd08ded8ecd7af1ca1fda8be9899294d> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6adad6c2856da4a54d01b9abe550e1f3> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/7648cd528b5189da26d085702579fb1e> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/c850ee1f1a495711875b901c22a4fb72> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/ff205118a90d92462108bfb58ee492db> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/eb0011b7643285bf60249f6759d39357> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/c374d876996131efe914372e09efc543> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6a0d4100c94731be8c4936fa83380a45> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/11025591e7fbe1f275b117ab8b82415e> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/a95aabd298983113309909719ab9ebdb> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/e387feda7c9033a13171361cde830ebb> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/08d118fb10403fff2a2e703669db1b54> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3c70499dc125d8c3cd62f367da7be258> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/88489438bfa3ceb23da291233cab5703> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/6bba91d944fdbfde534d746f060c33fd> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/entity/fc10d2cf25a520be958af01d9c87e135> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/ff932483fa10247bef3e240395aa2539> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/3014282985a1727d2b34ac9e8f104955> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/0f85c6c86eca9a05b5adf313d4ef9307> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/b78ec9f22cfb0aeef0894f27d3b6ea0f> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/ff68d9e4f9a092cebaf4b7bc52a2fe83> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/d7da4dcea31d85a830ffbc817f18b66c> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "is_about" ;
+    rdf:object <http://researcherai.org/entity/2ba07b8e25aac4d5e3fbb2776711df0c> ;
+    rdf:predicate rai:is_about ;
+    rdf:subject <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0c3fd616799a1dca32488f07a19a8701> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/5d46eb835d927a36adfb167675f32248> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/0a2a5ecf6f0145077e4f577de4ca5612> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/daa7d084fc5c6a870ce31fd04b8bac0b> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/paper/a5ed4f38b71e1412daacd05403e06675> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/39508cc4ac9e7bc809f1356134693f2a> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/bb543d60c395fce52cf80e2710931694> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/6a4db118bca9ce3cbd777d9517e8b904> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/4da8935c66d6282bada73549d5396533> .
+
+[] a rdf:Statement ;
+    rai:edgeLabel "authored" ;
+    rdf:object <http://researcherai.org/entity/fcb0c3456aeb9d29760f917147e65c16> ;
+    rdf:predicate dcterms:creator ;
+    rdf:subject <http://researcherai.org/author/97f6da6571063bc1cef75dab90cb1ddc> .
+

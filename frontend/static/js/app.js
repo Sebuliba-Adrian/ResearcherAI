@@ -1276,6 +1276,227 @@ async function uploadRDF() {
 }
 
 // ============================================================================
+// Vector Space Visualization
+// ============================================================================
+
+async function loadVectorVisualization() {
+    const method = document.getElementById('vector-method-select').value;
+    const dimensions = parseInt(document.getElementById('vector-dimensions-select').value);
+    const clusterMethod = document.getElementById('vector-cluster-select').value || undefined;
+    const nClusters = parseInt(document.getElementById('vector-n-clusters').value);
+
+    try {
+        // Show loading state
+        const vizContainer = document.getElementById('vector-visualization');
+        vizContainer.innerHTML = `
+            <div class="vector-loading">
+                <div class="spinner"></div>
+                <p>Generating ${method.toUpperCase()} visualization in ${dimensions}D...</p>
+                <p class="text-sm text-muted">This may take a few moments for large datasets</p>
+            </div>
+        `;
+
+        showToast('Generating Visualization', `Computing ${method.toUpperCase()} reduction...`, 'info');
+
+        // Build query parameters
+        const params = new URLSearchParams({
+            method: method,
+            dimensions: dimensions.toString(),
+            n_clusters: nClusters.toString()
+        });
+
+        if (clusterMethod) {
+            params.append('cluster_method', clusterMethod);
+        }
+
+        const url = `${CONFIG.API_BASE_URL}/vector/visualize?${params.toString()}`;
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {'X-API-Key': state.apiKey}
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error('Visualization failed');
+        }
+
+        // Update stats
+        const stats = data.visualization.stats;
+        document.getElementById('vector-embeddings').textContent = stats.total_points;
+        document.getElementById('vector-dimension').textContent = '384';
+        document.getElementById('vector-method').textContent = method.toUpperCase();
+
+        // Render visualization
+        if (data.visualization.plotly_figure && typeof Plotly !== 'undefined') {
+            renderPlotlyVisualization(data.visualization.plotly_figure);
+        } else {
+            renderSimpleVisualization(data.visualization);
+        }
+
+        showToast(
+            'Visualization Complete',
+            `${stats.total_points} embeddings visualized using ${method.toUpperCase()}`,
+            'success'
+        );
+
+    } catch (error) {
+        console.error('Vector visualization error:', error);
+        document.getElementById('vector-visualization').innerHTML = `
+            <div class="empty-state">
+                <svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                </svg>
+                <p style="color: var(--error-color)">Visualization Failed</p>
+                <p class="text-sm">${error.message}</p>
+            </div>
+        `;
+        showToast('Visualization Failed', error.message, 'error');
+    }
+}
+
+function renderPlotlyVisualization(plotlyJson) {
+    const vizContainer = document.getElementById('vector-visualization');
+
+    // Clear container
+    vizContainer.innerHTML = '';
+
+    // Parse Plotly JSON
+    const figure = JSON.parse(plotlyJson);
+
+    // Ensure layout exists
+    if (!figure.layout) {
+        figure.layout = {};
+    }
+
+    // Force proper sizing to match container exactly
+    figure.layout.autosize = true;
+    figure.layout.width = vizContainer.clientWidth;
+    figure.layout.height = vizContainer.clientHeight;
+
+    console.log('Rendering Plotly:', {
+        container: { width: vizContainer.clientWidth, height: vizContainer.clientHeight },
+        layout: { width: figure.layout.width, height: figure.layout.height },
+        data_points: figure.data && figure.data[0] ? figure.data[0].x.length : 0,
+        is_3d: figure.data[0].type === 'scatter3d'
+    });
+
+    // Render with Plotly
+    Plotly.newPlot('vector-visualization', figure.data, figure.layout, {
+        responsive: true,
+        displayModeBar: true,
+        modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+        displaylogo: false
+    }).then(() => {
+        console.log('✅ Plotly rendered successfully');
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            Plotly.Plots.resize('vector-visualization');
+        });
+    });
+}
+
+function renderSimpleVisualization(data) {
+    const vizContainer = document.getElementById('vector-visualization');
+
+    // Fallback: Show summary if Plotly not available
+    const points = data.points;
+    const dimensions = data.config.dimensions;
+    const stats = data.stats;
+
+    let html = '<div class="simple-viz" style="padding: 40px; text-align: center;">';
+    html += `<h3>Vector Space Visualization (${data.config.method.toUpperCase()}) - ${dimensions}D</h3>`;
+    html += '<p style="margin: 20px 0; color: var(--text-secondary);">';
+    html += `${stats.total_points} embeddings reduced to ${dimensions} dimensions<br>`;
+    if (stats.n_clusters) {
+        html += `${stats.n_clusters} clusters identified`;
+    }
+    html += '</p>';
+    html += '<p style="color: var(--text-muted); font-size: 0.9rem;">Install Plotly.js for interactive visualization</p>';
+    html += '</div>';
+
+    vizContainer.innerHTML = html;
+    console.log('Simple visualization rendered (Plotly not available)');
+}
+
+async function loadVectorStats() {
+    try {
+        const response = await fetch(`${CONFIG.API_BASE_URL}/vector/stats`, {
+            method: 'GET',
+            headers: {'X-API-Key': state.apiKey}
+        });
+
+        if (!response.ok) return;
+
+        const data = await response.json();
+
+        if (data.success && data.stats) {
+            document.getElementById('vector-embeddings').textContent = data.stats.total_embeddings || 0;
+            document.getElementById('vector-dimension').textContent = data.stats.dimension || 384;
+        }
+    } catch (error) {
+        console.error('Failed to load vector stats:', error);
+    }
+}
+
+function setupVectorVisualizationControls() {
+    // Track if we've generated at least once
+    let hasGeneratedOnce = false;
+
+    // Get all control elements
+    const methodSelect = document.getElementById('vector-method-select');
+    const dimensionsSelect = document.getElementById('vector-dimensions-select');
+    const clusterSelect = document.getElementById('vector-cluster-select');
+    const nClustersInput = document.getElementById('vector-n-clusters');
+
+    // Auto-regenerate function
+    const autoRegenerate = () => {
+        if (hasGeneratedOnce) {
+            console.log('Settings changed - auto-regenerating visualization...');
+            loadVectorVisualization();
+        }
+    };
+
+    // Add change listeners to all controls
+    if (methodSelect) {
+        methodSelect.addEventListener('change', autoRegenerate);
+    }
+
+    if (dimensionsSelect) {
+        dimensionsSelect.addEventListener('change', () => {
+            const dimensions = dimensionsSelect.value;
+            console.log(`Dimensions changed to: ${dimensions}D`);
+            if (hasGeneratedOnce) {
+                loadVectorVisualization();
+            }
+        });
+    }
+
+    if (clusterSelect) {
+        clusterSelect.addEventListener('change', autoRegenerate);
+    }
+
+    if (nClustersInput) {
+        nClustersInput.addEventListener('change', autoRegenerate);
+    }
+
+    // Override loadVectorVisualization to track first generation
+    const originalLoadVectorVisualization = window.loadVectorVisualization;
+    window.loadVectorVisualization = function() {
+        hasGeneratedOnce = true;
+        return originalLoadVectorVisualization();
+    };
+}
+
+// ============================================================================
 // Initialization
 // ============================================================================
 
@@ -1292,6 +1513,7 @@ function init() {
     setupPDFUpload();
     setupRDFUpload();
     setupNavigation();
+    setupVectorVisualizationControls();
 
     // Make functions globally available
     window.scrollToSection = scrollToSection;
@@ -1305,6 +1527,8 @@ function init() {
     window.resetGraphZoom = resetGraphZoom;
     window.exportRDF = exportRDF;
     window.uploadRDF = uploadRDF;
+    window.loadVectorVisualization = loadVectorVisualization;
+    window.loadVectorStats = loadVectorStats;
 
     // Initial health check
     performHealthCheck();

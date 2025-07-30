@@ -1635,3 +1635,178 @@ body {
         display: none;
     }
 }
+
+/* ============================================================================
+   Vector Space Visualization
+   ============================================================================ */
+
+.vector-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.control-group .form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.control-group .form-select,
+.control-group .form-input {
+    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.control-group .form-select:hover,
+.control-group .form-input:hover {
+    border-color: var(--primary-color);
+    background: rgba(0, 245, 255, 0.05);
+}
+
+.control-group .form-select:focus,
+.control-group .form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 245, 255, 0.1);
+}
+
+.vector-viz-container {
+    min-height: 700px;
+    height: 700px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.vector-viz-container .empty-state {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--text-muted);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.vector-viz-container .empty-state .icon-large {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-md);
+    stroke: var(--text-muted);
+    opacity: 0.5;
+}
+
+.vector-viz-container .empty-state p {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.vector-viz-container .empty-state .text-sm {
+    font-size: 0.85rem;
+}
+
+.vector-viz-container .text-muted {
+    color: var(--text-muted);
+}
+
+/* Plotly container styling */
+.vector-viz-container .js-plotly-plot {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.vector-viz-container .js-plotly-plot .plotly {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.vector-viz-container .js-plotly-plot .main-svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.vector-info {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: rgba(0, 245, 255, 0.05);
+    border-left: 3px solid var(--primary-color);
+    border-radius: var(--radius-sm);
+}
+
+.vector-info .info-icon {
+    flex-shrink: 0;
+}
+
+.vector-info .info-icon .icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--primary-color);
+}
+
+.vector-info .info-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.vector-info .info-text strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Loading spinner for vector visualization */
+.vector-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.vector-loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(0, 245, 255, 0.1);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto var(--spacing-md);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.vector-loading p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+

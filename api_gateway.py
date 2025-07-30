@@ -223,7 +223,7 @@ async def startup_event():
 
     # Initialize agents
     try:
-        orchestrator = OrchestratorAgent(session_name="api_default", config=config)
+        orchestrator = OrchestratorAgent(session_name="default", config=config)
         critic = CriticAgent(config=config.get("agents", {}).get("critic_agent", {}))
         logger.info("✅ All agents initialized successfully")
     except Exception as e:
@@ -657,19 +657,54 @@ async def import_rdf(
         stats = {"nodes_added": 0, "edges_added": 0, "papers_processed": 0}
 
         # Filter papers from nodes
-        papers = [n for n in graph_data['nodes'] if n.get('type') == 'paper']
+        papers_raw = [n for n in graph_data['nodes'] if n.get('type') == 'paper']
+
+        # Flatten properties for compatibility with vector agent
+        papers = []
+        for paper_node in papers_raw:
+            paper = {
+                'id': paper_node.get('id'),
+                'label': paper_node.get('label'),
+                'type': paper_node.get('type')
+            }
+            # Merge properties to top level
+            if 'properties' in paper_node:
+                paper.update(paper_node['properties'])
+            papers.append(paper)
 
         if papers:
             # Process through graph agent
             if merge:
-                result = orchestrator.graph_agent.process_papers(papers)
-                stats.update(result)
+                graph_result = orchestrator.graph_agent.process_papers(papers)
+                stats.update(graph_result)
             else:
                 # Clear existing graph first
                 if orchestrator.graph_agent.db_type == "networkx":
                     orchestrator.graph_agent.G.clear()
-                result = orchestrator.graph_agent.process_papers(papers)
-                stats.update(result)
+                graph_result = orchestrator.graph_agent.process_papers(papers)
+                stats.update(graph_result)
+
+            # CRITICAL: Also process through vector agent for semantic search
+            try:
+                logger.info(f"Indexing {len(papers)} imported papers in vector database...")
+                # Debug: Check paper data
+                for i, paper in enumerate(papers):
+                    logger.info(f"Paper {i}: title={paper.get('title', 'N/A')[:50]}, abstract={paper.get('abstract', 'N/A')[:50]}")
+                vector_result = orchestrator.vector_agent.process_papers(papers)
+                stats["vector_stats"] = vector_result
+                logger.info(f"Vector indexing complete: {vector_result}")
+
+                # Update session metadata
+                orchestrator.metadata["papers_collected"] += len(papers)
+                orchestrator.metadata["last_modified"] = datetime.now().isoformat()
+
+                # Auto-save session
+                orchestrator.save_session()
+                logger.info(f"✅ RDF import complete: {len(papers)} papers indexed for semantic search")
+            except Exception as e:
+                logger.error(f"Vector indexing error: {e}", exc_info=True)
+                # Continue even if vector indexing fails
+                stats["vector_error"] = str(e)
 
         return {
             "success": True,
@@ -728,6 +763,140 @@ async def rdf_stats(
 
     except Exception as e:
         logger.error(f"RDF stats failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# ============================================================================
+# Vector Visualization Endpoints
+# ============================================================================
+
+@app.get(f"/{API_VERSION}/vector/visualize", tags=["Vector Database"])
+async def visualize_vector_space(
+    method: str = "pca",
+    dimensions: int = 2,
+    cluster_method: Optional[str] = None,
+    n_clusters: int = 5,
+    session_name: Optional[str] = "default",
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Visualize vector embeddings with dimensionality reduction
+
+    Apply dimensionality reduction techniques to visualize high-dimensional
+    embeddings in 2D or 3D space. See semantic clusters and relationships.
+
+    **Dimensionality Reduction Methods:**
+    - **pca**: Principal Component Analysis (fast, linear)
+    - **tsne**: t-SNE (better clusters, slower)
+    - **umap**: UMAP (preserves global structure, requires umap-learn package)
+
+    **Clustering Methods** (optional):
+    - **kmeans**: K-means clustering
+    - **dbscan**: Density-based clustering
+
+    **Parameters:**
+    - **method**: Reduction method (pca, tsne, umap)
+    - **dimensions**: 2 or 3 for visualization
+    - **cluster_method**: Optional clustering (kmeans, dbscan)
+    - **n_clusters**: Number of clusters for k-means
+    - **session_name**: Session to visualize
+
+    **Returns:** JSON with reduced coordinates, metadata, and interactive plot
+    """
+    rate_limit(api_key)
+
+    if not orchestrator:
+        raise HTTPException(status_code=503, detail="Orchestrator not initialized")
+
+    try:
+        from utils.vector_visualization import VectorVisualizer
+
+        # Set session
+        if session_name:
+            orchestrator.session_name = session_name
+
+        logger.info(f"Generating vector visualization: {method} ({dimensions}D)")
+
+        # Get embeddings and metadata from vector agent
+        embeddings, metadata = orchestrator.vector_agent.get_all_embeddings_and_metadata()
+
+        if len(embeddings) == 0:
+            raise HTTPException(
+                status_code=404,
+                detail="No embeddings found. Collect papers first or import RDF data."
+            )
+
+        logger.info(f"Retrieved {len(embeddings)} embeddings for visualization")
+
+        # Create visualizer
+        visualizer = VectorVisualizer()
+
+        # Generate visualization
+        result = visualizer.visualize(
+            embeddings=embeddings,
+            metadata=metadata,
+            method=method,
+            n_dimensions=dimensions,
+            cluster_method=cluster_method,
+            n_clusters=n_clusters
+        )
+
+        # Create interactive Plotly figure
+        try:
+            plotly_json = visualizer.create_plotly_figure(
+                result,
+                title=f"Vector Space ({method.upper()}) - {orchestrator.session_name}"
+            )
+            result['plotly_figure'] = plotly_json
+        except Exception as e:
+            logger.warning(f"Plotly figure creation failed: {e}")
+            result['plotly_figure'] = None
+
+        return {
+            "success": True,
+            "visualization": result,
+            "session_name": orchestrator.session_name
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Vector visualization failed: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get(f"/{API_VERSION}/vector/stats", tags=["Vector Database"])
+async def vector_stats(
+    session_name: Optional[str] = "default",
+    api_key: str = Depends(verify_api_key)
+):
+    """
+    Get statistics about vector database embeddings
+
+    Returns:
+    - Total number of embeddings
+    - Embedding dimension
+    - Source distribution
+    - Norm statistics
+    """
+    rate_limit(api_key)
+
+    if not orchestrator:
+        raise HTTPException(status_code=503, detail="Orchestrator not initialized")
+
+    try:
+        # Set session
+        if session_name:
+            orchestrator.session_name = session_name
+
+        stats = orchestrator.vector_agent.get_embedding_statistics()
+
+        return {
+            "success": True,
+            "stats": stats,
+            "session_name": orchestrator.session_name
+        }
+
+    except Exception as e:
+        logger.error(f"Vector stats failed: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 # ============================================================================

@@ -7,8 +7,9 @@ Supports both Qdrant (production) and FAISS (development)
 
 import os
 import logging
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 import google.generativeai as genai
+import numpy as np
 
 logger = logging.getLogger(__name__)
 
@@ -155,6 +156,99 @@ class VectorAgent:
 
         return chunks
 
+    def get_all_embeddings_and_metadata(self) -> Tuple[np.ndarray, List[Dict]]:
+        """
+        Get all embeddings and metadata for visualization
+
+        Returns:
+            Tuple of (embeddings_array, metadata_list)
+        """
+        import numpy as np
+
+        if self.db_type == "qdrant":
+            return self._get_qdrant_embeddings()
+        else:
+            return self._get_faiss_embeddings()
+
+    def _get_faiss_embeddings(self) -> Tuple[np.ndarray, List[Dict]]:
+        """Extract all embeddings from FAISS index"""
+        import numpy as np
+
+        if self.index is None or self.index.ntotal == 0:
+            logger.warning("FAISS index is empty")
+            return np.array([]), []
+
+        # Reconstruct all vectors from FAISS
+        n_vectors = self.index.ntotal
+        embeddings = np.zeros((n_vectors, self.dimension), dtype='float32')
+
+        for i in range(n_vectors):
+            embeddings[i] = self.index.reconstruct(i)
+
+        # Get metadata
+        metadata = self.chunks[:n_vectors] if len(self.chunks) >= n_vectors else self.chunks
+
+        logger.info(f"Extracted {n_vectors} embeddings from FAISS")
+        return embeddings, metadata
+
+    def _get_qdrant_embeddings(self) -> Tuple[np.ndarray, List[Dict]]:
+        """Extract all embeddings from Qdrant"""
+        import numpy as np
+
+        try:
+            # Get all points from Qdrant
+            points = self.client.scroll(
+                collection_name=self.collection_name,
+                limit=10000,  # Max points to retrieve
+                with_vectors=True,
+                with_payload=True
+            )[0]
+
+            if not points:
+                logger.warning("Qdrant collection is empty")
+                return np.array([]), []
+
+            # Extract embeddings and metadata
+            embeddings = np.array([point.vector for point in points], dtype='float32')
+            metadata = [point.payload for point in points]
+
+            logger.info(f"Extracted {len(points)} embeddings from Qdrant")
+            return embeddings, metadata
+
+        except Exception as e:
+            logger.error(f"Failed to extract Qdrant embeddings: {e}")
+            return np.array([]), []
+
+    def get_embedding_statistics(self) -> Dict:
+        """Get statistics about stored embeddings"""
+        import numpy as np
+
+        embeddings, metadata = self.get_all_embeddings_and_metadata()
+
+        if len(embeddings) == 0:
+            return {
+                "total_embeddings": 0,
+                "dimension": self.dimension,
+                "error": "No embeddings found"
+            }
+
+        return {
+            "total_embeddings": len(embeddings),
+            "dimension": self.dimension,
+            "mean_norm": float(np.mean(np.linalg.norm(embeddings, axis=1))),
+            "std_norm": float(np.std(np.linalg.norm(embeddings, axis=1))),
+            "sources": self._count_sources(metadata),
+            "db_type": self.db_type
+        }
+
+    def _count_sources(self, metadata: List[Dict]) -> Dict[str, int]:
+        """Count embeddings by source"""
+        sources = {}
+        for meta in metadata:
+            source = meta.get('source', 'Unknown')
+            sources[source] = sources.get(source, 0) + 1
+        return sources
+
     def _get_embedding(self, text: str) -> List[float]:
         """Generate embedding for text"""
         if self.embedding_model:
@@ -217,6 +311,9 @@ class VectorAgent:
 
         # Add to FAISS
         embeddings_array = np.array(embeddings).astype('float32')
+        # Ensure 2D shape for FAISS (handles single-chunk case)
+        if len(embeddings_array.shape) == 1:
+            embeddings_array = embeddings_array.reshape(1, -1)
         self.index.add(embeddings_array)
 
         # Store metadata
@@ -314,6 +411,102 @@ class VectorAgent:
                 "backend": "FAISS" if self.index else "In-Memory",
                 "dimension": self.dimension
             }
+
+    def save_faiss_index(self, index_path: str) -> bool:
+        """
+        Save FAISS index and metadata to disk
+
+        Args:
+            index_path: Path to save index file (without extension)
+
+        Returns:
+            True if successful, False otherwise
+        """
+        if self.db_type != "faiss":
+            logger.warning("save_faiss_index() called but db_type is not faiss")
+            return False
+
+        try:
+            import faiss
+            import json
+            from pathlib import Path
+
+            # Create directory if needed
+            index_file = Path(f"{index_path}.index")
+            index_file.parent.mkdir(parents=True, exist_ok=True)
+
+            # Save FAISS index
+            if self.index is not None and self.index.ntotal > 0:
+                faiss.write_index(self.index, str(index_file))
+                logger.info(f"Saved FAISS index with {self.index.ntotal} vectors to {index_file}")
+            else:
+                logger.warning("FAISS index is empty, not saving")
+
+            # Save metadata (chunks and chunk_texts)
+            metadata_file = Path(f"{index_path}.meta.json")
+            metadata = {
+                "chunks": self.chunks,
+                "chunk_texts": self.chunk_texts,
+                "dimension": self.dimension
+            }
+            with open(metadata_file, 'w') as f:
+                json.dump(metadata, f)
+            logger.info(f"Saved {len(self.chunks)} chunk metadata to {metadata_file}")
+
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed to save FAISS index: {e}")
+            return False
+
+    def load_faiss_index(self, index_path: str) -> bool:
+        """
+        Load FAISS index and metadata from disk
+
+        Args:
+            index_path: Path to load index file from (without extension)
+
+        Returns:
+            True if successful, False otherwise
+        """
+        if self.db_type != "faiss":
+            logger.warning("load_faiss_index() called but db_type is not faiss")
+            return False
+
+        try:
+            import faiss
+            import json
+            from pathlib import Path
+
+            index_file = Path(f"{index_path}.index")
+            metadata_file = Path(f"{index_path}.meta.json")
+
+            # Check if files exist
+            if not index_file.exists():
+                logger.info(f"No FAISS index found at {index_file}")
+                return False
+
+            # Load FAISS index
+            self.index = faiss.read_index(str(index_file))
+            logger.info(f"Loaded FAISS index with {self.index.ntotal} vectors from {index_file}")
+
+            # Load metadata if available
+            if metadata_file.exists():
+                with open(metadata_file, 'r') as f:
+                    metadata = json.load(f)
+                self.chunks = metadata.get("chunks", [])
+                self.chunk_texts = metadata.get("chunk_texts", [])
+                logger.info(f"Loaded {len(self.chunks)} chunk metadata from {metadata_file}")
+            else:
+                logger.warning(f"Metadata file not found at {metadata_file}, chunks metadata will be empty")
+                self.chunks = []
+                self.chunk_texts = []
+
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed to load FAISS index: {e}")
+            return False
 
     def close(self):
         """Close database connection"""

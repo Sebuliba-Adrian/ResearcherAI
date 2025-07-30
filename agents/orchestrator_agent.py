@@ -189,10 +189,12 @@ class OrchestratorAgent:
                 state["graph_nodes"] = list(self.graph_agent.G.nodes(data=True))
                 state["graph_edges"] = list(self.graph_agent.G.edges(data=True))
 
+            # Save FAISS index to separate file
             if self.vector_agent.db_type == "faiss":
-                state["vector_chunks"] = self.vector_agent.chunks
-                # Note: FAISS index is not serializable with pickle
-                # For production, use Qdrant which persists automatically
+                faiss_index_path = self.sessions_dir / f"{self.session_name}_faiss"
+                self.vector_agent.save_faiss_index(str(faiss_index_path))
+                state["faiss_index_saved"] = True
+            # Qdrant persists automatically, no action needed
 
             # Save to file
             with open(session_path, "wb") as f:
@@ -233,10 +235,11 @@ class OrchestratorAgent:
                 self.graph_agent.G.add_nodes_from(state["graph_nodes"])
                 self.graph_agent.G.add_edges_from(state["graph_edges"])
 
-            # Restore vector chunks (FAISS only)
-            if self.vector_agent.db_type == "faiss" and "vector_chunks" in state:
-                self.vector_agent.chunks = state["vector_chunks"]
-                self.vector_agent.chunk_texts = [c["text"] for c in self.vector_agent.chunks]
+            # Restore FAISS index from separate file
+            if self.vector_agent.db_type == "faiss" and state.get("faiss_index_saved"):
+                faiss_index_path = self.sessions_dir / f"{self.session_name}_faiss"
+                self.vector_agent.load_faiss_index(str(faiss_index_path))
+            # Qdrant loads automatically from persistent storage
 
             logger.info(f"Session '{self.session_name}' loaded successfully")
             logger.info(f"  Papers: {self.metadata['papers_collected']}")
