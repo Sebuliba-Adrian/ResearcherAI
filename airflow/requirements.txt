@@ -1,0 +1,18 @@
+# Apache Airflow Requirements for ResearcherAI
+# These are additional dependencies beyond the base Airflow image
+
+# System monitoring
+psutil==5.9.8
+
+# HTTP requests (for health checks)
+requests==2.31.0
+
+# ResearcherAI dependencies (already in main project)
+# These should be installed by mounting the parent directory
+# But listing here for reference:
+
+# sentence-transformers==2.7.0
+# faiss-cpu==1.8.0
+# networkx==3.3
+# google-generativeai==0.5.4
+# rdflib==7.0.0

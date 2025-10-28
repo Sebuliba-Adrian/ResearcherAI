@@ -1,0 +1,27 @@
+# Airflow logs and temporary files
+logs/
+*.log
+*.pid
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment
+.env.local
+.airflow_db_initialized
+
+# Docker volumes
+postgres-db-volume/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

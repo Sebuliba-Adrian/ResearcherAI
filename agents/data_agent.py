@@ -114,7 +114,7 @@ class DataCollectorAgent:
         return papers
 
     def _fetch_semantic_scholar(self, query: str, max_results: int = 10) -> List[Dict]:
-        """Fetch from Semantic Scholar API"""
+        """Fetch from Semantic Scholar API with retry logic for rate limiting"""
         url = "https://api.semanticscholar.org/graph/v1/paper/search"
         params = {
             "query": query,
@@ -122,9 +122,30 @@ class DataCollectorAgent:
             "fields": "title,abstract,authors,year,url,publicationDate,citationCount"
         }
 
-        response = requests.get(url, params=params, timeout=10)
-        response.raise_for_status()
-        data = response.json()
+        # Retry logic for rate limiting (429 errors)
+        max_retries = 3
+        retry_delay = 2  # seconds
+
+        for attempt in range(max_retries):
+            try:
+                response = requests.get(url, params=params, timeout=10)
+                response.raise_for_status()
+                data = response.json()
+                break
+            except requests.exceptions.HTTPError as e:
+                if response.status_code == 429 and attempt < max_retries - 1:
+                    logger.warning(f"Semantic Scholar rate limited, retrying in {retry_delay}s...")
+                    time.sleep(retry_delay)
+                    retry_delay *= 2  # Exponential backoff
+                    continue
+                else:
+                    logger.error(f"Semantic Scholar API error: {e}")
+                    return []
+            except Exception as e:
+                logger.error(f"Semantic Scholar error: {e}")
+                return []
+        else:
+            return []
 
         papers = []
         for item in data.get("data", []):
@@ -259,10 +280,14 @@ class DataCollectorAgent:
             from duckduckgo_search import DDGS
 
             ddgs = DDGS()
-            results = ddgs.text(f"{query} research paper", max_results=max_results)
+            # Convert generator to list and handle potential empty results
+            results = list(ddgs.text(f"{query} research paper", max_results=max_results))
 
             papers = []
             for i, result in enumerate(results):
+                if not result:
+                    continue
+
                 paper = {
                     "id": f"web_{i}",
                     "title": result.get("title", "Unknown"),
@@ -275,6 +300,7 @@ class DataCollectorAgent:
                 }
                 papers.append(paper)
 
+            logger.info(f"WebSearch: Retrieved {len(papers)} results")
             return papers
         except ImportError:
             logger.warning("duckduckgo-search not installed")
