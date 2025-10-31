@@ -163,10 +163,10 @@ The Docker Compose setup includes:
 - 7-day retention
 - Auto-creates topics
 
-**Kafka UI** (port 8080)
+**Kafka UI** (port 8081)
 - Web interface for monitoring
 - View topics, messages, consumer groups
-- Access at http://localhost:8080
+- Access at http://localhost:8081
 
 ### Graceful Degradation
 
@@ -721,13 +721,89 @@ python test_event_driven.py
 - ✅ Performance comparison (Kafka vs non-Kafka)
 
 **Monitoring Kafka:**
-- Access Kafka UI: http://localhost:8080
+- Access Kafka UI: http://localhost:8081
 - View all topics, messages, and consumer groups
 - Monitor event flow in real-time
 
 ---
 
-## Production Deployment
+## ☁️ Cloud Deployment with Terraform
+
+Deploy ResearcherAI to DigitalOcean with production-grade infrastructure using Terraform.
+
+### Infrastructure as Code
+
+Complete Terraform configuration for:
+- **VPC:** Private networking (10.10.0.0/16)
+- **App Servers:** 2+ Ubuntu droplets with Docker
+- **Load Balancer:** Traffic distribution with health checks
+- **Managed PostgreSQL:** Application metadata storage
+- **Managed Kafka:** 3-node event streaming cluster
+- **Firewall:** Security rules and VPC isolation
+
+### Quick Deployment
+
+```bash
+cd terraform/
+
+# 1. Configure variables
+cp terraform.tfvars.example terraform.tfvars
+nano terraform.tfvars  # Add your DigitalOcean API token
+
+# 2. Initialize Terraform
+terraform init
+
+# 3. Review plan
+terraform plan
+
+# 4. Deploy (10-15 minutes)
+terraform apply
+
+# 5. Get outputs
+terraform output
+```
+
+### Architecture
+
+```
+Internet → Load Balancer → App Servers (N) → Private VPC
+                             ├─ Managed Kafka (3 nodes)
+                             ├─ Managed PostgreSQL
+                             └─ External Services (Neo4j, Qdrant Cloud)
+```
+
+### Cost Estimate
+
+**Default Configuration:**
+- 2x Application Servers (s-2vcpu-4gb): $72/mo
+- PostgreSQL (db-s-2vcpu-4gb): $60/mo
+- Kafka Cluster (3x db-s-2vcpu-2gb): $90/mo
+- Load Balancer: $10/mo
+- **Total: ~$232/mo**
+
+### Features
+
+✅ **Auto-scaling ready** - Add more droplets on demand
+✅ **High availability** - 3-node Kafka, optional PostgreSQL standby
+✅ **Monitoring** - DigitalOcean monitoring + alerts
+✅ **Backups** - Automated droplet and database backups
+✅ **SSL/TLS** - Let's Encrypt integration
+✅ **Private networking** - All internal traffic isolated
+
+### Next Steps
+
+After deployment:
+1. Point DNS to load balancer IP
+2. SSH into droplets and clone repository
+3. Run `docker-compose up -d`
+4. Configure SSL with certbot
+5. Set up monitoring alerts
+
+See [`terraform/README.md`](terraform/README.md) for detailed instructions.
+
+---
+
+## Production Deployment (Local/Docker)
 
 ### Environment Configuration
 
@@ -783,7 +859,7 @@ cd airflow/
 docker-compose up -d
 
 # Access Airflow UI
-open http://localhost:8080
+open http://localhost:8081
 ```
 
 DAGs Available:

@@ -57,7 +57,7 @@ structlog==23.2.0
 # Web Framework (for future UI)
 fastapi==0.109.0
 uvicorn==0.27.0
-pydantic==2.5.3
+pydantic>=2.7.0,<3.0.0
 
 # Advanced Agent Frameworks
 langgraph==0.2.45

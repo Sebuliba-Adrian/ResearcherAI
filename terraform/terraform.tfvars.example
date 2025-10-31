@@ -1,0 +1,101 @@
+# Terraform Variables - Copy this file to terraform.tfvars and fill in your values
+# DO NOT commit terraform.tfvars with secrets!
+
+# ============================================================================
+# DigitalOcean Configuration
+# ============================================================================
+
+# Get your API token from: https://cloud.digitalocean.com/account/api/tokens
+do_token = "dop_v1_YOUR_DIGITALOCEAN_API_TOKEN_HERE"
+
+# ============================================================================
+# Project Configuration
+# ============================================================================
+
+project_name = "researcherai"
+environment  = "production"  # dev, staging, or production
+region       = "nyc3"        # nyc1, nyc3, sfo3, ams3, sgp1, lon1, fra1, tor1, blr1
+
+# ============================================================================
+# SSH Configuration
+# ============================================================================
+
+# Get your SSH key IDs from: https://cloud.digitalocean.com/account/security
+# Or create with: doctl compute ssh-key list
+ssh_key_ids = [
+  "12345678",  # Your SSH key ID
+]
+
+# ============================================================================
+# Application Server Configuration
+# ============================================================================
+
+app_server_count = 2  # Number of application servers (1-10)
+app_server_size  = "s-2vcpu-4gb"  # Droplet size
+
+# Available sizes:
+# s-1vcpu-2gb     ($18/mo)  - Development/Testing
+# s-2vcpu-4gb     ($36/mo)  - Small Production
+# s-4vcpu-8gb     ($72/mo)  - Medium Production
+# s-8vcpu-16gb    ($144/mo) - Large Production
+
+# ============================================================================
+# Database Configuration
+# ============================================================================
+
+db_size       = "db-s-2vcpu-4gb"  # Database cluster size
+db_node_count = 1                  # 1 for single node, 2 for standby
+
+# Available database sizes:
+# db-s-1vcpu-1gb   ($15/mo)  - Development/Testing
+# db-s-2vcpu-4gb   ($60/mo)  - Small Production
+# db-s-4vcpu-8gb   ($120/mo) - Medium Production
+
+# ============================================================================
+# Kafka Configuration
+# ============================================================================
+
+kafka_size       = "db-s-2vcpu-2gb"  # Kafka node size
+kafka_node_count = 3                  # Minimum 3 nodes for HA
+
+# ============================================================================
+# Application Secrets
+# ============================================================================
+
+# Google Gemini API Key
+# Get from: https://makersuite.google.com/app/apikey
+google_api_key = "YOUR_GOOGLE_API_KEY_HERE"
+
+# Optional: External Neo4j (leave empty to not use external)
+neo4j_uri      = ""  # e.g., "bolt://your-neo4j-host:7687"
+neo4j_password = ""  # Your Neo4j password
+
+# Optional: External Qdrant Cloud (leave empty to not use external)
+qdrant_url = ""  # e.g., "https://your-cluster.qdrant.cloud"
+
+# ============================================================================
+# Monitoring & Backups
+# ============================================================================
+
+enable_monitoring = true
+enable_backups    = true
+
+# ============================================================================
+# Tags
+# ============================================================================
+
+tags = [
+  "researcherai",
+  "production"
+]
+
+# ============================================================================
+# Estimated Monthly Cost (based on above configuration)
+# ============================================================================
+
+# Application Servers: 2 x s-2vcpu-4gb    = $72/mo
+# PostgreSQL:         1 x db-s-2vcpu-4gb  = $60/mo
+# Kafka Cluster:      3 x db-s-2vcpu-2gb  = $90/mo
+# Load Balancer:                          = $10/mo
+# ----------------------------------------------
+# Total Estimated:                        = $232/mo
