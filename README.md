@@ -4,7 +4,7 @@
 
 A sophisticated research assistant powered by multi-agent architecture, combining knowledge graphs, vector search, and advanced LLM reasoning for comprehensive research paper discovery, analysis, and synthesis.
 
-![ResearcherAI Homepage](.playwright-mcp/01_dev_homepage.png)
+![ResearcherAI Homepage](screenshots/01_dev_homepage.png)
 
 ---
 
@@ -165,7 +165,7 @@ export GOOGLE_API_KEY="your-gemini-api-key"
 
 Frontend will be available at: **http://localhost:8000**
 
-![Data Collection Interface](.playwright-mcp/02_dev_data_collection.png)
+![Data Collection Interface](screenshots/02_dev_data_collection.png)
 
 ### Production Mode (Docker)
 
@@ -186,7 +186,7 @@ Services:
 - **Neo4j Browser**: http://localhost:7474
 - **Qdrant Dashboard**: http://localhost:6333/dashboard
 
-![Production Architecture](.playwright-mcp/prod_01_homepage.png)
+![Production Architecture](screenshots/prod_01_homepage.png)
 
 ---
 
@@ -291,7 +291,7 @@ curl -X POST "http://localhost:8000/v1/collect" \
   }'
 ```
 
-![Collection Results](.playwright-mcp/test2_collection_results_fixed.png)
+![Collection Results](screenshots/test2_collection_results_fixed.png)
 
 ### 2. Ask Research Questions
 
@@ -320,7 +320,7 @@ curl -X POST "http://localhost:8000/v1/ask" \
   }'
 ```
 
-![Question Answering](.playwright-mcp/test4_reasoning_chain_animated.png)
+![Question Answering](screenshots/test4_reasoning_chain_animated.png)
 
 ### 3. Visualize Knowledge
 
@@ -332,7 +332,7 @@ curl "http://localhost:8000/v1/graph/export" \
   -H "X-API-Key: demo-key-123"
 ```
 
-![Graph Visualization](.playwright-mcp/rdf_import_graph_rendered.png)
+![Graph Visualization](screenshots/rdf_import_graph_rendered.png)
 
 #### Vector Space Visualization
 
@@ -342,7 +342,7 @@ curl "http://localhost:8000/v1/vector/visualize?method=pca&dimensions=3" \
   -H "X-API-Key: demo-key-123"
 ```
 
-![Vector Visualization](.playwright-mcp/vector_section_with_3d_plot.png)
+![Vector Visualization](screenshots/vector_section_with_3d_plot.png)
 
 ---
 
