@@ -31,6 +31,8 @@ volumes/qdrant/
 volumes/sessions/
 volumes/cache/
 volumes/logs/
+volumes/kafka/
+volumes/zookeeper/
 
 # IDE
 .vscode/

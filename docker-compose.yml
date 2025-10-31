@@ -12,6 +12,8 @@ services:
       - NEO4J_PASSWORD=research_password
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - USE_KAFKA=${USE_KAFKA:-true}
     volumes:
       - ./sessions:/app/sessions
       - ./cache:/app/cache
@@ -20,6 +22,7 @@ services:
     depends_on:
       - neo4j
       - qdrant
+      - kafka
     networks:
       - rag-network
     restart: unless-stopped
@@ -80,6 +83,8 @@ services:
       - NEO4J_PASSWORD=research_password
       - QDRANT_HOST=qdrant
       - QDRANT_PORT=6333
+      - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
+      - USE_KAFKA=${USE_KAFKA:-true}
       - SCHEDULE_INTERVAL=3600  # 1 hour
     volumes:
       - ./sessions:/app/sessions
@@ -88,6 +93,74 @@ services:
     depends_on:
       - neo4j
       - qdrant
+      - kafka
+    networks:
+      - rag-network
+    restart: unless-stopped
+
+  # Zookeeper (Required by Kafka)
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: rag-zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - ./volumes/zookeeper/data:/var/lib/zookeeper/data
+      - ./volumes/zookeeper/logs:/var/lib/zookeeper/log
+    networks:
+      - rag-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "echo ruok | nc localhost 2181 | grep imok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Kafka Event Streaming Platform
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: rag-kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,OUTSIDE://localhost:9094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_LOG_RETENTION_HOURS: 168  # 7 days
+      KAFKA_LOG_SEGMENT_BYTES: 1073741824  # 1GB
+    volumes:
+      - ./volumes/kafka:/var/lib/kafka/data
+    networks:
+      - rag-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
+  # Kafka UI for monitoring and debugging
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: rag-kafka-ui
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: rag-cluster
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
     networks:
       - rag-network
     restart: unless-stopped
@@ -100,3 +173,6 @@ volumes:
   neo4j-data:
   neo4j-logs:
   qdrant-storage:
+  zookeeper-data:
+  zookeeper-logs:
+  kafka-data:

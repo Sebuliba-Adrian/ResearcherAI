@@ -77,6 +77,129 @@ This system implements battle-tested patterns from successful deployments at Kla
 
 ---
 
+## 🔄 Event-Driven Architecture with Kafka
+
+The system now supports **event-driven communication** between agents using Apache Kafka for asynchronous, decoupled workflows.
+
+### Benefits of Event-Driven Architecture
+
+**Decoupling**
+- Agents don't need to know about each other
+- Can add/remove agents without changing others
+- Easier to maintain and scale
+
+**Asynchronous Processing**
+- Agents work in parallel
+- No blocking waits between stages
+- Better resource utilization
+
+**Event Replay & Auditing**
+- All events persist in Kafka topics
+- Can replay pipeline for debugging
+- Complete audit trail
+
+**Scalability**
+- Can run multiple instances of same agent
+- Horizontal scaling with consumer groups
+- Handle higher throughput
+
+**Fault Tolerance**
+- Events persist even if agents crash
+- Automatic retries
+- No data loss
+
+### Architecture
+
+```
+User Query → QuerySubmittedEvent
+           ↓ (Kafka: query.submitted)
+DataCollector → DataCollectionCompletedEvent
+           ↓ (Kafka: data.collection.completed)
+GraphAgent → GraphProcessingCompletedEvent
+           ↓ (Kafka: graph.processing.completed)
+VectorAgent → VectorProcessingCompletedEvent
+           ↓ (Kafka: vector.processing.completed)
+ReasoningAgent → ReasoningCompletedEvent
+           ↓ (Kafka: reasoning.completed)
+Final Answer
+```
+
+### Event Types
+
+**Query Events**
+- `query.submitted` - User submits research question
+- `query.validated` - Query validated and cleaned
+
+**Data Collection Events**
+- `data.collection.started` - Collection begins
+- `data.collection.completed` - Papers collected
+- `data.collection.failed` - Collection error
+
+**Graph Processing Events**
+- `graph.processing.started` - Graph extraction begins
+- `graph.processing.completed` - Entities/relationships extracted
+- `graph.processing.failed` - Graph processing error
+
+**Vector Processing Events**
+- `vector.processing.started` - Embedding generation begins
+- `vector.processing.completed` - Embeddings created
+- `vector.processing.failed` - Vector processing error
+
+**Reasoning Events**
+- `reasoning.started` - Answer generation begins
+- `reasoning.completed` - Answer synthesized
+- `reasoning.failed` - Reasoning error
+
+### Kafka Services
+
+The Docker Compose setup includes:
+
+**Zookeeper** (port 2181)
+- Required for Kafka coordination
+- Manages broker metadata
+
+**Kafka Broker** (ports 9092, 9094)
+- Event streaming platform
+- 7-day retention
+- Auto-creates topics
+
+**Kafka UI** (port 8080)
+- Web interface for monitoring
+- View topics, messages, consumer groups
+- Access at http://localhost:8080
+
+### Graceful Degradation
+
+If Kafka is unavailable, the system automatically falls back to **synchronous mode**:
+- Direct function calls between agents
+- No event streaming overhead
+- Perfect for development
+
+```python
+# Enable Kafka (production)
+USE_KAFKA=true
+
+# Disable Kafka (development)
+USE_KAFKA=false
+```
+
+### Event Schema Validation
+
+All events use **Pydantic models** for strict type safety:
+
+```python
+class DataCollectionCompletedEvent(BaseEvent):
+    event_type: Literal[EventType.DATA_COLLECTION_COMPLETED]
+    query: str
+    papers_collected: int
+    papers: List[PaperMetadata]
+    execution_time: float
+```
+
+This prevents type errors and ensures consistent event structure across the entire pipeline.
+
+---
+
 ## Table of Contents
 
 - [Features](#features)
@@ -576,6 +699,32 @@ python demo_end_to_end.py
 - 40-70% cost savings (model selection + caching + budgets)
 - 3x performance improvement (parallel processing + caching)
 
+### Event-Driven Architecture Tests ✅
+
+Test the Kafka event-driven pipeline:
+
+```bash
+# Test event schemas and Kafka manager
+python test_event_driven.py
+
+# Run with Docker (full Kafka integration)
+docker-compose up -d
+python test_event_driven.py
+```
+
+**Test Coverage:**
+- ✅ Event schema validation (Pydantic models)
+- ✅ Kafka manager initialization
+- ✅ Event publishing/consuming
+- ✅ Graceful degradation (fallback to synchronous mode)
+- ✅ Full pipeline with Kafka events
+- ✅ Performance comparison (Kafka vs non-Kafka)
+
+**Monitoring Kafka:**
+- Access Kafka UI: http://localhost:8080
+- View all topics, messages, and consumer groups
+- Monitor event flow in real-time
+
 ---
 
 ## Production Deployment
@@ -602,9 +751,14 @@ NEO4J_DATABASE=neo4j
 QDRANT_HOST=localhost
 QDRANT_PORT=6333
 
+# Kafka Configuration
+USE_KAFKA=true  # Enable event-driven architecture
+KAFKA_BOOTSTRAP_SERVERS=localhost:9092
+
 # Development Mode (no Docker required)
 # USE_NEO4J=false (uses NetworkX)
 # USE_QDRANT=false (uses FAISS)
+# USE_KAFKA=false (synchronous mode)
 ```
 
 **Note**: If you encounter Neo4j authentication errors, verify the password matches the one in `airflow/docker-compose.yml` (`NEO4J_AUTH=neo4j/neo4jpass`). Persistent volumes retain the initial password set during first database creation.
