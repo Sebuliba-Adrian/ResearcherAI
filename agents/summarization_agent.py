@@ -42,14 +42,14 @@ class SummarizationAgent:
         Initialize SummarizationAgent
 
         config = {
-            "model": "gemini-2.5-flash",
+            "model": "gemini-2.0-flash",
             "temperature": 0.3,  # Lower for consistent summaries
             "default_style": "executive",
             "default_length": "medium"
         }
         """
         self.config = config or {}
-        self.model_name = self.config.get("model", "gemini-2.5-flash")
+        self.model_name = self.config.get("model", "gemini-2.0-flash")
         self.temperature = self.config.get("temperature", 0.3)
         self.default_style = self.config.get("default_style", SummaryStyle.EXECUTIVE)
         self.default_length = self.config.get("default_length", SummaryLength.MEDIUM)

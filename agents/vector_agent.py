@@ -49,7 +49,7 @@ class VectorAgent:
         api_key = os.getenv("GOOGLE_API_KEY")
         if api_key:
             genai.configure(api_key=api_key)
-            self.model = genai.GenerativeModel("gemini-2.5-flash")
+            self.model = genai.GenerativeModel("gemini-2.0-flash")
             logger.info("Gemini configured for semantic search")
         else:
             self.model = None

@@ -69,3 +69,14 @@ dist/
 *.temp
 temp/
 .mcp.json
+
+# Cache directories
+model_cache/
+airflow/cache/
+.cache/
+
+# Test outputs
+test_outputs/
+
+# Cleanup scripts
+clean_git_history.sh

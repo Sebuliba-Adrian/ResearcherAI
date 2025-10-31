@@ -46,7 +46,7 @@ class ReasoningAgent:
 
         genai.configure(api_key=api_key)
         self.model = genai.GenerativeModel(
-            self.config.get("model", "gemini-2.5-flash"),
+            self.config.get("model", "gemini-2.0-flash"),
             generation_config={
                 "temperature": self.temperature,
                 "max_output_tokens": self.max_tokens
