@@ -175,8 +175,8 @@ class KafkaEventManager:
             # Use correlation_id as key for ordering
             partition_key = key or event.correlation_id
 
-            # Convert event to dict
-            event_data = event.dict()
+            # Convert event to dict with proper datetime serialization
+            event_data = json.loads(event.json())
 
             # Determine topic from event type
             topic = event.event_type.value

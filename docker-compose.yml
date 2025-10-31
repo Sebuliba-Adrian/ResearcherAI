@@ -66,7 +66,7 @@ services:
       - rag-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:6333/health || exit 1"]
+      test: ["CMD-SHELL", "timeout 1 bash -c '</dev/tcp/localhost/6333' || exit 1"]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -112,9 +112,9 @@ services:
       - rag-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "echo ruok | nc localhost 2181 | grep imok"]
+      test: ["CMD-SHELL", "timeout 1 bash -c '</dev/tcp/localhost/2181' || exit 1"]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 5
 
   # Kafka Event Streaming Platform
@@ -144,9 +144,9 @@ services:
       - rag-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092"]
+      test: ["CMD-SHELL", "kafka-broker-api-versions --bootstrap-server localhost:9092 > /dev/null 2>&1"]
       interval: 10s
-      timeout: 10s
+      timeout: 15s
       retries: 5
 
   # Kafka UI for monitoring and debugging

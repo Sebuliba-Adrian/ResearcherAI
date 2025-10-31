@@ -18,6 +18,10 @@ import logging
 from pathlib import Path
 from datetime import datetime
 
+# Create log directory if it doesn't exist
+log_dir = Path("./volumes/logs")
+log_dir.mkdir(parents=True, exist_ok=True)
+
 # Configure logging
 logging.basicConfig(
     level=os.getenv("LOG_LEVEL", "INFO"),
