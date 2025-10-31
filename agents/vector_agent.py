@@ -39,8 +39,8 @@ class VectorAgent:
         # Initialize embedding model
         try:
             from sentence_transformers import SentenceTransformer
-            self.embedding_model = SentenceTransformer(self.embedding_model_name)
-            logger.info(f"Embedding model loaded: {self.embedding_model_name}")
+            self.embedding_model = SentenceTransformer(self.embedding_model_name, device='cpu')
+            logger.info(f"Embedding model loaded: {self.embedding_model_name} (CPU mode)")
         except ImportError:
             logger.warning("sentence-transformers not installed - using Gemini for embeddings")
             self.embedding_model = None
@@ -70,8 +70,29 @@ class VectorAgent:
 
             host = self.config.get("host", "localhost")
             port = self.config.get("port", 6333)
+            grpc_port = self.config.get("grpc_port", 6334)
+            api_key = self.config.get("api_key")
 
-            self.client = QdrantClient(host=host, port=port)
+            prefer_grpc_raw = self.config.get("prefer_grpc", False)
+            if isinstance(prefer_grpc_raw, str):
+                prefer_grpc = prefer_grpc_raw.lower() == "true"
+            else:
+                prefer_grpc = bool(prefer_grpc_raw)
+
+            https_raw = self.config.get("https", False)
+            if isinstance(https_raw, str):
+                use_https = https_raw.lower() == "true"
+            else:
+                use_https = bool(https_raw)
+
+            self.client = QdrantClient(
+                host=host,
+                port=port,
+                grpc_port=grpc_port,
+                api_key=api_key,
+                prefer_grpc=prefer_grpc,
+                https=use_https,
+            )
 
             # Create collection if it doesn't exist
             collections = self.client.get_collections().collections
@@ -82,9 +103,18 @@ class VectorAgent:
                     collection_name=self.collection_name,
                     vectors_config=VectorParams(size=self.dimension, distance=Distance.COSINE)
                 )
-                logger.info(f"Created Qdrant collection: {self.collection_name}")
+                logger.info("Created Qdrant collection: %s", self.collection_name)
             else:
-                logger.info(f"Using existing Qdrant collection: {self.collection_name}")
+                logger.info("Using existing Qdrant collection: %s", self.collection_name)
+
+            logger.info(
+                "Connected to Qdrant host=%s port=%s (grpc=%s, prefer_grpc=%s, https=%s)",
+                host,
+                port,
+                grpc_port,
+                prefer_grpc,
+                use_https,
+            )
 
         except Exception as e:
             logger.error(f"Qdrant connection failed: {e}")
@@ -252,7 +282,7 @@ class VectorAgent:
     def _get_embedding(self, text: str) -> List[float]:
         """Generate embedding for text"""
         if self.embedding_model:
-            return self.embedding_model.encode(text).tolist()
+            return self.embedding_model.encode(text, device='cpu').tolist()
         else:
             # Fallback: Use Gemini (not ideal for production)
             logger.warning("Using Gemini for embeddings (slow) - install sentence-transformers")

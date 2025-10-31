@@ -14,10 +14,20 @@ Collects research papers from 7 sources:
 
 import os
 import time
+import socket
 import requests
 from datetime import datetime
 from typing import List, Dict
 import logging
+
+# Fix IPv6 issue for PubMed and other NCBI services (errno 101)
+import requests.packages.urllib3.util.connection as urllib3_cn
+
+def allowed_gai_family():
+    """Force IPv4 to avoid 'Network unreachable' errors on IPv6-disabled systems"""
+    return socket.AF_INET
+
+urllib3_cn.allowed_gai_family = allowed_gai_family
 
 logger = logging.getLogger(__name__)
 

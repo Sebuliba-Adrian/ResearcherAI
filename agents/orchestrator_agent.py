@@ -30,7 +30,12 @@ class OrchestratorAgent:
         }
         """
         self.session_name = session_name
-        self.config = config or {}
+
+        env_config = self._load_config_from_env()
+        if config:
+            self.config = self._merge_configs(env_config, config)
+        else:
+            self.config = env_config
         self.sessions_dir = Path("./volumes/sessions")
         self.sessions_dir.mkdir(parents=True, exist_ok=True)
 
@@ -72,10 +77,62 @@ class OrchestratorAgent:
             "conversations": 0
         }
 
+        # In-memory cache of the most recent paper collection
+        self.papers: List[Dict] = []
+
         # Try to load existing session
         self.load_session()
 
         logger.info("All agents initialized successfully")
+
+    @staticmethod
+    def _load_config_from_env() -> Dict:
+        """Construct configuration dictionary from environment variables."""
+        # Vector database configuration
+        vector_type = os.getenv("VECTOR_DB_TYPE", "faiss").strip().lower() or "faiss"
+        vector_config: Dict[str, Optional[str]] = {"type": vector_type}
+
+        if vector_type == "qdrant":
+            vector_config.update({
+                "host": os.getenv("QDRANT_HOST", "qdrant"),
+                "port": int(os.getenv("QDRANT_PORT", "6333")),
+                "collection_name": os.getenv("QDRANT_COLLECTION", "research_papers"),
+                "api_key": os.getenv("QDRANT_API_KEY") or None,
+                "prefer_grpc": os.getenv("QDRANT_GRPC", "false").lower() == "true",
+                "grpc_port": int(os.getenv("QDRANT_GRPC_PORT", "6334")),
+                "https": os.getenv("QDRANT_HTTPS", "false").lower() == "true",
+            })
+
+        # Knowledge graph configuration
+        graph_type = os.getenv("GRAPH_DB_TYPE", "networkx").strip().lower() or "networkx"
+        graph_config: Dict[str, Optional[str]] = {"type": graph_type}
+
+        if graph_type == "neo4j":
+            graph_config.update({
+                "uri": os.getenv("NEO4J_URI", "bolt://neo4j:7687"),
+                "user": os.getenv("NEO4J_USER", "neo4j"),
+                "password": os.getenv("NEO4J_PASSWORD", "neo4jpass"),
+                "database": os.getenv("NEO4J_DATABASE", "neo4j"),
+                "max_connection_lifetime": int(os.getenv("NEO4J_MAX_CONN_LIFETIME", "3000")),
+            })
+
+        return {
+            "vector_db": vector_config,
+            "graph_db": graph_config,
+        }
+
+    @staticmethod
+    def _merge_configs(base: Dict, overrides: Dict) -> Dict:
+        """Deep-merge override configuration on top of base defaults."""
+        merged = dict(base)
+
+        for key, value in overrides.items():
+            if isinstance(value, dict) and isinstance(merged.get(key), dict):
+                merged[key] = OrchestratorAgent._merge_configs(merged[key], value)
+            else:
+                merged[key] = value
+
+        return merged
 
     def collect_data(self, query: str, max_per_source: int = 10) -> Dict:
         """Autonomous data collection from all sources"""
@@ -181,7 +238,8 @@ class OrchestratorAgent:
                 "metadata": self.metadata,
                 "conversation_history": self.reasoning_agent.get_history(),
                 "data_collector_stats": self.data_collector.get_stats(),
-                "timestamp": datetime.now().isoformat()
+                "timestamp": datetime.now().isoformat(),
+                "papers_buffer": self.papers,
             }
 
             # Add backend-specific state
@@ -240,6 +298,10 @@ class OrchestratorAgent:
                 faiss_index_path = self.sessions_dir / f"{self.session_name}_faiss"
                 self.vector_agent.load_faiss_index(str(faiss_index_path))
             # Qdrant loads automatically from persistent storage
+
+            # Restore cached papers if available
+            self.papers = state.get("papers_buffer", [])
+            logger.info("  Cached papers buffer: %s", len(self.papers))
 
             logger.info(f"Session '{self.session_name}' loaded successfully")
             logger.info(f"  Papers: {self.metadata['papers_collected']}")

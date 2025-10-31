@@ -56,15 +56,21 @@ class KnowledgeGraphAgent:
             uri = self.config.get("uri", "bolt://localhost:7687")
             user = self.config.get("user", "neo4j")
             password = self.config.get("password", "password")
+            database = self.config.get("database", "neo4j")
+            max_connection_lifetime = int(self.config.get("max_connection_lifetime", 3000))
 
-            self.driver = GraphDatabase.driver(uri, auth=(user, password))
+            self.driver = GraphDatabase.driver(
+                uri,
+                auth=(user, password),
+                max_connection_lifetime=max_connection_lifetime,
+            )
             self.driver.verify_connectivity()
 
             # Create constraints for uniqueness
-            with self.driver.session(database=self.config.get("database", "neo4j")) as session:
+            with self.driver.session(database=database) as session:
                 session.run("CREATE CONSTRAINT entity_id IF NOT EXISTS FOR (e:Entity) REQUIRE e.id IS UNIQUE")
 
-            logger.info(f"Connected to Neo4j at {uri}")
+            logger.info("Connected to Neo4j uri=%s database=%s", uri, database)
         except Exception as e:
             logger.error(f"Neo4j connection failed: {e}")
             logger.info("Falling back to NetworkX")
@@ -76,6 +82,17 @@ class KnowledgeGraphAgent:
         import networkx as nx
         self.G = nx.MultiDiGraph()
         logger.info("NetworkX graph initialized")
+
+    def extract_triples(self, content: str, *, title: str | None = None, metadata: Optional[Dict] = None) -> List[Tuple[str, str, str]]:
+        """Public helper to extract triples from free-form content."""
+        meta = metadata or {}
+        paper_stub = {
+            "title": title if title is not None else meta.get("title", "Context"),
+            "abstract": content,
+            "authors": meta.get("authors", []),
+            "topics": meta.get("topics", []),
+        }
+        return self._extract_triples(paper_stub)
 
     def process_papers(self, papers: List[Dict]) -> Dict:
         """Process papers and build knowledge graph"""

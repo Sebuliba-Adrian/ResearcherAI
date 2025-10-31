@@ -37,6 +37,7 @@ import sys
 import psutil
 import shutil
 from datetime import datetime, timedelta
+from functools import lru_cache
 from typing import Dict, List, Any
 
 from airflow import DAG
@@ -48,7 +49,12 @@ from airflow.utils.dates import days_ago
 # Add ResearcherAI to Python path
 sys.path.insert(0, os.environ.get('RESEARCHER_AI_HOME', '/opt/airflow/researcher_ai'))
 
-from agents.orchestrator_agent import OrchestratorAgent
+
+@lru_cache(maxsize=1)
+def _get_orchestrator_cls():
+    from agents.orchestrator_agent import OrchestratorAgent  # pylint: disable=import-outside-toplevel
+
+    return OrchestratorAgent
 
 # ============================================================================
 # Configuration
@@ -102,7 +108,7 @@ def check_api_health(**context):
 def check_vector_db_health(**context):
     """Check FAISS vector database health"""
     try:
-        orchestrator = OrchestratorAgent(session_name='airflow_default')
+        orchestrator = _get_orchestrator_cls()(session_name='airflow_default')
         vector_agent = orchestrator.vector_agent
 
         stats = vector_agent.get_stats()
@@ -127,7 +133,7 @@ def check_vector_db_health(**context):
 def check_graph_db_health(**context):
     """Check knowledge graph database health"""
     try:
-        orchestrator = OrchestratorAgent(session_name='airflow_default')
+        orchestrator = _get_orchestrator_cls()(session_name='airflow_default')
         graph_agent = orchestrator.graph_agent
 
         stats = graph_agent.get_stats()
