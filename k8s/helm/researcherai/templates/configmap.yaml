@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "researcherai.fullname" . }}-config
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "researcherai.labels" . | nindent 4 }}
+data:
+  # Database configuration
+  NEO4J_URI: {{ include "researcherai.neo4jUri" . | quote }}
+  NEO4J_USER: "neo4j"
+  NEO4J_DATABASE: "neo4j"
+
+  QDRANT_HOST: {{ include "researcherai.qdrantHost" . | quote }}
+  QDRANT_PORT: "6333"
+
+  # Kafka configuration
+  KAFKA_BOOTSTRAP_SERVERS: {{ include "researcherai.kafkaBootstrap" . | quote }}
+
+  # Feature flags
+  USE_NEO4J: {{ .Values.app.env.USE_NEO4J | quote }}
+  USE_QDRANT: {{ .Values.app.env.USE_QDRANT | quote }}
+  USE_KAFKA: {{ .Values.app.env.USE_KAFKA | quote }}
+
+  # Application configuration
+  LOG_LEVEL: {{ .Values.app.env.LOG_LEVEL | quote }}
+
+  # Scheduler configuration
+  {{- if .Values.scheduler.enabled }}
+  SCHEDULE_INTERVAL: {{ .Values.scheduler.env.SCHEDULE_INTERVAL | quote }}
+  {{- end }}

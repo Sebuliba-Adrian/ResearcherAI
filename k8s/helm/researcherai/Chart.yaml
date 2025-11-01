@@ -1,0 +1,33 @@
+apiVersion: v2
+name: researcherai
+description: Production-grade Multi-Agent RAG System with Knowledge Graph and Vector Search
+type: application
+version: 2.0.0
+appVersion: "2.0.0"
+keywords:
+  - rag
+  - multi-agent
+  - knowledge-graph
+  - vector-search
+  - neo4j
+  - qdrant
+  - kafka
+home: https://github.com/Sebuliba-Adrian/ResearcherAI
+sources:
+  - https://github.com/Sebuliba-Adrian/ResearcherAI
+maintainers:
+  - name: ResearcherAI Team
+    email: research@example.com
+dependencies:
+  - name: neo4j
+    version: 5.13.0
+    repository: https://helm.neo4j.com/neo4j
+    condition: neo4j.enabled
+  - name: qdrant
+    version: 0.7.0
+    repository: https://qdrant.to/helm
+    condition: qdrant.enabled
+  - name: strimzi-kafka-operator
+    version: 0.38.0
+    repository: https://strimzi.io/charts/
+    condition: kafka.enabled

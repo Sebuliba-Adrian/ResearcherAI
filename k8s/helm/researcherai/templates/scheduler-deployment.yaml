@@ -1,0 +1,64 @@
+{{- if .Values.scheduler.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "researcherai.fullname" . }}-scheduler
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: researcherai-scheduler
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.scheduler.replicaCount }}
+  selector:
+    matchLabels:
+      app: researcherai-scheduler
+      {{- include "researcherai.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+      labels:
+        app: researcherai-scheduler
+        {{- include "researcherai.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.global.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.securityContext | nindent 8 }}
+      initContainers:
+      - name: wait-for-app
+        image: busybox:1.36
+        command: ['sh', '-c', 'until nc -z {{ include "researcherai.fullname" . }} {{ .Values.app.service.port }}; do echo waiting for app; sleep 2; done']
+      containers:
+      - name: scheduler
+        image: "{{ .Values.scheduler.image.repository }}:{{ .Values.scheduler.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.scheduler.image.pullPolicy }}
+        envFrom:
+        - configMapRef:
+            name: {{ include "researcherai.fullname" . }}-config
+        - secretRef:
+            name: {{ include "researcherai.fullname" . }}-secrets
+        volumeMounts:
+        - name: logs
+          mountPath: /app/volumes/logs
+        resources:
+          {{- toYaml .Values.scheduler.resources | nindent 10 }}
+      volumes:
+      - name: logs
+        emptyDir: {}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+{{- end }}

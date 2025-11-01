@@ -1,0 +1,97 @@
+{{- if .Values.qdrant.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-qdrant-data
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: qdrant
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.qdrant.persistence.storageClass }}
+  resources:
+    requests:
+      storage: {{ .Values.qdrant.persistence.size }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-qdrant
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: qdrant
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.qdrant.replicaCount }}
+  selector:
+    matchLabels:
+      app: qdrant
+  template:
+    metadata:
+      labels:
+        app: qdrant
+        {{- include "researcherai.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+        runAsNonRoot: true
+      containers:
+      - name: qdrant
+        image: "{{ .Values.qdrant.image.repository }}:{{ .Values.qdrant.image.tag }}"
+        imagePullPolicy: {{ .Values.qdrant.image.pullPolicy }}
+        ports:
+        - name: http
+          containerPort: 6333
+          protocol: TCP
+        - name: grpc
+          containerPort: 6334
+          protocol: TCP
+        volumeMounts:
+        - name: data
+          mountPath: /qdrant/storage
+        livenessProbe:
+          tcpSocket:
+            port: 6333
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          tcpSocket:
+            port: 6333
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        resources:
+          {{- toYaml .Values.qdrant.resources | nindent 10 }}
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-qdrant-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-qdrant
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: qdrant
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.qdrant.service.type }}
+  ports:
+  - name: http
+    port: {{ .Values.qdrant.service.port }}
+    targetPort: 6333
+    protocol: TCP
+  - name: grpc
+    port: {{ .Values.qdrant.service.grpcPort }}
+    targetPort: 6334
+    protocol: TCP
+  selector:
+    app: qdrant
+{{- end }}
