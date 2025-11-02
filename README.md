@@ -19,7 +19,7 @@ A sophisticated research assistant powered by **LangGraph + LlamaIndex** orchest
 
 **Development Mode** (5 minutes, no Docker):
 ```bash
-git clone https://github.com/yourusername/ResearcherAI.git
+git clone https://github.com/Sebuliba-Adrian/ResearcherAI.git
 cd ResearcherAI
 pip install -r requirements.txt
 export GOOGLE_API_KEY="your-key"

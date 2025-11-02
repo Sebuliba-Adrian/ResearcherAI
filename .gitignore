@@ -10,6 +10,7 @@ venv/
 env/
 ENV/
 .venv/
+.claude/
 
 # Session Data
 sessions/
@@ -65,6 +66,7 @@ dist/
 .env
 .env.local
 .env.pro
+.
 
 # Temporary files
 *.tmp
