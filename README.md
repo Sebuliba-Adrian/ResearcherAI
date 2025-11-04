@@ -7,7 +7,7 @@
 
 **Production-Ready Multi-Agent RAG System for Research Paper Analysis**
 
-A sophisticated research assistant powered by **LangGraph + LlamaIndex** orchestration, combining knowledge graphs (Neo4j/NetworkX), vector search (Qdrant/FAISS), event streaming (Kafka), and advanced LLM reasoning with **Gemini 2.0 Flash** for comprehensive research paper discovery, analysis, and synthesis.
+A sophisticated research assistant powered by **LangGraph + LlamaIndex** orchestration, combining knowledge graphs (Neo4j/NetworkX), vector search (Qdrant/FAISS), event streaming (Kafka), **Apache Airflow ETL**, and advanced LLM reasoning with **Gemini 2.0 Flash** for comprehensive research paper discovery, analysis, and synthesis.
 
 ✅ **Fully Tested & Validated**:
 - Production Mode (Neo4j + Qdrant + Kafka): 1,119 nodes, 1,105 edges, 61 vectors ✅
@@ -126,7 +126,7 @@ Implements battle-tested patterns achieving **40-70% cost reduction** and **94% 
 │Collector │ │Agent │ │ Agent  │ │ Agent  │ │  Agent   │
 │7 sources │ │Neo4j │ │Qdrant  │ │Gemini  │ │Automated │
 │          │ │or    │ │or      │ │2.0     │ │Collection│
-│          │ │NX    │ │FAISS   │ │Flash   │ │          │
+│          │ │NX    │ │FAISS   │ │Flash   │ │or Airflow│
 └────┬─────┘ └───┬──┘ └───┬────┘ └───┬────┘ └────┬─────┘
      │           │        │          │         │
      └───────────┴────────┴──────────┴─────────┘
@@ -143,6 +143,15 @@ Implements battle-tested patterns achieving **40-70% cost reduction** and **94% 
 │  • Neo4j/NetworkX (Graphs)  • Qdrant/FAISS (Vectors)        │
 │  • File System (Sessions)   • Kafka (Events)                │
 └─────────────────────────────────────────────────────────────┘
+
+Optional: Apache Airflow ETL (airflow/):
+  ┌──────────────────────────────────────────┐
+  │  Airflow Scheduler + Workers (3x)        │
+  │  • Parallel ETL: 7 sources in parallel   │
+  │  • Web UI: localhost:8080                │
+  │  • DAGs: research_paper_etl.py           │
+  │  • 3-4x faster than sequential           │
+  └──────────────────────────────────────────┘
 ```
 
 ### Multi-Agent System
@@ -293,6 +302,14 @@ services:
   zookeeper:            # Kafka coordination (port 2181)
   kafka:                # Event streaming (ports 9092, 9094)
   kafka-ui:             # Monitoring UI (port 8081)
+
+# Optional: Apache Airflow for ETL Orchestration
+# See airflow/README.md for setup
+# Airflow provides:
+#   - Parallel data collection (3-4x faster)
+#   - Visual workflow monitoring (port 8080)
+#   - Automatic retries with exponential backoff
+#   - DAG-based workflows with dependencies
 ```
 
 ---
