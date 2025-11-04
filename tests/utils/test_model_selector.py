@@ -2,7 +2,14 @@
 Tests for model selector utility
 """
 import pytest
-from utils.model_selector import ModelSelector, select_model_for_task
+from utils.model_selector import (
+    ModelSelector,
+    ModelSpec,
+    TaskRequirements,
+    TaskComplexity,
+    ModelTier,
+    get_model_selector
+)
 
 
 class TestModelSelector:
@@ -12,64 +19,64 @@ class TestModelSelector:
         """Test model selector initializes"""
         selector = ModelSelector()
         assert selector is not None
+        assert selector.default_model == "gemini-2.0-flash"
 
     def test_select_model_for_simple_task(self):
         """Test selecting model for simple task"""
-        model = select_model_for_task(
-            task_type="simple",
-            estimated_tokens=100
+        selector = ModelSelector()
+        requirements = TaskRequirements(
+            complexity=TaskComplexity.SIMPLE,
+            min_quality_score=0.75
         )
-        # Should select cheap/fast model for simple tasks
-        assert model in ["gemini-flash", "gpt-3.5-turbo"]
+        model = selector.select_model("simple_task", requirements, estimated_tokens=100)
+        # Should select basic/standard tier model
+        assert model.tier in [ModelTier.BASIC, ModelTier.STANDARD]
 
     def test_select_model_for_complex_task(self):
         """Test selecting model for complex task"""
-        model = select_model_for_task(
-            task_type="complex",
-            estimated_tokens=5000
+        selector = ModelSelector()
+        requirements = TaskRequirements(
+            complexity=TaskComplexity.COMPLEX,
+            min_quality_score=0.9
         )
-        # Should select powerful model for complex tasks
-        assert model in ["gemini-pro", "gpt-4", "claude-opus"]
-
-    def test_select_model_by_token_count(self):
-        """Test model selection based on token count"""
-        # Small token count
-        model1 = select_model_for_task(
-            task_type="analysis",
-            estimated_tokens=500
-        )
-        assert model1 is not None
-
-        # Large token count
-        model2 = select_model_for_task(
-            task_type="analysis",
-            estimated_tokens=50000
-        )
-        assert model2 is not None
+        model = selector.select_model("complex_task", requirements, estimated_tokens=5000)
+        # Should select advanced/premium tier model
+        assert model.tier in [ModelTier.ADVANCED, ModelTier.PREMIUM]
 
     def test_model_cost_estimation(self):
         """Test model cost estimation"""
         selector = ModelSelector()
-        cost = selector.estimate_cost("gemini-flash", input_tokens=1000, output_tokens=500)
+        from utils.model_selector import MODEL_REGISTRY
+        model = MODEL_REGISTRY["gemini-2.0-flash"]
+        cost = selector._estimate_cost(model, 1500)
         assert cost >= 0
         assert isinstance(cost, float)
 
-    def test_model_selection_with_budget(self):
-        """Test model selection respects budget"""
-        selector = ModelSelector()
-        model = selector.select_within_budget(
-            task_type="analysis",
-            max_cost=0.01,
-            estimated_tokens=1000
-        )
-        assert model is not None
+    def test_predefined_task_requirements(self):
+        """Test pre-defined task requirement helpers"""
+        # Classification
+        req = ModelSelector.for_classification()
+        assert req.complexity == TaskComplexity.TRIVIAL
+        assert req.min_quality_score == 0.75
 
-    def test_fallback_to_cheaper_model(self):
-        """Test fallback when expensive model unavailable"""
+        # Reasoning
+        req = ModelSelector.for_reasoning()
+        assert req.complexity == TaskComplexity.COMPLEX
+        assert req.min_quality_score == 0.9
+
+    def test_model_selection_stats(self):
+        """Test model selection tracking"""
         selector = ModelSelector()
-        model = selector.select_with_fallback(
-            preferred="claude-opus",
-            task_type="simple"
-        )
-        # Should fallback to cheaper option for simple task
-        assert model is not None
+        requirements = ModelSelector.for_classification()
+
+        selector.select_model("test_task", requirements)
+        stats = selector.get_stats()
+
+        assert stats["total_selections"] == 1
+        assert "selections_by_model" in stats
+
+    def test_get_global_selector(self):
+        """Test global model selector"""
+        selector = get_model_selector()
+        assert selector is not None
+        assert isinstance(selector, ModelSelector)

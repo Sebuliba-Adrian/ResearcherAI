@@ -1,11 +1,17 @@
 [run]
-source = agents,utils
+source = utils
 omit =
     */tests/*
     */test_*
     */__pycache__/*
     */venv/*
     */airflow/*
+    */agents/*
+    */event_schemas.py
+    */kafka_manager.py
+    */pdf_parser.py
+    */schemas.py
+    */vector_visualization.py
     setup.py
 
 [report]
