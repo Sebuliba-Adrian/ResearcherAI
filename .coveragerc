@@ -1,0 +1,17 @@
+[run]
+source = agents,utils
+omit =
+    */tests/*
+    */test_*
+    */__pycache__/*
+    */venv/*
+    */airflow/*
+    setup.py
+
+[report]
+precision = 2
+show_missing = True
+skip_covered = False
+
+[html]
+directory = htmlcov
