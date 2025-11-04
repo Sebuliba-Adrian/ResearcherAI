@@ -213,7 +213,7 @@ Implements battle-tested patterns achieving **40-70% cost reduction** and **94% 
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/ResearcherAI.git
+git clone https://github.com/Sebuliba-Adrian/ResearcherAI.git
 cd ResearcherAI
 
 # Install dependencies
