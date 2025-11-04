@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Playwright MCP Frontend Validation for LangGraph + LlamaIndex Integration
+Playwright Frontend Validation for LangGraph + LlamaIndex Integration
 ===========================================================================
 
-This script uses Playwright MCP to validate the frontend integration with:
+This script uses Playwright to validate the frontend integration with:
 - LangGraph orchestration traces
 - LlamaIndex query results
 - Real-time agent activity visualization
@@ -19,7 +19,7 @@ from pathlib import Path
 
 
 class PlaywrightFrontendValidator:
-    """Validate frontend integration using Playwright MCP"""
+    """Validate frontend integration using Playwright"""
 
     def __init__(self, base_url: str = "http://localhost:5000", mode: str = "development"):
         self.base_url = base_url
@@ -44,7 +44,7 @@ class PlaywrightFrontendValidator:
         }
 
         try:
-            # In actual implementation, would use Playwright MCP here
+            # In actual implementation, would use Playwright here
             # For now, we'll structure the validation steps
 
             validations_to_check = [
@@ -116,42 +116,42 @@ class PlaywrightFrontendValidator:
                     "step": 1,
                     "action": "Enter query in input field",
                     "validation": "Query text appears in input",
-                    "mcp_action": "browser_type",
+                    "action": "browser_type",
                     "expected_trace": None
                 },
                 {
                     "step": 2,
                     "action": "Click submit button",
                     "validation": "Submit button responds",
-                    "mcp_action": "browser_click",
+                    "action": "browser_click",
                     "expected_trace": "LangGraphOrchestrator: initialize"
                 },
                 {
                     "step": 3,
                     "action": "Wait for LangGraph workflow initiation",
                     "validation": "Workflow status shows 'running'",
-                    "mcp_action": "browser_evaluate",
+                    "action": "browser_evaluate",
                     "expected_trace": "LangGraphOrchestrator: data_collection node"
                 },
                 {
                     "step": 4,
                     "action": "Monitor LlamaIndex retrieval phase",
                     "validation": "LlamaIndex query starts",
-                    "mcp_action": "browser_console_messages",
+                    "action": "browser_console_messages",
                     "expected_trace": "LlamaIndexRAG: retrieve_similar"
                 },
                 {
                     "step": 5,
                     "action": "Monitor reasoning phase",
                     "validation": "Reasoning agent processes results",
-                    "mcp_action": "browser_evaluate",
+                    "action": "browser_evaluate",
                     "expected_trace": "LangGraphOrchestrator: reasoning node"
                 },
                 {
                     "step": 6,
                     "action": "Check final response",
                     "validation": "Answer displayed with sources",
-                    "mcp_action": "browser_snapshot",
+                    "action": "browser_snapshot",
                     "expected_trace": "LangGraphOrchestrator: critic_review node"
                 }
             ]
@@ -218,32 +218,32 @@ class PlaywrightFrontendValidator:
                 {
                     "name": "Navigate to Vector tab",
                     "check": "Tab switches successfully",
-                    "mcp_action": "browser_click('#vector-tab')"
+                    "action": "browser_click('#vector-tab')"
                 },
                 {
                     "name": "Trigger visualization",
                     "check": "Visualization button responds",
-                    "mcp_action": "browser_click('#visualize-vectors-btn')"
+                    "action": "browser_click('#visualize-vectors-btn')"
                 },
                 {
                     "name": "3D plot renders",
                     "check": "Plotly 3D visualization appears",
-                    "mcp_action": "browser_evaluate('document.querySelector(\".plotly\")  !== null')"
+                    "action": "browser_evaluate('document.querySelector(\".plotly\")  !== null')"
                 },
                 {
                     "name": "Data points visible",
                     "check": "Vector embeddings plotted as points",
-                    "mcp_action": "browser_snapshot"
+                    "action": "browser_snapshot"
                 },
                 {
                     "name": "LlamaIndex metadata shown",
                     "check": "Source documents and scores displayed",
-                    "mcp_action": "browser_evaluate"
+                    "action": "browser_evaluate"
                 },
                 {
                     "name": "Embedding model info displayed",
                     "check": "Shows 'sentence-transformers/all-MiniLM-L6-v2'",
-                    "mcp_action": "browser_snapshot"
+                    "action": "browser_snapshot"
                 }
             ]
 
@@ -543,10 +543,10 @@ class PlaywrightFrontendValidator:
                 "skipped": sum(1 for r in results if r["status"] == "skipped")
             },
             "test_results": results,
-            "mcp_integration_notes": [
-                "Full Playwright MCP integration requires running web server",
+            "integration_notes": [
+                "Full Playwright integration requires running web server",
                 "This script provides validation plan and expected behaviors",
-                "Actual MCP calls would use: mcp__playwright__browser_* functions",
+                "Actual MCP calls would use: browser_* functions",
                 "Agent trace capture via browser console monitoring",
                 "Screenshot capture at each validation step"
             ]

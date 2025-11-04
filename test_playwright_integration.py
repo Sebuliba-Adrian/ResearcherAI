@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Playwright MCP Integration Test for ResearcherAI
+Playwright Integration Test for ResearcherAI
 Tests full frontend-backend integration across production and development modes.
 
 Production Mode: Neo4j + Qdrant
@@ -58,8 +58,8 @@ class TestSuiteResult:
     summary: Dict[str, Any]
 
 
-class PlaywrightMCPTester:
-    """Playwright MCP Integration Tester"""
+class PlaywrightTester:
+    """Playwright Integration Tester"""
     
     def __init__(self, mode: str = "both"):
         self.mode = mode
@@ -204,12 +204,12 @@ class PlaywrightMCPTester:
             print(f"✗ {test_name}: {e}")
     
     async def test_frontend_load(self):
-        """Test 2: Frontend page load using Playwright MCP"""
+        """Test 2: Frontend page load using Playwright"""
         test_name = "Frontend Load"
         start = time.time()
         
         try:
-            # Use Playwright MCP to navigate and snapshot
+            # Use Playwright to navigate and snapshot
             # Note: This would be called via MCP server, but for now we'll simulate
             # In actual implementation, you'd use mcp_playwright_browser_navigate
             
@@ -784,7 +784,7 @@ async def main():
     """Main test execution"""
     import argparse
     
-    parser = argparse.ArgumentParser(description="Playwright MCP Integration Test")
+    parser = argparse.ArgumentParser(description="Playwright Integration Test")
     parser.add_argument(
         "--mode",
         choices=["production", "development", "both"],
@@ -800,14 +800,14 @@ async def main():
     args = parser.parse_args()
     
     print("="*80)
-    print("Playwright MCP Integration Test Suite")
+    print("Playwright Integration Test Suite")
     print("="*80)
     print(f"Mode: {args.mode}")
     print(f"Frontend URL: {TEST_CONFIG['frontend_url']}")
     print(f"API Base URL: {TEST_CONFIG['api_base_url']}")
     print("="*80)
     
-    tester = PlaywrightMCPTester(mode=args.mode)
+    tester = PlaywrightTester(mode=args.mode)
     suite_results = await tester.run_all_tests()
     
     # Print summary

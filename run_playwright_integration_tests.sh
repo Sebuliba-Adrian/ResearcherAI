@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run Playwright MCP Integration Tests
+# Run Playwright Integration Tests
 # Tests both production and development modes
 
 set -e
@@ -11,7 +11,7 @@ MODE="${1:-both}"  # production, development, or both
 TIMEOUT=300  # 5 minutes timeout for backend startup
 
 echo "=========================================="
-echo "Playwright MCP Integration Test Suite"
+echo "Playwright Integration Test Suite"
 echo "=========================================="
 echo "Mode: $MODE"
 echo ""
@@ -90,7 +90,7 @@ if [ "$MODE" = "production" ] || [ "$MODE" = "both" ]; then
     
     start_server "production"
     
-    echo "Running Playwright MCP tests for production mode..."
+    echo "Running Playwright tests for production mode..."
     python test_playwright_integration.py --mode production --output "test_outputs/playwright_production_report.json"
     
     stop_server
@@ -105,7 +105,7 @@ if [ "$MODE" = "development" ] || [ "$MODE" = "both" ]; then
     
     start_server "development"
     
-    echo "Running Playwright MCP tests for development mode..."
+    echo "Running Playwright tests for development mode..."
     python test_playwright_integration.py --mode development --output "test_outputs/playwright_development_report.json"
     
     stop_server

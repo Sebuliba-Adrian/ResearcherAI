@@ -1,6 +1,6 @@
 # ResearcherAI v2.0
 
-[![CI - Tests and Quality Checks](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/ci.yml/badge.svg)](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/ci.yml)
+[![CI - Code Quality](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/ci.yml/badge.svg)](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/ci.yml)
 [![Docker Build and Push](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/docker.yml/badge.svg)](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/docker.yml)
 [![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

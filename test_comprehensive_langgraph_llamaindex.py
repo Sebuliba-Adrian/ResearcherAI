@@ -8,7 +8,7 @@ This script validates end-to-end integration of:
 - LlamaIndex RAG system
 - Neo4j/NetworkX graph databases
 - Qdrant/FAISS vector databases
-- Frontend UI via Playwright MCP
+- Frontend UI via Playwright
 - Agent activity logging and tracing
 
 Tests both Production and Development modes for parity validation.
@@ -703,12 +703,12 @@ def compare_modes(prod_summary: Dict, dev_summary: Dict) -> Dict:
 
 
 async def run_playwright_validation():
-    """Run Playwright MCP validation of frontend"""
+    """Run Playwright validation of frontend"""
     logger.info("\n" + "="*70)
     logger.info("PLAYWRIGHT MCP FRONTEND VALIDATION")
     logger.info("="*70)
 
-    # Note: This would integrate with Playwright MCP
+    # Note: This would integrate with Playwright
     # For now, we'll prepare the structure
 
     validation_plan = {
