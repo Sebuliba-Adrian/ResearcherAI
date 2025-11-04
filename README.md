@@ -1,5 +1,10 @@
 # ResearcherAI v2.0
 
+[![CI - Tests and Quality Checks](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/ci.yml/badge.svg)](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/ci.yml)
+[![Docker Build and Push](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/docker.yml/badge.svg)](https://github.com/Sebuliba-Adrian/ResearcherAI/actions/workflows/docker.yml)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **Production-Ready Multi-Agent RAG System for Research Paper Analysis**
 
 A sophisticated research assistant powered by **LangGraph + LlamaIndex** orchestration, combining knowledge graphs (Neo4j/NetworkX), vector search (Qdrant/FAISS), event streaming (Kafka), and advanced LLM reasoning with **Gemini 2.0 Flash** for comprehensive research paper discovery, analysis, and synthesis.
