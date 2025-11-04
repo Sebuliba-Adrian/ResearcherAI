@@ -1,17 +1,28 @@
 [run]
-source = utils
+source = utils,agents
 omit =
     */tests/*
     */test_*
     */__pycache__/*
     */venv/*
     */airflow/*
-    */agents/*
     */event_schemas.py
     */kafka_manager.py
     */pdf_parser.py
     */schemas.py
     */vector_visualization.py
+    */event_driven_orchestrator.py
+    */langgraph_orchestrator.py
+    */llamaindex_rag.py
+    */rdf_agent.py
+    */critic_agent.py
+    */evaluator_agent.py
+    */summarization_agent.py
+    */orchestrator_agent.py
+    api_gateway.py
+    main.py
+    demo_end_to_end.py
+    verify_*.py
     setup.py
 
 [report]
