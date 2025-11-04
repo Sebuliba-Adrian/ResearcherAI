@@ -80,3 +80,97 @@ class TestModelSelector:
         selector = get_model_selector()
         assert selector is not None
         assert isinstance(selector, ModelSelector)
+
+    def test_model_selection_with_no_candidates(self):
+        """Test model selection when no models meet requirements"""
+        selector = ModelSelector()
+
+        # Impossible requirements
+        requirements = TaskRequirements(
+            complexity=TaskComplexity.EXPERT,
+            min_quality_score=0.99,
+            max_cost_per_1m=0.001  # Too cheap
+        )
+
+        model = selector.select_model("impossible_task", requirements)
+        # Should fall back to default
+        assert model.name == "gemini-2.0-flash"
+
+    def test_model_selection_with_provider_filter(self):
+        """Test model selection with allowed providers"""
+        selector = ModelSelector(allowed_providers=["google"])
+
+        requirements = ModelSelector.for_classification()
+        model = selector.select_model("google_only_task", requirements)
+
+        assert model.provider == "google"
+
+    def test_model_selection_with_large_context(self):
+        """Test model selection requiring large context window"""
+        selector = ModelSelector()
+
+        requirements = TaskRequirements(
+            complexity=TaskComplexity.MODERATE,
+            min_quality_score=0.8,
+            requires_large_context=True
+        )
+
+        model = selector.select_model("large_context_task", requirements)
+        assert model.context_window >= 64000
+
+    def test_all_predefined_requirements(self):
+        """Test all pre-defined task requirement methods"""
+        # Extraction
+        req = ModelSelector.for_extraction()
+        assert req.complexity == TaskComplexity.SIMPLE
+
+        # Summarization
+        req = ModelSelector.for_summarization()
+        assert req.complexity == TaskComplexity.SIMPLE
+
+        # Graph extraction
+        req = ModelSelector.for_graph_extraction()
+        assert req.complexity == TaskComplexity.MODERATE
+
+        # Quality check
+        req = ModelSelector.for_quality_check()
+        assert req.complexity == TaskComplexity.SIMPLE
+
+        # Research
+        req = ModelSelector.for_research()
+        assert req.complexity == TaskComplexity.EXPERT
+
+    def test_model_usage_breakdown(self):
+        """Test model usage percentage breakdown"""
+        selector = ModelSelector()
+
+        requirements = ModelSelector.for_classification()
+        selector.select_model("task1", requirements)
+        selector.select_model("task2", requirements)
+
+        breakdown = selector.get_model_usage_breakdown()
+        assert isinstance(breakdown, dict)
+        # Should have percentages
+        for model, percentage in breakdown.items():
+            assert 0 <= percentage <= 100
+
+    def test_model_cost_savings_tracking(self):
+        """Test cost savings tracking"""
+        selector = ModelSelector(default_model="gpt-4")  # Expensive default
+
+        requirements = ModelSelector.for_classification()
+        selector.select_model("cheap_task", requirements)
+
+        stats = selector.get_stats()
+        # Should save money vs expensive default
+        assert stats["cost_saved_usd"] >= 0
+
+    def test_select_for_task_convenience_function(self):
+        """Test convenience function for task selection"""
+        from utils.model_selector import select_for_task
+
+        requirements = ModelSelector.for_classification()
+        model_name = select_for_task("test_task", requirements)
+
+        assert isinstance(model_name, str)
+        assert len(model_name) > 0

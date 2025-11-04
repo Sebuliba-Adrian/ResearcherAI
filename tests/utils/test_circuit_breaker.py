@@ -131,3 +131,146 @@ class TestCircuitBreaker:
         cb = get_circuit_breaker("test_global")
         assert cb is not None
         assert cb.name == "test_global"
+
+    def test_circuit_breaker_context_manager_failure(self):
+        """Test circuit breaker context manager with failure"""
+        cb = CircuitBreaker("test_ctx")
+
+        try:
+            with cb:
+                raise ValueError("Test error")
+        except ValueError:
+            pass
+
+        # Should have recorded failure
+        stats = cb.get_stats()
+        assert stats["failures"] == 1
+
+    def test_circuit_breaker_context_manager_when_open(self):
+        """Test context manager raises error when circuit is open"""
+        config = CircuitBreakerConfig(failure_threshold=1)
+        cb = CircuitBreaker("test_ctx_open", config)
+
+        # Open the circuit
+        try:
+            with cb:
+                raise ValueError("Error")
+        except ValueError:
+            pass
+
+        # Should raise CircuitBreakerOpenError
+        with pytest.raises(CircuitBreakerOpenError):
+            with cb:
+                pass
+
+    def test_circuit_breaker_half_open_allows_call(self):
+        """Test half-open state allows calls through"""
+        config = CircuitBreakerConfig(failure_threshold=1, timeout=0.1)
+        cb = CircuitBreaker("test_half_open", config)
+
+        # Open circuit
+        cb.record_failure()
+        assert cb.state == CircuitState.OPEN
+
+        # Wait for timeout
+        time.sleep(0.15)
+
+        # Should allow call in half-open
+        assert cb.can_execute() is True
+        assert cb.state == CircuitState.HALF_OPEN
+
+    def test_circuit_breaker_get_state(self):
+        """Test get_state returns complete state info"""
+        cb = CircuitBreaker("test_state")
+
+        cb.record_success()
+        cb.record_failure()
+
+        state = cb.get_state()
+        assert "name" in state
+        assert "state" in state
+        assert "failure_count" in state
+        assert "success_count" in state
+        assert "failure_rate" in state
+
+    def test_circuit_breaker_get_stats(self):
+        """Test get_stats returns statistics"""
+        cb = CircuitBreaker("test_stats")
+
+        cb.record_success()
+        cb.record_success()
+        cb.record_failure()
+
+        stats = cb.get_stats()
+        assert stats["total_calls"] == 3
+        assert stats["successes"] == 2
+        assert stats["failures"] == 1
+        assert "success_rate" in stats
+        assert "failure_rate" in stats
+
+    def test_circuit_breaker_manager_health_status(self):
+        """Test CircuitBreakerManager health status"""
+        from utils.circuit_breaker import CircuitBreakerManager, get_health_status
+
+        manager = CircuitBreakerManager()
+
+        # Create breakers in different states
+        cb1 = manager.get_breaker("healthy")
+        cb1.record_success()
+
+        cb2_config = CircuitBreakerConfig(failure_threshold=1)
+        cb2 = manager.get_breaker("unhealthy", cb2_config)
+        cb2.record_failure()
+
+        cb3_config = CircuitBreakerConfig(failure_threshold=1, timeout=0.1)
+        cb3 = manager.get_breaker("degraded", cb3_config)
+        cb3.record_failure()
+        time.sleep(0.15)
+        cb3.can_execute()  # Transition to half-open
+
+        health = manager.get_health_status()
+        assert "healthy" in health["healthy"]
+        assert "unhealthy" in health["unhealthy"]
+        assert "degraded" in health["degraded"]
+        assert health["summary"]["total"] == 3
+
+    def test_circuit_breaker_manager_get_all_stats(self):
+        """Test getting stats for all circuit breakers"""
+        from utils.circuit_breaker import CircuitBreakerManager
+
+        manager = CircuitBreakerManager()
+        cb1 = manager.get_breaker("breaker1")
+        cb2 = manager.get_breaker("breaker2")
+
+        cb1.record_success()
+        cb2.record_failure()
+
+        all_stats = manager.get_all_stats()
+        assert "breaker1" in all_stats
+        assert "breaker2" in all_stats
+
+    def test_circuit_breaker_manager_reset_all(self):
+        """Test resetting all circuit breakers"""
+        from utils.circuit_breaker import CircuitBreakerManager
+
+        manager = CircuitBreakerManager()
+        cb1 = manager.get_breaker("reset1")
+        cb2 = manager.get_breaker("reset2")
+
+        cb1.record_failure()
+        cb2.record_failure()
+
+        manager.reset_all()
+
+        assert cb1.state == CircuitState.CLOSED
+        assert cb2.state == CircuitState.CLOSED
+
+    def test_get_health_status_global(self):
+        """Test global health status function"""
+        from utils.circuit_breaker import get_health_status
+
+        health = get_health_status()
+        assert "healthy" in health
+        assert "degraded" in health
+        assert "unhealthy" in health
+        assert "summary" in health

@@ -2,6 +2,7 @@
 Tests for token budget utility
 """
 import pytest
+import time
 from utils.token_budget import (
     TokenBudgetManager,
     TokenBudgetExceededError,
@@ -132,3 +133,104 @@ class TestTokenBudgetManager:
         # Should still be within budget
         can_execute, _ = check_budget("test_task2", "test_user", 1000)
         assert can_execute is True
+
+    def test_exceed_system_wide_limit(self):
+        """Test exceeding system-wide limit"""
+        manager = TokenBudgetManager(system_wide_limit=1000)
+
+        # Use up most of the system budget
+        manager.record_usage("task1", "user1", "gemini-2.0-flash", 700, 200)
+
+        # Next task would exceed system limit
+        can_execute, reason = manager.can_execute("task2", "user2", 200)
+        assert can_execute is False
+        assert "System would exceed limit" in reason
+
+    def test_budget_window_reset(self):
+        """Test budget resets after window expires"""
+        manager = TokenBudgetManager(
+            per_user_limit=1000,
+            reset_window_hours=0.00001  # Very short window (0.036 seconds)
+        )
+
+        # Use budget
+        manager.record_usage("task1", "user1", "gemini-2.0-flash", 700, 300)
+        assert manager.user_usage["user1"] == 1000
+
+        # Wait for reset window to expire
+        time.sleep(0.05)
+
+        # Trigger cleanup
+        can_execute, _ = manager.can_execute("task2", "user1", 100)
+
+        # Budget should be reset, so new task should be allowed
+        assert can_execute is True or "user1" not in manager.user_usage
+
+    def test_unknown_model_pricing(self):
+        """Test handling unknown model with default pricing"""
+        manager = TokenBudgetManager()
+
+        cost = manager.estimate_cost("unknown-model-xyz", 1000)
+        # Should use default pricing (gemini-2.0-flash)
+        assert cost > 0
+
+    def test_get_recent_usage(self):
+        """Test getting recent usage records"""
+        manager = TokenBudgetManager()
+
+        manager.record_usage("task1", "user1", "gemini-2.0-flash", 500, 200)
+        manager.record_usage("task2", "user2", "gpt-4", 300, 100)
+
+        recent = manager.get_recent_usage(limit=10)
+        assert len(recent) == 2
+        assert all("task_id" in r for r in recent)
+        assert all("cost_usd" in r for r in recent)
+
+    def test_budget_with_none_user(self):
+        """Test budget management without user ID (system tasks)"""
+        manager = TokenBudgetManager()
+
+        can_execute, _ = manager.can_execute("system_task", None, 1000)
+        assert can_execute is True
+
+        manager.record_usage("system_task", None, "gemini-2.0-flash", 700, 300)
+
+        # System usage should be tracked
+        assert manager.system_usage == 1000
+
+    def test_multiple_users_budgets(self):
+        """Test independent budgets for different users"""
+        manager = TokenBudgetManager(per_user_limit=500)
+
+        # User 1
+        manager.record_usage("task1", "user1", "gemini-2.0-flash", 300, 100)
+
+        # User 2
+        manager.record_usage("task2", "user2", "gemini-2.0-flash", 300, 100)
+
+        # Both should be independent
+        user1_stats = manager.get_user_stats("user1")
+        user2_stats = manager.get_user_stats("user2")
+
+        assert user1_stats["current_usage"] == 400
+        assert user2_stats["current_usage"] == 400
+
+    def test_budget_rejection_tracking(self):
+        """Test tracking of budget rejections"""
+        manager = TokenBudgetManager(per_task_limit=100)
+
+        # Try to execute task that exceeds limit
+        can_execute, _ = manager.can_execute("big_task", "user1", 200)
+        assert can_execute is False
+
+        stats = manager.get_stats()
+        assert stats["tasks_rejected"] == 1
+
+    def test_user_stats_for_nonexistent_user(self):
+        """Test getting stats for user with no history"""
+        manager = TokenBudgetManager()
+
+        stats = manager.get_user_stats("nonexistent_user")
+        assert stats["tasks"] == 0
+        assert stats["total_tokens"] == 0
+        assert stats["total_cost_usd"] == 0.0

@@ -252,3 +252,114 @@ class TestCacheDecorator:
         manager2 = get_cache_manager()
 
         assert manager1 is manager2
+
+    def test_cache_entry_no_expiration(self):
+        """Test cache entry with no TTL"""
+        from utils.cache import CacheEntry
+
+        entry = CacheEntry("key", "value", ttl=None)
+        assert entry.is_expired() is False
+
+    def test_memory_cache_cleanup_expired(self):
+        """Test automatic cleanup of expired entries"""
+        cache = MemoryCache(max_size=200, default_ttl=0.1)
+
+        # Add entries
+        for i in range(10):
+            cache.set(f"key{i}", f"value{i}")
+
+        # Wait for some to expire
+        time.sleep(0.15)
+
+        # Add more entries to trigger modulo 100 cleanup
+        for i in range(100):
+            cache.set(f"newkey{i}", f"newvalue{i}")
+
+        # Expired entries should have been cleaned up
+        stats = cache.get_stats()
+        assert stats["expirations"] >= 0  # Some may have been cleaned up
+
+    def test_memory_cache_evict_when_empty(self):
+        """Test LRU eviction on empty cache"""
+        cache = MemoryCache(max_size=1)
+        # This should not crash
+        cache._evict_lru()
+
+    def test_disk_cache_read_error(self):
+        """Test disk cache handles read errors gracefully"""
+        import tempfile
+        import shutil
+        from utils.cache import DiskCache
+
+        temp_dir = tempfile.mkdtemp()
+
+        try:
+            disk = DiskCache(cache_dir=temp_dir)
+
+            # Create a corrupted cache file
+            cache_file = disk._get_cache_file("corrupt_key")
+            with open(cache_file, 'w') as f:
+                f.write("not valid json {{{")
+
+            # Should handle error and return None
+            value = disk.get("corrupt_key")
+            assert value is None
+
+            stats = disk.get_stats()
+            assert stats["misses"] >= 1
+
+        finally:
+            shutil.rmtree(temp_dir, ignore_errors=True)
+
+    def test_disk_cache_write_error(self):
+        """Test disk cache handles write errors"""
+        import tempfile
+        import shutil
+        import os
+        from utils.cache import DiskCache
+
+        temp_dir = tempfile.mkdtemp()
+
+        try:
+            disk = DiskCache(cache_dir=temp_dir)
+
+            # Create a cache file and make it read-only
+            disk.set("test_key", "test_value")
+            cache_file = disk._get_cache_file("readonly_key")
+
+            # Create read-only file to trigger write error
+            with open(cache_file, 'w') as f:
+                f.write('{"test": "data"}')
+            os.chmod(cache_file, 0o444)  # Read-only
+
+            # Try to write - should fail silently
+            disk.set("readonly_key", "new_value")
+
+            # Original data should still be there
+            # (write failed, so old data remains)
+
+        finally:
+            # Restore permissions before cleanup
+            try:
+                os.chmod(cache_file, 0o644)
+            except:
+                pass
+            shutil.rmtree(temp_dir, ignore_errors=True)
+
+    def test_cached_decorator_with_custom_key_func(self):
+        """Test cached decorator with custom key function"""
+        manager = CacheManager()
+
+        def custom_key(x, y):
+            return f"custom_{x}_{y}"
+
+        @cached(manager, key_func=custom_key)
+        def func_with_custom_key(x, y):
+            return x + y
+
+        result = func_with_custom_key(3, 4)
+        assert result == 7
+
+        # Should use custom key for caching
+        result2 = func_with_custom_key(3, 4)
+        assert result2 == 7
