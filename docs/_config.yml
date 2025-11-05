@@ -26,6 +26,8 @@ plugins:
 # Navigation
 header_pages:
   - 00-frontmatter.md
+  - 00a-primer-for-web-developers.md
+  - glossary.md
   - index.md
   - 01-planning.md
   - 02-architecture.md
