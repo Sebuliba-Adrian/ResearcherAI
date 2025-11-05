@@ -1,0 +1,20 @@
+# Development & Testing Dependencies
+pytest==7.4.4
+pytest-asyncio==0.23.3
+pytest-cov>=4.1.0
+
+# Linting & Formatting
+ruff>=0.1.9
+black>=23.12.0
+isort>=5.13.0
+mypy>=1.8.0
+
+# Pre-commit Hooks
+pre-commit>=3.6.0
+
+# Testing Utilities
+httpx>=0.25.0
+faker>=22.0.0
+
+# Database Migrations
+alembic>=1.13.0
