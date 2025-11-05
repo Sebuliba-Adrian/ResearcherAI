@@ -6,8 +6,7 @@ version: "2.0"
 baseurl: ""
 url: "https://sebuliba-adrian.github.io/ResearcherAI"
 
-# Theme
-theme: minima
+# Theme - Using custom layout
 markdown: kramdown
 kramdown:
   syntax_highlighter: rouge
