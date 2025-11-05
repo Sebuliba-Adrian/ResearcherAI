@@ -1,0 +1,56 @@
+title: "Building Production-Grade Multi-Agent RAG Systems"
+subtitle: "A Comprehensive Guide to ResearcherAI"
+description: "From concept to production - a comprehensive guide to building multi-agent RAG systems with real-world examples, academic references, and production patterns"
+author: "Adrian Sebuliba"
+version: "2.0"
+baseurl: ""
+url: "https://sebuliba-adrian.github.io/ResearcherAI"
+
+# Theme
+theme: minima
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..3
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Navigation
+header_pages:
+  - 00-frontmatter.md
+  - index.md
+  - 01-planning.md
+  - 02-architecture.md
+  - 03-backend.md
+  - 04-frontend.md
+  - 05-testing.md
+  - 06-deployment.md
+  - 07-monitoring.md
+  - 08-conclusion.md
+  - bibliography.md
+
+# Book metadata for publishing
+book:
+  isbn: "TBD"
+  publisher: "Independent"
+  publication_date: "November 2025"
+  edition: "First Edition"
+  language: "English"
+
+# Exclude from build
+exclude:
+  - node_modules
+  - package.json
+  - README.md
+  - researcherai-book
+  - Gemfile
+  - Gemfile.lock
+  - vendor
