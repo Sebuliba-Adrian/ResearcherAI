@@ -1,0 +1,295 @@
+# Default values for researcherai
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Global settings
+global:
+  namespace: researcherai
+  storageClass: standard
+  imagePullSecrets: []
+
+# Application configuration
+app:
+  name: researcherai
+  replicaCount: 2
+
+  image:
+    repository: researcherai/multiagent
+    pullPolicy: IfNotPresent
+    tag: "2.0.0"
+
+  service:
+    type: ClusterIP
+    port: 8000
+    targetPort: 8000
+
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
+  env:
+    USE_NEO4J: "true"
+    USE_QDRANT: "true"
+    USE_KAFKA: "true"
+    LOG_LEVEL: "INFO"
+
+  # Secrets (should be provided via external secret management)
+  secrets:
+    googleApiKey: ""  # Set via --set or external secrets
+    neo4jPassword: "research_password"
+
+# Scheduler configuration
+scheduler:
+  enabled: true
+  replicaCount: 1
+
+  image:
+    repository: researcherai/scheduler
+    pullPolicy: IfNotPresent
+    tag: "2.0.0"
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 1Gi
+    requests:
+      cpu: 250m
+      memory: 512Mi
+
+  env:
+    SCHEDULE_INTERVAL: "3600"  # 1 hour
+
+# Neo4j Configuration
+neo4j:
+  enabled: true
+  name: neo4j
+
+  # Use official Neo4j Helm chart
+  neo4j:
+    name: neo4j
+    edition: community
+    acceptLicenseAgreement: "yes"
+
+  image:
+    imagePullPolicy: IfNotPresent
+
+  volumes:
+    data:
+      mode: defaultStorageClass
+      defaultStorageClass:
+        requests:
+          storage: 10Gi
+
+  config:
+    dbms.memory.heap.initial_size: "2G"
+    dbms.memory.heap.max_size: "2G"
+    dbms.memory.pagecache.size: "1G"
+
+  services:
+    neo4j:
+      enabled: true
+      type: ClusterIP
+      ports:
+        http:
+          enabled: true
+          port: 7474
+        bolt:
+          enabled: true
+          port: 7687
+
+  env:
+    NEO4J_AUTH: neo4j/research_password
+    NEO4J_PLUGINS: '["apoc"]'
+    NEO4J_dbms_security_procedures_unrestricted: "apoc.*"
+
+# Qdrant Configuration
+qdrant:
+  enabled: true
+
+  replicaCount: 1
+
+  image:
+    repository: qdrant/qdrant
+    pullPolicy: IfNotPresent
+    tag: "v1.7.0"
+
+  service:
+    type: ClusterIP
+    port: 6333
+    grpcPort: 6334
+
+  persistence:
+    enabled: true
+    size: 10Gi
+    storageClass: standard
+
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 4Gi
+    requests:
+      cpu: 1000m
+      memory: 2Gi
+
+# Kafka Configuration (using Strimzi operator)
+kafka:
+  enabled: true
+
+  # Kafka cluster configuration
+  cluster:
+    name: rag-kafka
+    namespace: researcherai
+    version: 3.6.0
+    replicas: 3
+
+    config:
+      offsets.topic.replication.factor: 3
+      transaction.state.log.replication.factor: 3
+      transaction.state.log.min.isr: 2
+      default.replication.factor: 3
+      min.insync.replicas: 2
+      inter.broker.protocol.version: "3.6"
+
+    storage:
+      type: persistent-claim
+      size: 10Gi
+      deleteClaim: false
+      class: standard
+
+    resources:
+      requests:
+        memory: 2Gi
+        cpu: 1000m
+      limits:
+        memory: 4Gi
+        cpu: 2000m
+
+  # Zookeeper configuration
+  zookeeper:
+    replicas: 3
+    storage:
+      type: persistent-claim
+      size: 5Gi
+      deleteClaim: false
+      class: standard
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 500m
+      limits:
+        memory: 2Gi
+        cpu: 1000m
+
+  # Kafka topics
+  topics:
+    - name: query.submitted
+      partitions: 3
+      replicas: 3
+    - name: query.validated
+      partitions: 3
+      replicas: 3
+    - name: data.collection.started
+      partitions: 3
+      replicas: 3
+    - name: data.collection.completed
+      partitions: 3
+      replicas: 3
+    - name: data.collection.failed
+      partitions: 3
+      replicas: 3
+    - name: graph.processing.started
+      partitions: 3
+      replicas: 3
+    - name: graph.processing.completed
+      partitions: 3
+      replicas: 3
+    - name: graph.processing.failed
+      partitions: 3
+      replicas: 3
+    - name: vector.processing.started
+      partitions: 3
+      replicas: 3
+    - name: vector.processing.completed
+      partitions: 3
+      replicas: 3
+    - name: vector.processing.failed
+      partitions: 3
+      replicas: 3
+    - name: reasoning.started
+      partitions: 3
+      replicas: 3
+    - name: reasoning.completed
+      partitions: 3
+      replicas: 3
+    - name: reasoning.failed
+      partitions: 3
+      replicas: 3
+    - name: agent.health.check
+      partitions: 3
+      replicas: 3
+    - name: agent.error
+      partitions: 3
+      replicas: 3
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+  hosts:
+    - host: researcherai.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: researcherai-tls
+      hosts:
+        - researcherai.example.com
+
+# ServiceMonitor for Prometheus
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+    scrapeTimeout: 10s
+
+# Network Policies
+networkPolicy:
+  enabled: true
+  policyTypes:
+    - Ingress
+    - Egress
+
+# Pod Disruption Budget
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+# Security Context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+  capabilities:
+    drop:
+      - ALL
+
+# Node affinity and tolerations
+affinity: {}
+tolerations: []
+nodeSelector: {}

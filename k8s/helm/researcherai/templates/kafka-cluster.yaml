@@ -1,0 +1,48 @@
+{{- if .Values.kafka.enabled }}
+apiVersion: kafka.strimzi.io/v1beta2
+kind: Kafka
+metadata:
+  name: {{ .Values.kafka.cluster.name }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  kafka:
+    version: {{ .Values.kafka.cluster.version }}
+    replicas: {{ .Values.kafka.cluster.replicas }}
+    listeners:
+      - name: plain
+        port: 9092
+        type: internal
+        tls: false
+      - name: tls
+        port: 9093
+        type: internal
+        tls: true
+    config:
+      offsets.topic.replication.factor: {{ .Values.kafka.cluster.config.offsets.topic.replication.factor }}
+      transaction.state.log.replication.factor: {{ .Values.kafka.cluster.config.transaction.state.log.replication.factor }}
+      transaction.state.log.min.isr: {{ .Values.kafka.cluster.config.transaction.state.log.min.isr }}
+      default.replication.factor: {{ .Values.kafka.cluster.config.default.replication.factor }}
+      min.insync.replicas: {{ .Values.kafka.cluster.config.min.insync.replicas }}
+      inter.broker.protocol.version: {{ .Values.kafka.cluster.config.inter.broker.protocol.version | quote }}
+    storage:
+      type: {{ .Values.kafka.cluster.storage.type }}
+      size: {{ .Values.kafka.cluster.storage.size }}
+      deleteClaim: {{ .Values.kafka.cluster.storage.deleteClaim }}
+      class: {{ .Values.kafka.cluster.storage.class }}
+    resources:
+      {{- toYaml .Values.kafka.cluster.resources | nindent 6 }}
+  zookeeper:
+    replicas: {{ .Values.kafka.zookeeper.replicas }}
+    storage:
+      type: {{ .Values.kafka.zookeeper.storage.type }}
+      size: {{ .Values.kafka.zookeeper.storage.size }}
+      deleteClaim: {{ .Values.kafka.zookeeper.storage.deleteClaim }}
+      class: {{ .Values.kafka.zookeeper.storage.class }}
+    resources:
+      {{- toYaml .Values.kafka.zookeeper.resources | nindent 6 }}
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
+{{- end }}

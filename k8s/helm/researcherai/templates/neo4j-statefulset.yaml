@@ -1,0 +1,112 @@
+{{- if .Values.neo4j.enabled }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}-neo4j
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: neo4j
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  serviceName: {{ .Release.Name }}-neo4j
+  replicas: 1
+  selector:
+    matchLabels:
+      app: neo4j
+  template:
+    metadata:
+      labels:
+        app: neo4j
+        {{- include "researcherai.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: 7474
+        runAsUser: 7474
+        runAsNonRoot: true
+      containers:
+      - name: neo4j
+        image: "neo4j:{{ .Values.neo4j.image.tag | default "5.13-community" }}"
+        imagePullPolicy: {{ .Values.neo4j.image.imagePullPolicy }}
+        env:
+        - name: NEO4J_AUTH
+          value: {{ .Values.neo4j.env.NEO4J_AUTH }}
+        - name: NEO4J_PLUGINS
+          value: {{ .Values.neo4j.env.NEO4J_PLUGINS | quote }}
+        - name: NEO4J_dbms_security_procedures_unrestricted
+          value: {{ .Values.neo4j.env.NEO4J_dbms_security_procedures_unrestricted }}
+        - name: NEO4J_dbms_memory_heap_initial__size
+          value: {{ .Values.neo4j.config.dbms.memory.heap.initial_size }}
+        - name: NEO4J_dbms_memory_heap_max__size
+          value: {{ .Values.neo4j.config.dbms.memory.heap.max_size }}
+        - name: NEO4J_dbms_memory_pagecache_size
+          value: {{ .Values.neo4j.config.dbms.memory.pagecache.size }}
+        ports:
+        - name: http
+          containerPort: 7474
+          protocol: TCP
+        - name: bolt
+          containerPort: 7687
+          protocol: TCP
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        - name: logs
+          mountPath: /logs
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 7474
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 7474
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        resources:
+          {{- toYaml .Values.neo4j.neo4j.resources | nindent 10 }}
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: {{ .Values.global.storageClass }}
+      resources:
+        requests:
+          storage: {{ .Values.neo4j.volumes.data.defaultStorageClass.requests.storage }}
+  - metadata:
+      name: logs
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: {{ .Values.global.storageClass }}
+      resources:
+        requests:
+          storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-neo4j
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    app: neo4j
+    {{- include "researcherai.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.neo4j.services.neo4j.type }}
+  ports:
+  - name: http
+    port: {{ .Values.neo4j.services.neo4j.ports.http.port }}
+    targetPort: 7474
+    protocol: TCP
+  - name: bolt
+    port: {{ .Values.neo4j.services.neo4j.ports.bolt.port }}
+    targetPort: 7687
+    protocol: TCP
+  selector:
+    app: neo4j
+{{- end }}
